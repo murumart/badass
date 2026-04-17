@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c3nwg350t5tbo"]
+
+[ext_resource type="Shader" uid="uid://bo23wumpnbhba" path="res://scenes/test.gdshader" id="1_qjd0x"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_cdtec"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7145t"]
+shader = ExtResource("1_qjd0x")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rrnqn"]
+radius = 63.07139
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=1534704512]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1381454177]
+material = SubResource("ShaderMaterial_7145t")
+texture = ExtResource("2_cdtec")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1317483331]
+shape = SubResource("CircleShape2D_rrnqn")

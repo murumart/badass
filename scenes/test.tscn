@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://dsbst1y8nsp0s"]
+
+[ext_resource type="Script" uid="uid://d255vd3a51u1i" path="res://scenes/test.gd" id="1_bl13t"]
+[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="1_errlg"]
+[ext_resource type="Shader" uid="uid://bo23wumpnbhba" path="res://scenes/test.gdshader" id="2_74lek"]
+[ext_resource type="Script" uid="uid://dih7krwttr7fh" path="res://scenes/coolsprite.gd" id="3_iyx0m"]
+[ext_resource type="PackedScene" uid="uid://c3nwg350t5tbo" path="res://scenes/muna.tscn" id="5_j5jx5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j5jx5"]
+shader = ExtResource("2_74lek")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74lek"]
+size = Vector2(956, 30)
+
+[node name="Test" type="Node2D" unique_id=591423385 node_paths=PackedStringArray("muna", "muna2", "muu")]
+position = Vector2(631, 308)
+script = ExtResource("1_bl13t")
+muna = NodePath("RigidBody2D")
+muna2 = NodePath("RigidBody2D3")
+muu = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=992742036]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_j5jx5")
+texture = ExtResource("1_errlg")
+script = ExtResource("3_iyx0m")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=915649119]
+position = Vector2(-61, 237)
+
+[node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=986262970]
+scale = Vector2(7.546875, 0.25)
+texture = ExtResource("1_errlg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1995301028]
+shape = SubResource("RectangleShape2D_74lek")
+
+[node name="RigidBody2D" parent="." unique_id=1534704512 instance=ExtResource("5_j5jx5")]
+position = Vector2(-148, -566)
+contact_monitor = true
+max_contacts_reported = 10
+
+[node name="RigidBody2D2" parent="." unique_id=1829025701 instance=ExtResource("5_j5jx5")]
+position = Vector2(-38, -189)
+
+[node name="RigidBody2D3" parent="." unique_id=523759350 instance=ExtResource("5_j5jx5")]
+position = Vector2(225, -144)
+
+[node name="RigidBody2D4" parent="." unique_id=1202813812 instance=ExtResource("5_j5jx5")]
+position = Vector2(-42, -94)
+
+[node name="RigidBody2D5" parent="." unique_id=737074208 instance=ExtResource("5_j5jx5")]
+position = Vector2(-166, 13)
+
+[node name="RigidBody2D6" parent="." unique_id=34629296 instance=ExtResource("5_j5jx5")]
+position = Vector2(158, 47)
+
+[node name="RigidBody2D7" parent="." unique_id=1478945136 instance=ExtResource("5_j5jx5")]
+position = Vector2(-28, 62)
+
+[node name="RigidBody2D8" parent="." unique_id=1810557650 instance=ExtResource("5_j5jx5")]
+position = Vector2(-356, 2)
+
+[node name="RigidBody2D9" parent="." unique_id=212711089 instance=ExtResource("5_j5jx5")]
+position = Vector2(-356, 2)
