@@ -51,8 +51,6 @@ func begin_encounter() -> void:
 	if not person.starting_lines.is_empty():
 		tw.tween_callback(func() -> void:
 			person.speak(person.starting_lines)
-			await person.speaking_finished
-			prepare_topics()
 		)
 	else:
 		tw.tween_callback(func() -> void:
