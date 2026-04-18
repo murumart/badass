@@ -13,6 +13,7 @@ var transitioning: bool:
 
 func _ready() -> void:
 	assert(options != null)
+	assert(swipe_animation != null)
 	options.load_from_file()
 	options.close()
 
@@ -27,7 +28,7 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			options.display()
 
 
-func swipe_transition(to: PackedScene) -> void:
+func swipe_transition_n(n: Node) -> void:
 	assert(not _transitioning, "don't start transitioning while already transitioning")
 	_transitioning = true
 	var root := get_tree().root
@@ -38,10 +39,12 @@ func swipe_transition(to: PackedScene) -> void:
 	root.remove_child(current)
 	current.queue_free()
 
-	var next := to.instantiate()
-
-	root.add_child(next)
-	get_tree().current_scene = next
+	root.add_child(n)
+	get_tree().current_scene = n
 	swipe_animation.play("swipe_out")
 	await swipe_animation.animation_finished
 	_transitioning = false
+
+
+func swipe_transition(to: PackedScene) -> void:
+	swipe_transition_n(to.instantiate())

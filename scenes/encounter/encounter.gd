@@ -38,17 +38,26 @@ func _ready() -> void:
 
 func begin_encounter() -> void:
 	var tw := create_tween().set_trans(Tween.TRANS_CUBIC)
-	tw.tween_interval(1)
-	person.play_animation("idle")
-	tw.tween_property(person, "modulate:a", 1.0, 1.0).from(0.0)
-	tw.tween_interval(1)
-	if false and not person.starting_lines.is_empty():
+	tw.tween_interval(data.delay_before_begin_s)
+	if not data.person_enter_animation:
+		person.play_animation("idle")
+		tw.tween_property(person, "modulate:a", 1.0, 1.0).from(0.0)
+		tw.tween_interval(1)
+	else:
+		person.modulate.a = 1
+		person.animator.play(data.person_enter_animation)
+		person.animator.queue("idle")
+		tw.tween_interval(person.animator.get_animation(data.person_enter_animation).length)
+	if not person.starting_lines.is_empty():
 		tw.tween_callback(func() -> void:
 			person.speak(person.starting_lines)
+			await person.speaking_finished
+			prepare_topics()
 		)
-	tw.tween_callback(func() -> void:
-		prepare_topics()
-	)
+	else:
+		tw.tween_callback(func() -> void:
+			prepare_topics()
+		)
 
 
 var _prepared_topics: Array[AbstractTopic] = []
@@ -122,8 +131,8 @@ func _on_person_spoke() -> void:
 	prepare_topics()
 
 
-static func enter(tree: SceneTree, edata: EncounterData) -> void:
+static func enter(edata: EncounterData) -> void:
 	var instance := preload("res://scenes/encounter/encounter.tscn").instantiate() as Encounter
 	assert(instance != null)
 	instance.data = edata
-	tree.change_scene_to_node(instance)
+	UI.swipe_transition_n(instance)

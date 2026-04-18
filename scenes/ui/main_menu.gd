@@ -10,3 +10,8 @@ func _ready() -> void:
 
 	if OS.has_feature("web"): exit_button.hide()
 	exit_button.pressed.connect(get_tree().quit)
+
+	play_button.pressed.connect(func() -> void:
+		MGSAnimation.line_index = 0
+		UI.swipe_transition(load("res://scenes/mgs_cutscene.tscn"))
+	, CONNECT_ONE_SHOT)
