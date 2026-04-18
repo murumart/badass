@@ -155,10 +155,22 @@ tracks/7/keys = {
 "update": 1,
 "values": [5]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Scale:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_466ai"]
 resource_name = "fadein"
-length = 2.025
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -166,7 +178,7 @@ tracks/0/path = NodePath("Scale/Faces/Fade/BossFade1:modulate")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.36666667),
+"times": PackedFloat32Array(2.0333333, 2.4),
 "transitions": PackedFloat32Array(1.3195078, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -178,7 +190,7 @@ tracks/1/path = NodePath("Scale/Faces/Fade/BossFade2:modulate")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.1),
+"times": PackedFloat32Array(2.0333333, 3.1333332),
 "transitions": PackedFloat32Array(2.5491211, 7.7274885),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -190,7 +202,7 @@ tracks/2/path = NodePath("Scale/Faces/Fade/BossFade3:modulate")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.9),
+"times": PackedFloat32Array(2.0333333, 3.9333334),
 "transitions": PackedFloat32Array(3.363586, 11.7126875),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -243,6 +255,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Scale:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.313826, 2.0254817),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_tihgv"]
 resource_name = "idle"
@@ -294,6 +318,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scale:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_bjruo"]
@@ -497,11 +533,11 @@ script/source = "extends BulletSpawner
 
 func do(_emotion: Topic.Emotion) -> void:
 	await get_tree().create_timer(0.5).timeout
-	await spawn_circle(bullet_spawnpoint.position, 12, 0)
+	await spawn_circle(bullet_spawnpoint.position, 12, 0, 0.05, 80)
 	await get_tree().create_timer(0.5).timeout
-	await spawn_circle(bullet_spawnpoint.position + Vector2.RIGHT * 32, 12, 0)
+	await spawn_circle(bullet_spawnpoint.position + Vector2.RIGHT * 32, 12, 0, 0.05, 80)
 	await get_tree().create_timer(0.5).timeout
-	await spawn_circle(bullet_spawnpoint.position + Vector2.LEFT * 32, 12, 0)
+	await spawn_circle(bullet_spawnpoint.position + Vector2.LEFT * 32, 12, 0, 0.05, 80)
 	done.emit()
 "
 
@@ -509,11 +545,13 @@ func do(_emotion: Topic.Emotion) -> void:
 topics = Array[ExtResource("2_bjruo")]([SubResource("Resource_bjruo"), SubResource("Resource_0mxwg"), SubResource("Resource_iotei"), SubResource("Resource_ffpwu")])
 goal_topic = SubResource("Resource_rl58q")
 goal = 4.0
-starting_lines = "Agent Gnortz, your people call you to duty!
-All the radios on our homeplanet of Grogzoria were destroyed by the heinous radio eating locust.
-The creation of radios is a craft long lost to our artisans.
-Only known creature capable of such feats is a great Terran inventor Ni-Cola Tesla.
-You must find him or her and request his aid to save the infrastructure of our society for without radios it will surely collapse..."
+starting_lines = "Agent Gnortz... Terrans are known to communicate in completely incomprehensible ways.
+Your mission requires you to interact with them and find out the whereabouts of Ni-Cola Tesla. He might be hiding himself.
+This is why we have equipped you with the latest [color=red]social signal[/color] interpreting tech.
+Let's familiarise you with it... When one exhibits an [color=blue]emotional response[/color], use your [color=blue]tech device[/color] to collect bits of info.
+These disappear quick and move around wildly, so expertise is required.
+With enough [color=blue]info[/color], the machine can determine what conversation topics are optimal to continue.
+Let's try it out. Pick a conversation topic."
 ending_lines = "You win!!! hahahahahahahprepare_topics"
 emotion_response_animations = Dictionary[int, StringName]({
 1: &"smile",
@@ -527,6 +565,7 @@ libraries/ = SubResource("AnimationLibrary_5myyt")
 autoplay = &"RESET"
 
 [node name="Scale" type="Node2D" parent="." index="1" unique_id=1902672446]
+modulate = Color(1, 1, 1, 0)
 scale = Vector2(0.695, 0.695)
 
 [node name="Static" type="AnimatedSprite2D" parent="Scale" index="0" unique_id=849156238]

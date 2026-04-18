@@ -2,6 +2,7 @@ class_name SpeechBubble extends PanelContainer
 
 signal _next_line_requested
 signal line_finished
+signal line_began
 signal speaking_finished
 
 enum State {
@@ -53,6 +54,7 @@ func speak_text(text: String) -> void:
 	state = State.SPEAKING
 	textlabel.text = text
 	textlabel.visible_ratio = 0.0
+	line_began.emit()
 	speaker_tween = create_tween()
 	var stripped := _remove_bbcode_regex.sub(text, "", true)
 	speaker_tween.tween_property(textlabel, ^"visible_ratio", 1.0, stripped.length() * 0.03)

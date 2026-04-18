@@ -650,6 +650,7 @@ texture = ExtResource("3_04uw8")
 texture = ExtResource("4_c2ing")
 
 [node name="Maa" type="Sprite2D" parent="Node2D/CanvasGroup" unique_id=1620812970]
+texture_filter = 4
 position = Vector2(0, -83.99999)
 scale = Vector2(13.01, 13.01)
 texture = ExtResource("5_l7k2e")

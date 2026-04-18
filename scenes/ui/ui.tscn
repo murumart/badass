@@ -56,9 +56,10 @@ _data = {
 &"swipe_out": SubResource("Animation_g5kmx")
 }
 
-[node name="Ui" type="CanvasLayer" unique_id=1835273871 node_paths=PackedStringArray("options")]
+[node name="Ui" type="CanvasLayer" unique_id=1835273871 node_paths=PackedStringArray("options", "swipe_animation")]
 script = ExtResource("1_nt7q6")
 options = NodePath("Options")
+swipe_animation = NodePath("SwipeAnimation")
 
 [node name="Options" parent="." unique_id=205007288 instance=ExtResource("2_x4jx1")]
 visible = false

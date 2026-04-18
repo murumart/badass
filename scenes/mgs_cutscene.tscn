@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://cmvc63dgbmrwq"]
+
+[ext_resource type="Texture2D" uid="uid://cdfpfmxv1tlpk" path="res://art/boss/bossi taust0000.png" id="1_k36dw"]
+[ext_resource type="Script" uid="uid://dgd2o53nl6aod" path="res://scenes/mgs_cutscene.gd" id="1_m37qf"]
+[ext_resource type="Script" uid="uid://cbbv8uq1aexko" path="res://scenes/encounter/encounter_data.gd" id="2_6bd2i"]
+[ext_resource type="Texture2D" uid="uid://03rioj6bgebj" path="res://art/boss/bossi taust0001.png" id="2_m37qf"]
+[ext_resource type="PackedScene" uid="uid://b63pdqo826iud" path="res://scenes/encounter/backgrounds/spaceship.tscn" id="3_bd8sf"]
+[ext_resource type="SpriteFrames" uid="uid://cln2e56vlepga" path="res://art/boss_static.tres" id="4_4bc54"]
+[ext_resource type="PackedScene" uid="uid://b0biosalooae1" path="res://scenes/encounter/people/boss.tscn" id="4_kfvwq"]
+[ext_resource type="PackedScene" uid="uid://cjs3lg8yk7gne" path="res://scenes/ui/speech_bubble.tscn" id="5_3yw15"]
+[ext_resource type="Texture2D" uid="uid://ck4jmr1a12j68" path="res://art/tulnukas.png" id="6_p4v3c"]
+
+[sub_resource type="Resource" id="Resource_degag"]
+script = ExtResource("2_6bd2i")
+person = ExtResource("4_kfvwq")
+background = ExtResource("3_bd8sf")
+delay_before_begin_s = 2.0
+person_enter_animation = &"fadein"
+metadata/_custom_type_script = "uid://cbbv8uq1aexko"
+
+[sub_resource type="Animation" id="Animation_4bc54"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static2:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3yw15"]
+resource_name = "f"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Static2:self_modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p4v3c"]
+_data = {
+&"RESET": SubResource("Animation_4bc54"),
+&"f": SubResource("Animation_3yw15")
+}
+
+[sub_resource type="Animation" id="Animation_p4v3c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bossu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(579, 120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bossu:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Alian:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(154, 357)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Alian:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lxph8"]
+resource_name = "pop_alian_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Alian:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(154, 357)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Alian:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.58),
+"transitions": PackedFloat32Array(0.11662911, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_j4arl"]
+resource_name = "pop_in"
+length = 0.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bossu:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.73333335),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(579, 120)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bossu:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.73333335),
+"transitions": PackedFloat32Array(0.098073065, 1),
+"update": 0,
+"values": [Vector2(1, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lxph8"]
+_data = {
+&"RESET": SubResource("Animation_p4v3c"),
+&"pop_alian_in": SubResource("Animation_lxph8"),
+&"pop_in": SubResource("Animation_j4arl")
+}
+
+[node name="MgsCutscene" type="Node2D" unique_id=781728290]
+script = ExtResource("1_m37qf")
+lines = PackedStringArray("Agent Gnortz, your people call you to duty!\nAll the radios on our homeplanet of Grogzoria were destroyed by the heinous radio eating locust.\nThe creation of radios is a craft long lost to our artisans.\nOnly known creature capable of such feats is a great Terran inventor Ni-Cola Tesla.\nYou must find him or her and request his aid to save the infrastructure of our society for without radios it will surely collapse...")
+encounters = Array[ExtResource("2_6bd2i")]([SubResource("Resource_degag")])
+
+[node name="Static" type="Sprite2D" parent="." unique_id=504377060]
+modulate = Color(0.18039216, 0.4509804, 0.39215687, 1)
+texture = ExtResource("1_k36dw")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="Static2" type="Sprite2D" parent="." unique_id=1164188097]
+modulate = Color(0.18039216, 0.4509804, 0.39215687, 1)
+texture = ExtResource("2_m37qf")
+centered = false
+metadata/_edit_lock_ = true
+
+[node name="IdleAnimation" type="AnimationPlayer" parent="." unique_id=1408466039]
+libraries/ = SubResource("AnimationLibrary_p4v3c")
+autoplay = &"f"
+
+[node name="Bossu" type="AnimatedSprite2D" parent="." unique_id=1008864403]
+position = Vector2(579, 120)
+scale = Vector2(1, 1e-05)
+sprite_frames = ExtResource("4_4bc54")
+autoplay = "default"
+frame_progress = 0.23572293
+
+[node name="SpeechBubble" parent="." unique_id=663125359 instance=ExtResource("5_3yw15")]
+visible = false
+offset_left = 250.0
+offset_top = 55.0
+offset_right = 421.0
+offset_bottom = 229.0
+
+[node name="Line2D" parent="SpeechBubble" index="0" unique_id=1952329087]
+points = PackedVector2Array(153, 104, 218, 85)
+
+[node name="Animation" type="AnimationPlayer" parent="." unique_id=1887097381]
+libraries/ = SubResource("AnimationLibrary_lxph8")
+
+[node name="Alian" type="Sprite2D" parent="." unique_id=682831302]
+position = Vector2(154, 357)
+scale = Vector2(1, 1e-05)
+texture = ExtResource("6_p4v3c")
+
+[editable path="SpeechBubble"]

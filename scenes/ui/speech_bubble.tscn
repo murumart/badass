@@ -30,7 +30,7 @@ skipbutton = NodePath("SkipStuff")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1952329087]
 position = Vector2(7, 7)
-points = PackedVector2Array(129, 101, 175, 142)
+points = PackedVector2Array(129, 101, 191, 127)
 width = 19.64
 width_curve = SubResource("Curve_37ts1")
 
