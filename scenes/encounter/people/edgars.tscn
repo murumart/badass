@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dxlxhwdl2a4k5"]
+
+[ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_58dto"]
+[ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_shbkl"]
+
+[sub_resource type="Resource" id="Resource_d8d1c"]
+script = ExtResource("2_shbkl")
+name = "TalkAboutAgriculture"
+responses = PackedStringArray("Yes I grow quite a lot of potatoes, turnips and a some pumpkins. And in the barn over there is my trusy cow Missy and a bunch of chickens.\n Farming is a honorable occupation and without it noone would eat. Those city folks really got to get that in their head.")
+emotional_response = 1
+contribution_to_goal = 1.0
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_ommo6"]
+script = ExtResource("2_shbkl")
+name = "TalkAboutFamily"
+responses = PackedStringArray("Got me a daughter and thats it, the wife died quite a few winters ago. Daughter used to be a cleric in the parish church. \nNow is working in the big city, something about music, visits me time to time. Shes a good girl.")
+emotional_response = 1
+contribution_to_goal = 0.5
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_trxmi"]
+script = ExtResource("2_shbkl")
+name = "TalkAboutGoverment"
+responses = PackedStringArray("Them politicians in the parliament dont know anything about real life! Sitting high and mighty collecting huge paychecks never having to do a days work, shameful.")
+emotional_response = 4
+contribution_to_goal = -0.5
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_esoi5"]
+script = ExtResource("2_shbkl")
+name = "TalkAboutFashion"
+responses = PackedStringArray("My hat?? goes with my eyes??  what do you care about my hat? what do you want about my hat? leave my hat alone!")
+emotional_response = 2
+contribution_to_goal = -1.0
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[node name="Edgars" unique_id=1361515156 instance=ExtResource("1_58dto")]
+topics = Array[ExtResource("2_shbkl")]([SubResource("Resource_d8d1c"), SubResource("Resource_ommo6"), SubResource("Resource_trxmi"), SubResource("Resource_esoi5")])
+goal = 4.0

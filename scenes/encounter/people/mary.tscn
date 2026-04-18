@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://chdr48d7faee"]
+
+[ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_flsc6"]
+[ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_og1gi"]
+
+[sub_resource type="Resource" id="Resource_gcp41"]
+script = ExtResource("2_og1gi")
+name = "TalkAboutRadio"
+contribution_to_goal = 0.5
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_fghyt"]
+script = ExtResource("2_og1gi")
+name = "TalkAboutPhilosophy"
+emotional_response = 3
+contribution_to_goal = 0.5
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_wwbfv"]
+script = ExtResource("2_og1gi")
+name = "TalkAboutMusic"
+emotional_response = 1
+contribution_to_goal = 1.0
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_yy4xl"]
+script = ExtResource("2_og1gi")
+name = "TalkAboutReligion"
+emotional_response = 4
+contribution_to_goal = -0.5
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_53xiv"]
+script = ExtResource("2_og1gi")
+name = "TalkAboutFashion"
+emotional_response = 4
+contribution_to_goal = -0.5
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_0eqa2"]
+script = ExtResource("2_og1gi")
+name = "TalkAboutEconomy"
+emotional_response = 2
+contribution_to_goal = -1.0
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[node name="Mary" unique_id=1361515156 instance=ExtResource("1_flsc6")]
+topics = Array[ExtResource("2_og1gi")]([SubResource("Resource_gcp41"), SubResource("Resource_fghyt"), SubResource("Resource_wwbfv"), SubResource("Resource_yy4xl"), SubResource("Resource_53xiv"), SubResource("Resource_0eqa2")])
