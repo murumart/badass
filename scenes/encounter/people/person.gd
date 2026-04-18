@@ -9,6 +9,7 @@ enum State {
 }
 
 @export var topics: Array[Topic]
+@export var goal_topic: Topic
 @export_range(1.0, 10.0, 0.05) var goal: float
 @export_multiline var starting_lines: String
 @export_multiline var ending_lines: String
@@ -81,7 +82,10 @@ func _on_state_set(to: State, old: State) -> void:
 func _validate_topics() -> void:
 	var i := 0
 	var found := []
-	for topic in topics:
+	assert(goal_topic != null)
+	var alltopics := topics + [goal_topic]
+	for topic: Topic in alltopics:
+		assert(topic != null, "null topic no good")
 		assert(topic.name not in found, "topic name used already")
 		assert(topic.name != "", "topic name is empty")
 		assert(not topic.responses.is_empty(), "topic has no text responses")
@@ -90,3 +94,4 @@ func _validate_topics() -> void:
 			assert(topic.prerequisite_topic_index != i, "topic's prerequisite index is itself's index")
 			assert(topic.prerequisite_topic_index >= 0 and topic.prerequisite_topic_index < topics.size(), "topic's prerequisite index out of range")
 		i += 1
+	assert(goal_topic.topic_appears_when == Topic.PrereqBehaviour.NO_PREREQUISITE, "goal topic prerequisite should be no")

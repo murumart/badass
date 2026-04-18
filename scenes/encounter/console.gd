@@ -9,7 +9,7 @@ enum Mode {
 
 @export var scanner: Node2D
 @export var scanner_default_position: Marker2D
-@export var topic_buttons: Array[Button]
+@export var topic_buttons: Array[TopicButton]
 
 var mode: Mode
 
@@ -50,12 +50,12 @@ func _process(_delta: float) -> void:
 			scanner.position = mpos
 
 
-func prepare_topics(topics: Array[Topic]) -> void:
+func prepare_topics(topics: Array[Topic], topic_progresses: Dictionary[Topic, int]) -> void:
 	assert(topics.size() <= 4)
 	assert(topics.size() > 0, "need topics to prepare them,.......")
 	_reset_topics()
 	for i in topics.size():
-		topic_buttons[i].text = topics[i].name
+		topic_buttons[i].display(topics[i], topic_progresses.get(topics[i], 0), TopicButton.TopicType.IDK)
 		topic_buttons[i].show()
 
 

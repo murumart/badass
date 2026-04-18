@@ -55,21 +55,18 @@ var _prepared_topics: Array[Topic] = []
 func prepare_topics() -> void:
 	assert(stage == Stage.WAITING)
 
-	if person.goal_progress >= person.goal:
-		stage = Stage.FINAL_SPEECH
-		person.speak.call_deferred(person.ending_lines)
-		return
-
 	stage = Stage.CHOOSING_TOPIC
 	var topics := _get_available_topics()
 	topics.shuffle()
 	if topics.size() > 4:
 		topics = topics.slice(0, 4)
-	console.prepare_topics(topics)
+	console.prepare_topics(topics, person.topic_progresses)
 	_prepared_topics = topics
 
 
 func _get_available_topics() -> Array[Topic]:
+	if person.goal_progress >= person.goal:
+		return [person.goal_topic]
 	var ts: Array[Topic] = []
 	for t in person.topics:
 		match t.topic_appears_when:
