@@ -3,14 +3,7 @@
 @warning_ignore("unused_signal")
 signal done
 
-@export var bullet_spawnpoint: Marker2D
-
-
 @abstract func do(emotion: Topic.Emotion) -> void
-
-
-func _ready() -> void:
-	assert(bullet_spawnpoint != null)
 
 
 func spawn_circle(centre: Vector2, amt: int, texture: int, wait := 0.01, speed := 180.0) -> void:

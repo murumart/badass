@@ -1,7 +1,6 @@
 - [ ] alati näita goal nuppu
 - [ ] bossi bulletid ilusaks
 - [ ] bulletitest saadud info protsent võta arvesse nuppude tegemisel
-- [ ] skanneri visuaal
 - [ ] skanneri protsent
 - [ ] taustad mängu sisse
 - [ ] play button võiks töötada
@@ -14,5 +13,6 @@
 - [ ] tesla visuaalid
 - [ ] gameover stseen
 - [ ] muusika igale tegelasele
+- [X] skanneri visuaal
 - [X] bossi sisenemise animatsioon
 - [X] bossi tutorial tekst

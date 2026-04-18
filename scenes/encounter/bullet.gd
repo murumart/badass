@@ -48,6 +48,6 @@ static func make(pos: Vector2) -> Bullet:
 	var b := preload("res://scenes/encounter/bullet.tscn").instantiate() as Bullet
 	assert(b != null)
 
-	b.position = pos
+	b.global_position = pos
 
 	return b

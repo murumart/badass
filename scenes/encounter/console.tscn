@@ -4,15 +4,22 @@
 [ext_resource type="PackedScene" uid="uid://dniy034rjieje" path="res://scenes/ui/topic_button.tscn" id="3_nh0ls"]
 [ext_resource type="Texture2D" uid="uid://b7hejtbvg6i5f" path="res://art/konsool/konsool.png" id="3_s07ca"]
 [ext_resource type="Texture2D" uid="uid://bwasvn6wmjic4" path="res://art/konsool/seadeldis kaes.png" id="5_8k6qu"]
+[ext_resource type="Texture2D" uid="uid://daal3c740m7la" path="res://art/konsool/seadeldis 0.png" id="5_s07ca"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nh0ls"]
+font_size = 21
+font_color = Color(0.7490196, 0.9490196, 0.4, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nh0ls"]
 
-[node name="Console" type="Node2D" unique_id=611889631 node_paths=PackedStringArray("scanner", "scanner_area", "scanner_default_position", "topic_buttons")]
+[node name="Console" type="Node2D" unique_id=611889631 node_paths=PackedStringArray("scanner", "scanner_area", "scanner_default_position", "topic_buttons", "scan_label", "device_show")]
 script = ExtResource("1_8uyry")
 scanner = NodePath("Scanner")
 scanner_area = NodePath("Scanner/Eater")
 scanner_default_position = NodePath("Defaultpos")
 topic_buttons = [NodePath("Control/GridContainer/TopicButton"), NodePath("Control/GridContainer/TopicButton2"), NodePath("Control/GridContainer/TopicButton3"), NodePath("Control/GridContainer/TopicButton4")]
+scan_label = NodePath("Scanner/Sprite2D/Label")
+device_show = NodePath("DeviceShow")
 
 [node name="Konsool" type="Sprite2D" parent="." unique_id=360942548]
 texture = ExtResource("3_s07ca")
@@ -50,11 +57,20 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Scanner" type="Node2D" parent="." unique_id=314995541]
+z_index = 1
 position = Vector2(-219, 219)
 
 [node name="Sprite2D" type="Sprite2D" parent="Scanner" unique_id=1188561081]
 position = Vector2(6, 240)
 texture = ExtResource("5_8k6qu")
+
+[node name="Label" type="Label" parent="Scanner/Sprite2D" unique_id=1367058249]
+offset_left = -88.0
+offset_top = -188.0
+offset_right = -48.0
+offset_bottom = -162.0
+text = "0%"
+label_settings = SubResource("LabelSettings_nh0ls")
 
 [node name="Eater" type="Area2D" parent="Scanner" unique_id=2064790196]
 collision_layer = 4
@@ -65,4 +81,9 @@ monitorable = false
 shape = SubResource("CircleShape2D_nh0ls")
 
 [node name="Defaultpos" type="Marker2D" parent="." unique_id=1083295766]
-position = Vector2(0, 304)
+position = Vector2(-221, 89)
+
+[node name="DeviceShow" type="Sprite2D" parent="." unique_id=1826087867]
+visible = false
+position = Vector2(-209, 131)
+texture = ExtResource("5_s07ca")

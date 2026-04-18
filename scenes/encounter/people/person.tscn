@@ -21,6 +21,4 @@ offset_top = -127.0
 offset_right = -26.0
 offset_bottom = 47.0
 
-[node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=846058525]
-
 [node name="BulletSpawner" type="Node" parent="." unique_id=608059629]

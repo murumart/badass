@@ -11,6 +11,11 @@ enum Mode {
 @export var scanner_area: Area2D
 @export var scanner_default_position: Marker2D
 @export var topic_buttons: Array[TopicButton]
+@export var scan_label: Label
+@export var device_show: Sprite2D
+
+static var scan_max: int = 0
+var scan_caught := 0
 
 var mode: Mode
 
@@ -18,6 +23,8 @@ var mode: Mode
 func _ready() -> void:
 	assert(scanner != null)
 	assert(scanner_area != null)
+	assert(device_show != null)
+	assert(scan_label != null)
 	assert(scanner_default_position != null)
 	assert(topic_buttons.size() == 4 and not topic_buttons.any(func(b: Button) -> bool: return b == null))
 	for i in topic_buttons.size():
@@ -27,7 +34,10 @@ func _ready() -> void:
 
 
 func start_scanning() -> void:
+	device_show.hide()
+	scanner.show()
 	assert(mode == Mode.IDLE)
+	scan_caught = 0
 	var tw := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tw.tween_property(scanner, "position", get_local_mouse_position(), 0.1)
 	await tw.finished
@@ -38,13 +48,17 @@ func end_scanning() -> void:
 	assert(mode == Mode.SCANNING)
 	mode = Mode.IDLE
 	var tw := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	tw.tween_property(scanner, "position", scanner_default_position.position, 0.6)
+	tw.tween_property(scanner, "position", Vector2.ZERO, 0.5)
+	tw.tween_interval(1.0)
+	tw.tween_property(scanner, "position", scanner_default_position.position, 0.3)
 	await tw.finished
 	_reset_scanner()
 
 
 func _reset_scanner() -> void:
 	scanner.position = scanner_default_position.position
+	scanner.hide()
+	device_show.show()
 
 
 func _reset_topics() -> void:
@@ -62,6 +76,8 @@ func _process(_delta: float) -> void:
 			var collided := scanner_area.get_overlapping_areas()
 			for a: Bullet in collided:
 				a.queue_free()
+				scan_caught += 1
+				scan_label.text = str(int(float(scan_caught) / scan_max * 100)) + "%"
 
 
 func prepare_topics(topics: Array[AbstractTopic], topic_progresses: Dictionary[AbstractTopic, int]) -> void:
