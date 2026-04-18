@@ -19,28 +19,28 @@
 
 [sub_resource type="Resource" id="Resource_bjruo"]
 script = ExtResource("2_0mxwg")
-name = "ask about politics"
-responses = PackedStringArray("Long live the glorious Groxorian People\'s Republic!")
+name = "AskAboutPolitics"
+responses = PackedStringArray("Politics? Agent Gnortz you know very well our supreme leader Morkz von Knortz is doing everything for the good of our people and the peoples republic.")
 emotional_response = 4
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_0mxwg"]
 script = ExtResource("2_0mxwg")
-name = "talk about mission"
-emotional_response = 1
-contribution_to_goal = 1.0
+name = "TalkAboutFamily"
+responses = PackedStringArray("My family? Thank you for asking agent Gnortz my wife and three hundred twenty six children are doing quite well, but we have a mission to get on with right now.\n")
+emotional_response = 4
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_iotei"]
 script = ExtResource("2_0mxwg")
-name = "talk about family"
-contribution_to_goal = -0.30000000000000004
+name = "TalkAboutHobbies"
+responses = PackedStringArray("Space golf? You know i love it Gnortz!\nBut really agent, we DO have a mission to get on with here!")
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_ffpwu"]
 script = ExtResource("2_0mxwg")
-name = "end"
-responses = PackedStringArray("Good! You are fit for this mission. Good luck. Gnortz. Our hopes lie with you.")
+name = "TalkAboutMission"
+responses = PackedStringArray("Good! You are fit for this mission. Good luck. Gnortz. Our hopes lie with you. All Hail the supreme leader of people`s republic of Grogzoria!")
 contribution_to_goal = 17.0
 topic_appears_when = 1
 prerequisite_topic_index = 1
