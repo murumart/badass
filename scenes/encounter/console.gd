@@ -32,6 +32,9 @@ func start_scanning() -> void:
 func end_scanning() -> void:
 	assert(mode == Mode.SCANNING)
 	mode = Mode.IDLE
+	var tw := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tw.tween_property(scanner, "position", scanner_default_position.position, 0.6)
+	await tw.finished
 	_reset_scanner()
 
 

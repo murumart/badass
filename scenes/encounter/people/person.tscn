@@ -8,11 +8,10 @@
 script = ExtResource("2_tbtmf")
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
-[node name="Person" type="Node2D" unique_id=1361515156 node_paths=PackedStringArray("speech_bubble", "bullet_spawn_point")]
+[node name="Person" type="Node2D" unique_id=1361515156 node_paths=PackedStringArray("speech_bubble")]
 script = ExtResource("1_mw3jb")
 goal_topic = SubResource("Resource_vq6ox")
 speech_bubble = NodePath("SpeechBubble")
-bullet_spawn_point = NodePath("BulletSpawnPoint")
 metadata/_custom_type_script = "uid://iujsf2pw8lm2"
 
 [node name="SpeechBubble" parent="." unique_id=663125359 instance=ExtResource("2_n8r47")]

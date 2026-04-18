@@ -512,6 +512,10 @@ The creation of radios is a craft long lost to our artisans.
 Only known creature capable of such feats is a great Terran inventor Ni-Cola Tesla.
 You must find him or her and request his aid to save the infrastructure of our society for without radios it will surely collapse..."
 ending_lines = "You win!!! hahahahahahahprepare_topics"
+emotion_response_animations = Dictionary[int, StringName]({
+1: &"smile",
+4: &"nervous"
+})
 animator = NodePath("Animator")
 bullet_spawner = NodePath("BulletSpawner")
 
@@ -553,6 +557,7 @@ frame = 5
 [node name="Nervous" type="AnimatedSprite2D" parent="Scale/Faces" index="3" unique_id=1095653097]
 visible = false
 sprite_frames = SubResource("SpriteFrames_yfbk4")
+autoplay = "default"
 frame_progress = 0.8267495
 
 [node name="Static2" type="AnimatedSprite2D" parent="Scale" index="2" unique_id=229697548]
