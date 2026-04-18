@@ -25,10 +25,12 @@ func _ready() -> void:
 
 
 func start_scanning() -> void:
+	assert(mode == Mode.IDLE)
 	mode = Mode.SCANNING
 
 
 func end_scanning() -> void:
+	assert(mode == Mode.SCANNING)
 	mode = Mode.IDLE
 	_reset_scanner()
 
@@ -50,7 +52,7 @@ func _process(_delta: float) -> void:
 			scanner.position = mpos
 
 
-func prepare_topics(topics: Array[Topic], topic_progresses: Dictionary[Topic, int]) -> void:
+func prepare_topics(topics: Array[AbstractTopic], topic_progresses: Dictionary[AbstractTopic, int]) -> void:
 	assert(topics.size() <= 4)
 	assert(topics.size() > 0, "need topics to prepare them,.......")
 	_reset_topics()

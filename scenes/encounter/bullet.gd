@@ -1,5 +1,11 @@
 class_name Bullet extends Node2D
 
+enum {
+	TEX_SPARKLE,
+	TEX_DROPLET,
+	TEX_SPARK,
+}
+
 @export var sprite: Sprite2D
 @export var sprites: Array[Texture2D]
 @export var sprite_index: int
