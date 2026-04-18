@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://bmxpvw37hc7s1"]
+
+[ext_resource type="Script" uid="uid://d15cvfito5l0" path="res://scenes/ui/options.gd" id="1_c2u1v"]
+
+[node name="Options" type="PanelContainer" unique_id=205007288 node_paths=PackedStringArray("list")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c2u1v")
+list = NodePath("MarginContainer/VBoxContainer/MarginContainer/List")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=230212620]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1968451748]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=501447773]
+layout_mode = 2
+text = "Options"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=163769468]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="List" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1868170602]
+layout_mode = 2
