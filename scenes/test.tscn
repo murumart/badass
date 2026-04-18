@@ -12,8 +12,62 @@ shader = ExtResource("2_74lek")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_74lek"]
 size = Vector2(956, 30)
 
+[sub_resource type="GDScript" id="GDScript_j5jx5"]
+script/source = "@tool
+extends Control
+
+@export_tool_button(\"bag\") var c: Callable
+
+
+func _ready() -> void:
+	c = func() -> void:
+		var palete := load(\"res://resources/palette.tres\")
+		palete.set_colors(PackedColorArray([
+			Color.from_string(\"#53e8f0\", Color.WHITE),
+			Color.from_string(\"#1992f3\", Color.WHITE),
+			Color.from_string(\"#463fbc\", Color.WHITE),
+			Color.from_string(\"#1d237f\", Color.WHITE),
+			Color.from_string(\"#110b28\", Color.WHITE),
+			Color.from_string(\"#3c2c43\", Color.WHITE),
+			Color.from_string(\"#773c47\", Color.WHITE),
+			Color.from_string(\"#de5941\", Color.WHITE),
+			Color.from_string(\"#ff9d75\", Color.WHITE),
+			Color.from_string(\"#fddfb6\", Color.WHITE),
+			Color.from_string(\"#d5986c\", Color.WHITE),
+			Color.from_string(\"#a5624b\", Color.WHITE),
+			Color.from_string(\"#5f446b\", Color.WHITE),
+			Color.from_string(\"#9a7ba9\", Color.WHITE),
+			Color.from_string(\"#d9b8bc\", Color.WHITE),
+			Color.from_string(\"#ffffff\", Color.WHITE),
+			Color.from_string(\"#ffc944\", Color.WHITE),
+			Color.from_string(\"#e28b2d\", Color.WHITE),
+			Color.from_string(\"#a93e3a\", Color.WHITE),
+			Color.from_string(\"#492142\", Color.WHITE),
+			Color.from_string(\"#9f234b\", Color.WHITE),
+			Color.from_string(\"#fd355c\", Color.WHITE),
+			Color.from_string(\"#ff83cb\", Color.WHITE),
+			Color.from_string(\"#d921ce\", Color.WHITE),
+			Color.from_string(\"#7918a9\", Color.WHITE),
+			Color.from_string(\"#8767f7\", Color.WHITE),
+			Color.from_string(\"#a99eff\", Color.WHITE),
+			Color.from_string(\"#b2d1e8\", Color.WHITE),
+			Color.from_string(\"#6582ca\", Color.WHITE),
+			Color.from_string(\"#20558a\", Color.WHITE),
+			Color.from_string(\"#4a82b4\", Color.WHITE),
+			Color.from_string(\"#7fbbc5\", Color.WHITE),
+			Color.from_string(\"#bff266\", Color.WHITE),
+			Color.from_string(\"#6cbc66\", Color.WHITE),
+			Color.from_string(\"#338c9b\", Color.WHITE),
+			Color.from_string(\"#2e7364\", Color.WHITE),
+			Color.from_string(\"#2a3052\", Color.WHITE),
+			Color.from_string(\"#58474b\", Color.WHITE),
+			Color.from_string(\"#866537\", Color.WHITE),
+			Color.from_string(\"#c5a04f\", Color.WHITE),
+		]))
+		ResourceSaver.save(palete, \"res://resources/palette.tres\")
+"
+
 [node name="Test" type="Node2D" unique_id=591423385 node_paths=PackedStringArray("muna", "muna2", "muu")]
-position = Vector2(631, 308)
 script = ExtResource("1_bl13t")
 muna = NodePath("RigidBody2D")
 muna2 = NodePath("RigidBody2D3")
@@ -22,11 +76,12 @@ muu = NodePath("Sprite2D")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=992742036]
 unique_name_in_owner = true
 material = SubResource("ShaderMaterial_j5jx5")
+position = Vector2(458, 277)
 texture = ExtResource("1_errlg")
 script = ExtResource("3_iyx0m")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=915649119]
-position = Vector2(-61, 237)
+position = Vector2(397, 514)
 
 [node name="Sprite2D" type="Sprite2D" parent="StaticBody2D" unique_id=986262970]
 scale = Vector2(7.546875, 0.25)
@@ -36,30 +91,37 @@ texture = ExtResource("1_errlg")
 shape = SubResource("RectangleShape2D_74lek")
 
 [node name="RigidBody2D" parent="." unique_id=1534704512 instance=ExtResource("5_j5jx5")]
-position = Vector2(-148, -566)
+position = Vector2(310, -289)
 contact_monitor = true
 max_contacts_reported = 10
 
 [node name="RigidBody2D2" parent="." unique_id=1829025701 instance=ExtResource("5_j5jx5")]
-position = Vector2(-38, -189)
+position = Vector2(420, 88)
 
 [node name="RigidBody2D3" parent="." unique_id=523759350 instance=ExtResource("5_j5jx5")]
-position = Vector2(225, -144)
+position = Vector2(683, 133)
 
 [node name="RigidBody2D4" parent="." unique_id=1202813812 instance=ExtResource("5_j5jx5")]
-position = Vector2(-42, -94)
+position = Vector2(416, 183)
 
 [node name="RigidBody2D5" parent="." unique_id=737074208 instance=ExtResource("5_j5jx5")]
-position = Vector2(-166, 13)
+position = Vector2(292, 290)
 
 [node name="RigidBody2D6" parent="." unique_id=34629296 instance=ExtResource("5_j5jx5")]
-position = Vector2(158, 47)
+position = Vector2(616, 324)
 
 [node name="RigidBody2D7" parent="." unique_id=1478945136 instance=ExtResource("5_j5jx5")]
-position = Vector2(-28, 62)
+position = Vector2(430, 339)
 
 [node name="RigidBody2D8" parent="." unique_id=1810557650 instance=ExtResource("5_j5jx5")]
-position = Vector2(-356, 2)
+position = Vector2(102, 279)
 
 [node name="RigidBody2D9" parent="." unique_id=212711089 instance=ExtResource("5_j5jx5")]
-position = Vector2(-356, 2)
+position = Vector2(102, 279)
+
+[node name="Control" type="Control" parent="." unique_id=1001916484]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = SubResource("GDScript_j5jx5")
