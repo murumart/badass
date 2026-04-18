@@ -1,18 +1,18 @@
-- [ ] alati näita goal nuppu
 - [ ] bossi bulletid ilusaks
-- [ ] bulletitest saadud info protsent võta arvesse nuppude tegemisel
-- [ ] skanneri protsent
 - [ ] taustad mängu sisse
-- [ ] play button võiks töötada
 - [ ] metal gear boss cutscenid
 - [ ] implementeeri maale lendamise animatsioon
-- [ ] maaka visuaalid
 - [ ] skanneri helid
 - [ ] mary visuaalid
 - [ ] joosepi visuaalid
+- [ ] maaka visuaalid
 - [ ] tesla visuaalid
 - [ ] gameover stseen
 - [ ] muusika igale tegelasele
+- [X] skanneri protsent
+- [X] play button võiks töötada
+- [X] bulletitest saadud info protsent võta arvesse nuppude tegemisel
+- [X] alati näita goal nuppu
 - [X] skanneri visuaal
 - [X] bossi sisenemise animatsioon
 - [X] bossi tutorial tekst
