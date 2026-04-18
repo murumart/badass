@@ -32,7 +32,7 @@ var topic_progresses: Dictionary[Topic, int]
 func _ready() -> void:
 	assert(animator != null, "person needs an animator to be animated.")
 	assert(speech_bubble != null)
-	#_validate_topics() # TODO uncomment when the logic is implemented
+	_validate_topics() # TODO uncomment when the logic is implemented
 
 	state = State.IDLE
 
@@ -51,6 +51,18 @@ func speak(text: String) -> void:
 	await speech_bubble.speaking_finished
 	state = State.IDLE
 	speaking_finished.emit()
+
+
+func get_topic_progress(topic: Topic) -> int:
+	return topic_progresses.get(topic, 0)
+
+
+func is_topic_exhausted(topic: Topic) -> bool:
+	return get_topic_progress(topic) == topic.responses.size()
+
+
+func progress_topic(topic: Topic) -> void:
+	topic_progresses[topic] = topic_progresses.get(topic, 0) + 1
 
 
 func _on_state_set(to: State, old: State) -> void:
