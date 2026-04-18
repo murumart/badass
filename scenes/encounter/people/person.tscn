@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dy8dyd45a52ty"]
+
+[ext_resource type="Script" uid="uid://iujsf2pw8lm2" path="res://scenes/encounter/people/person.gd" id="1_mw3jb"]
+
+[node name="Person" type="Node2D" unique_id=1361515156]
+script = ExtResource("1_mw3jb")
+metadata/_custom_type_script = "uid://iujsf2pw8lm2"
