@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://cjs3lg8yk7gne"]
+
+[ext_resource type="Script" uid="uid://c8ocqu8f6hf1s" path="res://scenes/ui/speech_bubble.gd" id="1_kdf6q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37ts1"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 3.0
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[sub_resource type="Curve" id="Curve_37ts1"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="SpeechBubble" type="PanelContainer" unique_id=663125359 node_paths=PackedStringArray("textlabel", "nextbutton")]
+offset_left = 1.0
+offset_right = 150.0
+offset_bottom = 174.0
+pivot_offset = Vector2(145, 116)
+theme_override_styles/panel = SubResource("StyleBoxFlat_37ts1")
+script = ExtResource("1_kdf6q")
+textlabel = NodePath("MarginContainer/RichTextLabel")
+nextbutton = NodePath("HBoxContainer/VBoxContainer/NextSpeechButton")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1952329087]
+position = Vector2(7, 7)
+points = PackedVector2Array(129, 101, 175, 142)
+width = 19.64
+width_curve = SubResource("Curve_37ts1")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1217526062]
+layout_mode = 2
+theme_override_constants/margin_right = 22
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer" unique_id=603030193]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.06666667, 0.043137256, 0.15686275, 1)
+theme_override_font_sizes/normal_font_size = 20
+bbcode_enabled = true
+text = "asfafafaäö,ca dapodskas podkaspod akdpoka psdokp aod pakd asdoakd paokdpaok"
+fit_content = true
+visible_characters_behavior = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=294296222]
+layout_mode = 2
+alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1746112850]
+layout_mode = 2
+alignment = 2
+
+[node name="NextSpeechButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=836767141]
+layout_mode = 2
+text = "→"

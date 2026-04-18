@@ -1,7 +1,15 @@
 [gd_scene format=3 uid="uid://dy8dyd45a52ty"]
 
 [ext_resource type="Script" uid="uid://iujsf2pw8lm2" path="res://scenes/encounter/people/person.gd" id="1_mw3jb"]
+[ext_resource type="PackedScene" uid="uid://cjs3lg8yk7gne" path="res://scenes/ui/speech_bubble.tscn" id="2_n8r47"]
 
-[node name="Person" type="Node2D" unique_id=1361515156]
+[node name="Person" type="Node2D" unique_id=1361515156 node_paths=PackedStringArray("speech_bubble")]
 script = ExtResource("1_mw3jb")
+speech_bubble = NodePath("SpeechBubble")
 metadata/_custom_type_script = "uid://iujsf2pw8lm2"
+
+[node name="SpeechBubble" parent="." unique_id=663125359 instance=ExtResource("2_n8r47")]
+offset_left = -175.0
+offset_top = -127.0
+offset_right = -26.0
+offset_bottom = 47.0

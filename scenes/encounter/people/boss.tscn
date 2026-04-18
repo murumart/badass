@@ -27,6 +27,7 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 [sub_resource type="Resource" id="Resource_0mxwg"]
 script = ExtResource("2_0mxwg")
 name = "talk about mission"
+emotional_response = 1
 contribution_to_goal = 1.0
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
@@ -482,6 +483,11 @@ animations = [{
 [node name="Boss" unique_id=359469956 node_paths=PackedStringArray("animator") instance=ExtResource("1_4lv0d")]
 topics = Array[ExtResource("2_0mxwg")]([SubResource("Resource_bjruo"), SubResource("Resource_0mxwg"), SubResource("Resource_iotei"), SubResource("Resource_ffpwu")])
 goal = 4.0
+starting_lines = "Agent Gnortz, your people call you to duty!
+All the radios on our homeplanet of Grogzoria were destroyed by the heinous radio eating locust.
+The creation of radios is a craft long lost to our artisans.
+Only known creature capable of such feats is a great Terran inventor Ni-Cola Tesla.
+You must find him or her and request his aid to save the infrastructure of our society for without radios it will surely collapse..."
 animator = NodePath("Animator")
 
 [node name="Animator" type="AnimationPlayer" parent="." index="0" unique_id=214613681]
@@ -531,3 +537,9 @@ sprite_frames = SubResource("SpriteFrames_8830u")
 autoplay = "default"
 frame_progress = 0.22201948
 speed_scale = 1.11
+
+[node name="SpeechBubble" parent="." index="2" unique_id=663125359]
+offset_left = -333.0
+offset_top = -137.0
+offset_right = -184.0
+offset_bottom = 37.0

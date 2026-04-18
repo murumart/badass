@@ -26,6 +26,7 @@ Button/styles/normal = ExtResource("1_70gfe")
 Button/styles/pressed = ExtResource("3_1ywy2")
 Control/font_sizes/font_size = 22
 Control/fonts/font = ExtResource("2_jtx1y")
+Control/fonts/normal_font = ExtResource("2_jtx1y")
 Slider/styles/grabber_area = SubResource("StyleBoxFlat_wif3f")
 Slider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_qmhhu")
 Slider/styles/slider = SubResource("StyleBoxFlat_kh2cq")

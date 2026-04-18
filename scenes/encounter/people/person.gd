@@ -1,8 +1,11 @@
 class_name Person extends Node2D
 
-enum Mode {
+signal speaking_finished
+
+enum State {
 	IDLE,
 	SEND_SIGNAL,
+	SPEAKING,
 }
 
 @export var topics: Array[Topic]
@@ -10,8 +13,17 @@ enum Mode {
 @export_multiline var starting_lines: String
 
 @export_group("Internal")
+@export var speech_bubble: SpeechBubble
+
 @export var animator: AnimationPlayer
-@export var mode: Mode
+var _state: State
+@export var state: State:
+	get:
+		return _state
+	set(value):
+		var old := _state
+		_state = value
+		_on_state_set(value, old)
 @export_group("")
 
 var topic_progresses: Dictionary[Topic, int]
@@ -19,9 +31,41 @@ var topic_progresses: Dictionary[Topic, int]
 
 func _ready() -> void:
 	assert(animator != null, "person needs an animator to be animated.")
+	assert(speech_bubble != null)
+	#_validate_topics() # TODO uncomment when the logic is implemented
+
+	state = State.IDLE
 
 
 func play_animation(anim: StringName) -> void:
 	assert(animator.has_animation(anim))
-	animator.play("anim")
+	animator.play(anim)
 	animator.queue("idle")
+
+
+func speak(text: String) -> void:
+	assert(state == State.IDLE)
+	var lines := text.split("\n")
+	state = State.SPEAKING
+	speech_bubble.speak_lines(lines)
+	await speech_bubble.speaking_finished
+	state = State.IDLE
+	speaking_finished.emit()
+
+
+func _on_state_set(to: State, old: State) -> void:
+	pass
+
+
+func _validate_topics() -> void:
+	var i := 0
+	var found := []
+	for topic in topics:
+		assert(topic.name not in found, "topic name used already")
+		assert(topic.name != "", "topic name is empty")
+		assert(not topic.responses.is_empty(), "topic has no text responses")
+		found.append(topic.name)
+		if topic.topic_appears_when == Topic.PrereqBehaviour.PREREQUISITE_EXHAUSTED:
+			assert(topic.prerequisite_topic_index != i, "topic's prerequisite index is itself's index")
+			assert(topic.prerequisite_topic_index >= 0 and topic.prerequisite_topic_index < topics.size(), "topic's prerequisite index out of range")
+		i += 1
