@@ -10,6 +10,8 @@
 texture = ExtResource("1_dpq2m")
 
 [node name="Maa" type="Sprite2D" parent="." unique_id=628214884]
+position = Vector2(0, -86)
+scale = Vector2(0.395, 0.395)
 texture = ExtResource("2_cp02l")
 
 [node name="Laev" type="Sprite2D" parent="." unique_id=471321587]
