@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://2yvq6yiiep7y"]
 
 [ext_resource type="Script" uid="uid://dkj3c0fk1xv1v" path="res://scenes/ui/main_menu.gd" id="1_sl1te"]
-[ext_resource type="Texture2D" uid="uid://chq3plcx1dom5" path="res://art/boss0000.png" id="2_1g8jr"]
+[ext_resource type="Texture2D" uid="uid://b66pk56ktxcef" path="res://art/boss/boss algus0000.png" id="2_m1kxf"]
 [ext_resource type="FontFile" uid="uid://cln787ma2u7s8" path="res://resources/theme/Zerove-Regular.ttf" id="3_1g8jr"]
+[ext_resource type="Texture2D" uid="uid://i5eqpsh6cygm" path="res://art/bad ass.png" id="4_m1kxf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m1kxf"]
 font = ExtResource("3_1g8jr")
@@ -20,11 +21,15 @@ play_button = NodePath("HBoxContainer/VBoxContainer/PlayButton")
 options_button = NodePath("HBoxContainer/VBoxContainer/OptionsButton")
 exit_button = NodePath("HBoxContainer/VBoxContainer/ExitButton")
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=260533777]
-modulate = Color(0.06666667, 0.043137256, 0.15686275, 1)
-position = Vector2(371, 242)
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("2_1g8jr")
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1819644661]
+modulate = Color(0.11372549, 0.13725491, 0.49803922, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_m1kxf")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1000560811]
 layout_mode = 1
@@ -63,3 +68,15 @@ text = "Exit"
 [node name="Fat2" type="Control" parent="HBoxContainer" unique_id=1239420459]
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="Logo" type="TextureRect" parent="." unique_id=555577834]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.85694444
+anchor_top = 0.7895833
+anchor_right = 0.94600004
+anchor_bottom = 0.92300004
+offset_right = -0.12005615
+offset_bottom = -0.040008545
+texture = ExtResource("4_m1kxf")
+metadata/_edit_use_anchors_ = true
