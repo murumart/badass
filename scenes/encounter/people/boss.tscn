@@ -491,7 +491,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Boss" unique_id=359469956 node_paths=PackedStringArray("animator") instance=ExtResource("1_4lv0d")]
+[sub_resource type="GDScript" id="GDScript_iotei"]
+script/source = "extends BulletSpawner
+
+
+func do(emotion: Topic.Emotion) -> void:
+	done.emit()
+"
+
+[node name="Boss" unique_id=359469956 node_paths=PackedStringArray("animator", "bullet_spawner") instance=ExtResource("1_4lv0d")]
 topics = Array[ExtResource("2_bjruo")]([SubResource("Resource_bjruo"), SubResource("Resource_0mxwg"), SubResource("Resource_iotei"), SubResource("Resource_ffpwu")])
 goal_topic = SubResource("Resource_rl58q")
 goal = 4.0
@@ -502,6 +510,7 @@ Only known creature capable of such feats is a great Terran inventor Ni-Cola Tes
 You must find him or her and request his aid to save the infrastructure of our society for without radios it will surely collapse..."
 ending_lines = "You win!!! hahahahahahahprepare_topics"
 animator = NodePath("Animator")
+bullet_spawner = NodePath("BulletSpawner")
 
 [node name="Animator" type="AnimationPlayer" parent="." index="0" unique_id=214613681]
 libraries/ = SubResource("AnimationLibrary_5myyt")
@@ -556,3 +565,6 @@ offset_left = -333.0
 offset_top = -137.0
 offset_right = -184.0
 offset_bottom = 37.0
+
+[node name="BulletSpawner" parent="." index="4" unique_id=608059629]
+script = SubResource("GDScript_iotei")

@@ -20,6 +20,7 @@ enum State {
 @export var bullet_spawn_point: Marker2D
 
 @export var animator: AnimationPlayer
+@export var bullet_spawner: BulletSpawner
 var _state: State
 @export var state: State:
 	get:
@@ -39,6 +40,7 @@ func _ready() -> void:
 	assert(speech_bubble != null)
 	assert(bullet_spawn_point != null)
 	assert(ending_lines != "", "person needs lines to end encounter with")
+	assert(bullet_spawner != null, "person needs internal bullet spawner to be set")
 	_validate_topics() # TODO uncomment when the logic is implemented
 
 	state = State.IDLE
@@ -84,6 +86,8 @@ func _on_state_set(to: State, old: State) -> void:
 
 func respond_to_topic(emotion: Topic.Emotion) -> void:
 	assert(emotion != Topic.Emotion.NONE)
+	bullet_spawner.do(emotion)
+	await bullet_spawner.done
 	await get_tree().create_timer(2.0).timeout
 	match emotion:
 		Topic.Emotion.SURPRISED:
