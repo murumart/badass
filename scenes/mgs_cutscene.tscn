@@ -4,19 +4,10 @@
 [ext_resource type="Script" uid="uid://dgd2o53nl6aod" path="res://scenes/mgs_cutscene.gd" id="1_m37qf"]
 [ext_resource type="Script" uid="uid://cbbv8uq1aexko" path="res://scenes/encounter/encounter_data.gd" id="2_6bd2i"]
 [ext_resource type="Texture2D" uid="uid://03rioj6bgebj" path="res://art/boss/bossi taust0001.png" id="2_m37qf"]
-[ext_resource type="PackedScene" uid="uid://b63pdqo826iud" path="res://scenes/encounter/backgrounds/spaceship.tscn" id="3_bd8sf"]
+[ext_resource type="Resource" uid="uid://buby5ciigrd1j" path="res://resources/game/boss_encounter.tres" id="3_lxph8"]
 [ext_resource type="SpriteFrames" uid="uid://cln2e56vlepga" path="res://art/boss_static.tres" id="4_4bc54"]
-[ext_resource type="PackedScene" uid="uid://b0biosalooae1" path="res://scenes/encounter/people/boss.tscn" id="4_kfvwq"]
 [ext_resource type="PackedScene" uid="uid://cjs3lg8yk7gne" path="res://scenes/ui/speech_bubble.tscn" id="5_3yw15"]
 [ext_resource type="Texture2D" uid="uid://ck4jmr1a12j68" path="res://art/tulnukas.png" id="6_p4v3c"]
-
-[sub_resource type="Resource" id="Resource_degag"]
-script = ExtResource("2_6bd2i")
-person = ExtResource("4_kfvwq")
-background = ExtResource("3_bd8sf")
-delay_before_begin_s = 2.0
-person_enter_animation = &"fadein"
-metadata/_custom_type_script = "uid://cbbv8uq1aexko"
 
 [sub_resource type="Animation" id="Animation_4bc54"]
 length = 0.001
@@ -172,7 +163,7 @@ _data = {
 [node name="MgsCutscene" type="Node2D" unique_id=781728290]
 script = ExtResource("1_m37qf")
 lines = PackedStringArray("Agent Gnortz, your people call you to duty!\nAll the radios on our homeplanet of Grogzoria were destroyed by the heinous radio eating locust.\nThe creation of radios is a craft long lost to our artisans.\nOnly known creature capable of such feats is a great Terran inventor Ni-Cola Tesla.\nYou must find him or her and request his aid to save the infrastructure of our society for without radios it will surely collapse...")
-encounters = Array[ExtResource("2_6bd2i")]([SubResource("Resource_degag")])
+encounters = Array[ExtResource("2_6bd2i")]([ExtResource("3_lxph8")])
 
 [node name="Static" type="Sprite2D" parent="." unique_id=504377060]
 modulate = Color(0.18039216, 0.4509804, 0.39215687, 1)

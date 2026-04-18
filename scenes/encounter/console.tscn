@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://btikj84nrtpb6" path="res://art/konsool/moodik.png" id="4_gtjfe"]
 [ext_resource type="Material" uid="uid://bv4ausw41k03c" path="res://resources/add.tres" id="4_yn47u"]
 [ext_resource type="Texture2D" uid="uid://bwasvn6wmjic4" path="res://art/konsool/seadeldis kaes.png" id="5_8k6qu"]
-[ext_resource type="Texture2D" uid="uid://daal3c740m7la" path="res://art/konsool/seadeldis 0.png" id="5_s07ca"]
 [ext_resource type="Texture2D" uid="uid://b1ubtsp6fh6w" path="res://art/particl.png" id="5_yalc1"]
 
 [sub_resource type="Gradient" id="Gradient_gtjfe"]
@@ -30,14 +29,13 @@ font_color = Color(0.7490196, 0.9490196, 0.4, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nh0ls"]
 
-[node name="Console" type="Node2D" unique_id=611889631 node_paths=PackedStringArray("scanner", "scanner_area", "scanner_default_position", "topic_buttons", "scan_label", "device_show", "score_pos_top", "score_pos_bottom", "score_highlight")]
+[node name="Console" type="Node2D" unique_id=611889631 node_paths=PackedStringArray("scanner", "scanner_area", "scanner_default_position", "topic_buttons", "scan_label", "score_pos_top", "score_pos_bottom", "score_highlight")]
 script = ExtResource("1_8uyry")
 scanner = NodePath("Scanner")
 scanner_area = NodePath("Scanner/Eater")
 scanner_default_position = NodePath("Defaultpos")
 topic_buttons = [NodePath("Control/GridContainer/TopicButton"), NodePath("Control/GridContainer/TopicButton2"), NodePath("Control/GridContainer/TopicButton3"), NodePath("Control/GridContainer/TopicButton4")]
 scan_label = NodePath("Scanner/Sprite2D/Label")
-device_show = NodePath("DeviceShow")
 score_gradient = SubResource("Gradient_gtjfe")
 score_pos_top = NodePath("Konsool/Node2D")
 score_pos_bottom = NodePath("Konsool/Node2D2")
@@ -45,6 +43,14 @@ score_highlight = NodePath("Konsool/Highlight")
 
 [node name="Konsool" type="Sprite2D" parent="." unique_id=360942548]
 texture = ExtResource("3_s07ca")
+
+[node name="Label" type="Label" parent="Konsool" unique_id=1561708564]
+offset_left = 189.0
+offset_top = 89.0
+offset_right = 242.0
+offset_bottom = 115.0
+rotation = 0.9405953
+text = "TRUST"
 
 [node name="Stripe" type="Sprite2D" parent="Konsool" unique_id=526381326]
 clip_children = 1
@@ -129,9 +135,4 @@ monitorable = false
 shape = SubResource("CircleShape2D_nh0ls")
 
 [node name="Defaultpos" type="Marker2D" parent="." unique_id=1083295766]
-position = Vector2(-221, 89)
-
-[node name="DeviceShow" type="Sprite2D" parent="." unique_id=1826087867]
-visible = false
-position = Vector2(-209, 131)
-texture = ExtResource("5_s07ca")
+position = Vector2(-268, 251)

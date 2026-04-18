@@ -50,6 +50,7 @@ func speak_lines(lines: PackedStringArray) -> void:
 var speaker_tween: Tween
 func speak_text(text: String) -> void:
 	assert(state == State.SPEAKING)
+	assert(text != "", "don't spea empty text")
 	skipbutton.show()
 	state = State.SPEAKING
 	textlabel.text = text

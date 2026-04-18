@@ -14,6 +14,8 @@ enum Stage {
 @export var person_parent: Node
 @export var console: Console
 
+@export var good_convo_topic: Label
+
 var person: Person
 var background: Node2D
 var stage: Stage
@@ -33,6 +35,8 @@ func _ready() -> void:
 	person.modulate.a = 0
 	assert(console != null)
 	console.topic_chosen.connect(_on_topic_chosen)
+	assert(good_convo_topic != null)
+	good_convo_topic.hide()
 
 	display_score()
 	begin_encounter()
@@ -91,6 +95,8 @@ func _get_available_topics() -> Array[AbstractTopic]:
 	return ts
 
 
+var _notified := {}
+
 func _on_topic_chosen(topic: int) -> void:
 	assert(stage == Stage.CHOOSING_TOPIC)
 	var t: AbstractTopic = _prepared_topics[topic]
@@ -124,6 +130,22 @@ func _on_topic_chosen(topic: int) -> void:
 	stage = Stage.SPEAKING
 	person.further_goal(t.contribution_to_goal + person.get_topic_knowledge(t) * 0.1)
 	person.further_topic_knowledge(t, score + int(person.get_topic_knowledge(t) * 0.05))
+	if person.get_topic_knowledge(t) >= 50 and t not in _notified and t is Topic:
+		_notified[t] = true
+		good_convo_topic.show()
+		var good := (t as Topic).contribution_to_goal > 0
+		var bad := (t as Topic).contribution_to_goal < 0
+		good_convo_topic.text = t.name + " is a " + ("good" if good else "bad" if bad else "useless") + " convo topic!"
+		var colors: PackedColorArray = (
+			[Color.YELLOW, Color.GREEN] if good
+			else [Color.RED, Color.WHITE] if bad
+			else [Color.ALICE_BLUE, Color.GRAY]
+		)
+		var tw := create_tween().set_trans(Tween.TRANS_EXPO)
+		for i in 20:
+			tw.tween_property(good_convo_topic, ^"modulate", colors[0], 0.1)
+			tw.tween_property(good_convo_topic, ^"modulate", colors[1], 0.1)
+		tw.tween_callback(good_convo_topic.hide)
 	person.speak(t.responses[progress])
 	display_score()
 
@@ -144,7 +166,11 @@ func _on_person_spoke() -> void:
 
 
 func _next_encounter() -> void:
-	assert(false, "unimplemented")
+	if data.next_scene_path:
+		MGSAnimation.line_index = data.mgs_cutscene_index # WARNING HACK
+		UI.swipe_transition(load(data.next_scene_path))
+	elif data.next_encounter != null:
+		Encounter.enter(data.next_encounter)
 
 
 func _gameover() -> void:

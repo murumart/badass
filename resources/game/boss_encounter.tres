@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="EncounterData" format=3 uid="uid://buby5ciigrd1j"]
+
+[ext_resource type="PackedScene" uid="uid://b63pdqo826iud" path="res://scenes/encounter/backgrounds/spaceship.tscn" id="1_7sbix"]
+[ext_resource type="PackedScene" uid="uid://b0biosalooae1" path="res://scenes/encounter/people/boss.tscn" id="2_3ixo7"]
+[ext_resource type="Script" uid="uid://cbbv8uq1aexko" path="res://scenes/encounter/encounter_data.gd" id="3_7hiph"]
+
+[resource]
+script = ExtResource("3_7hiph")
+person = ExtResource("2_3ixo7")
+background = ExtResource("1_7sbix")
+delay_before_begin_s = 2.0
+person_enter_animation = &"fadein"
+next_scene_path = "res://scenes/Cutscenes/LandingScene.tscn"
+metadata/_custom_type_script = "uid://cbbv8uq1aexko"

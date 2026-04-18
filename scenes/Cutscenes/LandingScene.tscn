@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://cakmfi0mal443"]
+[gd_scene format=3 uid="uid://dqukdjfl11tln"]
 
 [ext_resource type="Texture2D" uid="uid://cju0kaak3xvi2" path="res://art/laev_väljast1.png" id="1_carac"]
+[ext_resource type="Script" uid="uid://8ghnjek1wxjv" path="res://scenes/Cutscenes/cutscene.gd" id="1_ysi6i"]
+[ext_resource type="Resource" uid="uid://bkfwhatrbcrtm" path="res://resources/game/edgars_encounter.tres" id="2_idb24"]
 [ext_resource type="Texture2D" uid="uid://chlm20l68wgrn" path="res://art/laev_väljast2.png" id="2_k337x"]
 [ext_resource type="Texture2D" uid="uid://d4b0vj2epiaoo" path="res://art/laev_väljast3.png" id="3_04uw8"]
 [ext_resource type="Texture2D" uid="uid://cqj6jouqres6q" path="res://art/laev_backround.png" id="4_c2ing"]
@@ -351,6 +353,20 @@ tracks/13/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.46, 0.46), Vector2(1, 1), Vector2(0.34, 0.34), Vector2(1, 1)]
 }
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath(".")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(17.833334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finish"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k7j73"]
 _data = {
@@ -365,12 +381,14 @@ point_count = 3
 [sub_resource type="Gradient" id="Gradient_carac"]
 colors = PackedColorArray(0.3172787, 0.31727865, 0.31727865, 1, 0.4, 0.4, 0.4, 0)
 
-[node name="landingScene" type="Control" unique_id=970784039]
-layout_mode = 3
-anchors_preset = 0
+[node name="Scene" type="Node2D" unique_id=481534608]
+script = ExtResource("1_ysi6i")
+next_encounter = ExtResource("2_idb24")
+metadata/_custom_type_script = "uid://8ghnjek1wxjv"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1162286399]
 libraries/ = SubResource("AnimationLibrary_k7j73")
+autoplay = &"landing"
 
 [node name="Node2D" type="Node2D" parent="." unique_id=613214775]
 position = Vector2(360, 240)

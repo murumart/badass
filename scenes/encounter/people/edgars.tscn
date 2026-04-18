@@ -178,6 +178,8 @@ _data = {
 topics = Array[ExtResource("2_d8d1c")]([SubResource("Resource_d8d1c"), SubResource("Resource_ommo6"), SubResource("Resource_trxmi"), SubResource("Resource_esoi5")])
 goal_topic = SubResource("Resource_klqs8")
 goal = 4.0
+starting_lines = "Who the heck are you... How did you get here...
+...tou have a nice car tho..."
 ending_fail_lines = "You Suck. Die."
 emotion_response_animations = Dictionary[int, StringName]({
 1: &"flattered",

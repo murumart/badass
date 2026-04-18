@@ -565,7 +565,8 @@ These disappear quick and move around wildly, so expertise is required.
 With enough [color=blue]info[/color], the machine can determine what conversation topics are optimal to continue with to build [color=blue]trust[/color].
 And with enough [color=blue]trust[/color], you can acquire the information you need.
 Let's try it out. Pick a conversation topic."
-ending_lines = "You win!!! hahahahahahahprepare_topics"
+ending_lines = "See you, space cowboy..."
+ending_fail_lines = "Somehow, you failed to entertain me"
 emotion_response_animations = Dictionary[int, StringName]({
 1: &"smile",
 4: &"nervous"

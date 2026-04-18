@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EncounterData" format=3 uid="uid://bkfwhatrbcrtm"]
+
+[ext_resource type="PackedScene" uid="uid://cga1h887afsxr" path="res://scenes/encounter/backgrounds/farm.tscn" id="1_nuokg"]
+[ext_resource type="PackedScene" uid="uid://dxlxhwdl2a4k5" path="res://scenes/encounter/people/edgars.tscn" id="2_u1id1"]
+[ext_resource type="Script" uid="uid://cbbv8uq1aexko" path="res://scenes/encounter/encounter_data.gd" id="3_11hv8"]
+
+[resource]
+script = ExtResource("3_11hv8")
+person = ExtResource("2_u1id1")
+background = ExtResource("1_nuokg")
+metadata/_custom_type_script = "uid://cbbv8uq1aexko"

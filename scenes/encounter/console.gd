@@ -13,7 +13,6 @@ enum Mode {
 @export var scanner_default_position: Marker2D
 @export var topic_buttons: Array[TopicButton]
 @export var scan_label: Label
-@export var device_show: Sprite2D
 @export var score_gradient: Gradient
 @export var score_pos_top: Node2D
 @export var score_pos_bottom: Node2D
@@ -29,7 +28,6 @@ var _score := 0
 func _ready() -> void:
 	assert(scanner != null)
 	assert(scanner_area != null)
-	assert(device_show != null)
 	assert(scan_label != null)
 	assert(scanner_default_position != null)
 	assert(score_gradient != null)
@@ -44,7 +42,6 @@ func _ready() -> void:
 
 
 func start_scanning() -> void:
-	device_show.hide()
 	scanner.show()
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	assert(mode == Mode.IDLE)
@@ -70,8 +67,6 @@ func end_scanning() -> void:
 
 func _reset_scanner() -> void:
 	scanner.position = scanner_default_position.position
-	scanner.hide()
-	device_show.show()
 	_score = 0
 	scan_max = 0
 

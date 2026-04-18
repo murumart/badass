@@ -9,6 +9,8 @@
 - [ ] tesla visuaalid
 - [ ] gameover stseen
 - [ ] muusika igale tegelasele
+- [ ] näita et protsent on choicide jaoks
+- [X] implementeeri scene transition animatsioon maale lendamine
 - [X] skanneri protsent
 - [X] play button võiks töötada
 - [X] bulletitest saadud info protsent võta arvesse nuppude tegemisel
