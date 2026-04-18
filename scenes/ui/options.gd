@@ -15,7 +15,7 @@ static var _options := {
 
 @export var list: Container
 
-var open := false
+var is_open := false
 
 
 func _ready() -> void:
@@ -39,13 +39,13 @@ func display() -> void:
 			slider.display(opk, opv["getv"], opv["setv"], opv.get("range", Vector2(0, 1)).x, opv.get("range", Vector2(0, 1)).y)
 
 	show.call_deferred()
-	set_deferred("open", true)
+	set_deferred("is_open", true)
 
 
 func close() -> void:
 	save_to_file()
 	hide.call_deferred()
-	set_deferred("open", false)
+	set_deferred("is_open", false)
 
 
 const OPTIONS_PATH := "user://options.cfg"
