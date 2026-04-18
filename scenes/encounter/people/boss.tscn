@@ -495,7 +495,13 @@ animations = [{
 script/source = "extends BulletSpawner
 
 
-func do(emotion: Topic.Emotion) -> void:
+func do(_emotion: Topic.Emotion) -> void:
+	await get_tree().create_timer(0.5).timeout
+	await spawn_circle(bullet_spawnpoint.position, 12, 0)
+	await get_tree().create_timer(0.5).timeout
+	await spawn_circle(bullet_spawnpoint.position + Vector2.RIGHT * 32, 12, 0)
+	await get_tree().create_timer(0.5).timeout
+	await spawn_circle(bullet_spawnpoint.position + Vector2.LEFT * 32, 12, 0)
 	done.emit()
 "
 
@@ -509,6 +515,10 @@ The creation of radios is a craft long lost to our artisans.
 Only known creature capable of such feats is a great Terran inventor Ni-Cola Tesla.
 You must find him or her and request his aid to save the infrastructure of our society for without radios it will surely collapse..."
 ending_lines = "You win!!! hahahahahahahprepare_topics"
+emotion_response_animations = Dictionary[int, StringName]({
+1: &"smile",
+4: &"nervous"
+})
 animator = NodePath("Animator")
 bullet_spawner = NodePath("BulletSpawner")
 
@@ -550,6 +560,7 @@ frame = 5
 [node name="Nervous" type="AnimatedSprite2D" parent="Scale/Faces" index="3" unique_id=1095653097]
 visible = false
 sprite_frames = SubResource("SpriteFrames_yfbk4")
+autoplay = "default"
 frame_progress = 0.8267495
 
 [node name="Static2" type="AnimatedSprite2D" parent="Scale" index="2" unique_id=229697548]
@@ -566,5 +577,9 @@ offset_top = -137.0
 offset_right = -184.0
 offset_bottom = 37.0
 
-[node name="BulletSpawner" parent="." index="4" unique_id=608059629]
+[node name="BulletSpawnPoint" parent="." index="3" unique_id=846058525]
+position = Vector2(0, -49)
+
+[node name="BulletSpawner" parent="." index="4" unique_id=608059629 node_paths=PackedStringArray("bullet_spawnpoint")]
 script = SubResource("GDScript_iotei")
+bullet_spawnpoint = NodePath("../BulletSpawnPoint")

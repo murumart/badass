@@ -8,14 +8,15 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_bn77u"]
 radius = 13.0
 
-[node name="Bullet" type="Node2D" unique_id=529530043 node_paths=PackedStringArray("sprite")]
+[node name="Bullet" type="Area2D" unique_id=682659133 node_paths=PackedStringArray("sprite")]
+collision_layer = 2
+collision_mask = 0
+monitoring = false
 script = ExtResource("1_sp6qc")
 sprite = NodePath("Sprite")
 sprites = Array[Texture2D]([ExtResource("1_kqjwt"), ExtResource("3_8l4te"), ExtResource("4_kxthu")])
 
-[node name="BulletArea" type="Area2D" parent="." unique_id=1492106737]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BulletArea" unique_id=552747636]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=552747636]
 shape = SubResource("CircleShape2D_bn77u")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=316337940]

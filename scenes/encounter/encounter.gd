@@ -87,6 +87,7 @@ func _on_topic_chosen(topic: int) -> void:
 	var progress := person.progress_topic_and_get_previous(t)
 
 	if t is GoalTopic:
+		stage = Stage.FINAL_SPEECH
 		if person.goal_progress >= person.goal:
 			person.speak.call_deferred(t.win_text)
 			await person.speaking_finished
@@ -101,12 +102,12 @@ func _on_topic_chosen(topic: int) -> void:
 
 	if t.emotional_response != Topic.Emotion.NONE:
 		person.respond_to_topic(t.emotional_response)
-
-		stage = Stage.REACTING
 		console.start_scanning()
 
+		stage = Stage.REACTING
+
 		await person.emoting_finished
-		console.end_scanning()
+		await console.end_scanning()
 
 	stage = Stage.SPEAKING
 	person.further_goal(t.contribution_to_goal)
@@ -114,8 +115,9 @@ func _on_topic_chosen(topic: int) -> void:
 
 
 func _on_person_spoke() -> void:
+	person.play_animation("idle")
 	if stage == Stage.FINAL_SPEECH:
-		assert(false, "go to next encopunter here")
+		return
 	stage = Stage.WAITING
 	prepare_topics()
 

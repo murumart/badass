@@ -14,11 +14,10 @@ enum State {
 @export_range(1.0, 10.0, 0.05) var goal: float
 @export_multiline var starting_lines: String
 @export_multiline var ending_lines: String
+@export var emotion_response_animations: Dictionary[Topic.Emotion, StringName]
 
 @export_group("Internal")
 @export var speech_bubble: SpeechBubble
-@export var bullet_spawn_point: Marker2D
-
 @export var animator: AnimationPlayer
 @export var bullet_spawner: BulletSpawner
 var _state: State
@@ -37,8 +36,8 @@ var goal_progress: float = 0.0
 
 func _ready() -> void:
 	assert(animator != null, "person needs an animator to be animated.")
+	assert(animator.has_animation("idle"), "animator needs idle animation")
 	assert(speech_bubble != null)
-	assert(bullet_spawn_point != null)
 	assert(ending_lines != "", "person needs lines to end encounter with")
 	assert(bullet_spawner != null, "person needs internal bullet spawner to be set")
 	_validate_topics() # TODO uncomment when the logic is implemented
@@ -49,7 +48,6 @@ func _ready() -> void:
 func play_animation(anim: StringName) -> void:
 	assert(animator.has_animation(anim))
 	animator.play(anim)
-	animator.queue("idle")
 
 
 func speak(text: String) -> void:
@@ -80,15 +78,17 @@ func further_goal(progress: float) -> void:
 	goal_progress += progress
 
 
-func _on_state_set(to: State, old: State) -> void:
+func _on_state_set(_to: State, _old: State) -> void:
 	pass
 
 
 func respond_to_topic(emotion: Topic.Emotion) -> void:
 	assert(emotion != Topic.Emotion.NONE)
+	if emotion in emotion_response_animations:
+		play_animation(emotion_response_animations[emotion])
 	bullet_spawner.do(emotion)
 	await bullet_spawner.done
-	await get_tree().create_timer(2.0).timeout
+	await get_tree().create_timer(1.0).timeout
 	match emotion:
 		Topic.Emotion.SURPRISED:
 			pass

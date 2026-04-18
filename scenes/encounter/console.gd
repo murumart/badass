@@ -8,6 +8,7 @@ enum Mode {
 }
 
 @export var scanner: Node2D
+@export var scanner_area: Area2D
 @export var scanner_default_position: Marker2D
 @export var topic_buttons: Array[TopicButton]
 
@@ -16,6 +17,7 @@ var mode: Mode
 
 func _ready() -> void:
 	assert(scanner != null)
+	assert(scanner_area != null)
 	assert(scanner_default_position != null)
 	assert(topic_buttons.size() == 4 and not topic_buttons.any(func(b: Button) -> bool: return b == null))
 	for i in topic_buttons.size():
@@ -26,12 +28,18 @@ func _ready() -> void:
 
 func start_scanning() -> void:
 	assert(mode == Mode.IDLE)
+	var tw := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tw.tween_property(scanner, "position", get_local_mouse_position(), 0.1)
+	await tw.finished
 	mode = Mode.SCANNING
 
 
 func end_scanning() -> void:
 	assert(mode == Mode.SCANNING)
 	mode = Mode.IDLE
+	var tw := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	tw.tween_property(scanner, "position", scanner_default_position.position, 0.6)
+	await tw.finished
 	_reset_scanner()
 
 
@@ -50,6 +58,10 @@ func _process(_delta: float) -> void:
 		Mode.SCANNING:
 			var mpos := get_local_mouse_position()
 			scanner.position = mpos
+			scanner_area.force_update_transform()
+			var collided := scanner_area.get_overlapping_areas()
+			for a: Bullet in collided:
+				a.queue_free()
 
 
 func prepare_topics(topics: Array[AbstractTopic], topic_progresses: Dictionary[AbstractTopic, int]) -> void:
