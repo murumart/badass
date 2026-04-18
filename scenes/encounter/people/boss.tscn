@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b0biosalooae1"]
 
 [ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_4lv0d"]
+[ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_0mxwg"]
 [ext_resource type="Texture2D" uid="uid://cdfpfmxv1tlpk" path="res://art/boss/bossi taust0000.png" id="2_c3n53"]
 [ext_resource type="Texture2D" uid="uid://03rioj6bgebj" path="res://art/boss/bossi taust0001.png" id="3_cg7aa"]
 [ext_resource type="Texture2D" uid="uid://b3pyhoxfi60d4" path="res://art/boss/boss fade 1.png" id="4_466ai"]
@@ -15,6 +16,34 @@
 [ext_resource type="Texture2D" uid="uid://donftemoq00qa" path="res://art/boss/boss närviline0002.png" id="7_km4ok"]
 [ext_resource type="Texture2D" uid="uid://tm4ibfnbc1is" path="res://art/boss/boss rõõmus0003.png" id="8_iotei"]
 [ext_resource type="Texture2D" uid="uid://bw25stakbugkv" path="res://art/boss/boss rõõmus0004.png" id="9_ffpwu"]
+
+[sub_resource type="Resource" id="Resource_bjruo"]
+script = ExtResource("2_0mxwg")
+name = "ask about politics"
+responses = PackedStringArray("Long live the glorious Groxorian People\'s Republic!")
+emotional_response = 4
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_0mxwg"]
+script = ExtResource("2_0mxwg")
+name = "talk about mission"
+contribution_to_goal = 1.0
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_iotei"]
+script = ExtResource("2_0mxwg")
+name = "talk about family"
+contribution_to_goal = -0.30000000000000004
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_ffpwu"]
+script = ExtResource("2_0mxwg")
+name = "end"
+responses = PackedStringArray("Good! You are fit for this mission. Good luck. Gnortz. Our hopes lie with you.")
+contribution_to_goal = 17.0
+topic_appears_when = 1
+prerequisite_topic_index = 1
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Animation" id="Animation_5myyt"]
 length = 0.001
@@ -451,6 +480,8 @@ animations = [{
 }]
 
 [node name="Boss" unique_id=359469956 node_paths=PackedStringArray("animator") instance=ExtResource("1_4lv0d")]
+topics = Array[ExtResource("2_0mxwg")]([SubResource("Resource_bjruo"), SubResource("Resource_0mxwg"), SubResource("Resource_iotei"), SubResource("Resource_ffpwu")])
+goal = 4.0
 animator = NodePath("Animator")
 
 [node name="Animator" type="AnimationPlayer" parent="." index="0" unique_id=214613681]
