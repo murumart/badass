@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://cln2e56vlepga"]
+
+[ext_resource type="Texture2D" uid="uid://chq3plcx1dom5" path="res://art/boss0000.png" id="1_ibpvv"]
+[ext_resource type="Texture2D" uid="uid://1sm0o5fvtp28" path="res://art/boss0001.png" id="2_jaaps"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ibpvv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_jaaps")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]

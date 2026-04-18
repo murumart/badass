@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cjhydkqnw5146"]
+
+[ext_resource type="Script" uid="uid://dx8l81ck3hbqo" path="res://scenes/encounter/encounter.gd" id="1_lp88p"]
+[ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/person.tscn" id="2_j3lg0"]
+[ext_resource type="Script" uid="uid://cbbv8uq1aexko" path="res://scenes/encounter/encounter_data.gd" id="2_s1k85"]
+[ext_resource type="Texture2D" uid="uid://5yj643yre0ip" path="res://art/console_placeholder.png" id="3_13rki"]
+
+[sub_resource type="Resource" id="Resource_yyo66"]
+script = ExtResource("2_s1k85")
+person = ExtResource("2_j3lg0")
+metadata/_custom_type_script = "uid://cbbv8uq1aexko"
+
+[node name="Encounter" type="Node2D" unique_id=1195995178]
+script = ExtResource("1_lp88p")
+data = SubResource("Resource_yyo66")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=645384451]
+
+[node name="Person" parent="." unique_id=359469956 instance=ExtResource("2_j3lg0")]
+
+[node name="Console" type="Node2D" parent="." unique_id=1563970555]
+
+[node name="Sprite2D" type="Sprite2D" parent="Console" unique_id=874968398]
+position = Vector2(0, 167)
+texture = ExtResource("3_13rki")
