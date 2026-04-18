@@ -1,6 +1,6 @@
 class_name Console extends Node2D
 
-signal topic_chosen(topic: String)
+signal topic_chosen(topic: int)
 
 enum Mode {
 	IDLE,
@@ -18,7 +18,10 @@ func _ready() -> void:
 	assert(scanner != null)
 	assert(scanner_default_position != null)
 	assert(topic_buttons.size() == 4 and not topic_buttons.any(func(b: Button) -> bool: return b == null))
+	for i in topic_buttons.size():
+		topic_buttons[i].pressed.connect(_topic_chosen.bind(i))
 	_reset_scanner()
+	_reset_topics()
 
 
 func start_scanning() -> void:
@@ -34,6 +37,11 @@ func _reset_scanner() -> void:
 	scanner.position = scanner_default_position.position
 
 
+func _reset_topics() -> void:
+	for t in topic_buttons:
+		t.hide()
+
+
 func _process(_delta: float) -> void:
 	match mode:
 		Mode.IDLE: pass
@@ -42,18 +50,15 @@ func _process(_delta: float) -> void:
 			scanner.position = mpos
 
 
-func prepare_topics(topics: PackedStringArray) -> void:
+func prepare_topics(topics: Array[Topic]) -> void:
 	assert(topics.size() <= 4)
 	assert(topics.size() > 0, "need topics to prepare them,.......")
-	for t in topic_buttons:
-		t.hide()
+	_reset_topics()
 	for i in topics.size():
-		topic_buttons[i].text = topics[i]
+		topic_buttons[i].text = topics[i].name
 		topic_buttons[i].show()
-		topic_buttons[i].pressed.connect(_topic_chosen.bind(topics[i]), CONNECT_ONE_SHOT)
 
 
-func _topic_chosen(s: String) -> void:
-	for t in topic_buttons:
-		t.hide()
-	topic_chosen.emit(s)
+func _topic_chosen(i: int) -> void:
+	topic_chosen.emit(i)
+	_reset_topics()

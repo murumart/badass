@@ -17,7 +17,7 @@ corner_radius_bottom_left = 9
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="SpeechBubble" type="PanelContainer" unique_id=663125359 node_paths=PackedStringArray("textlabel", "nextbutton")]
+[node name="SpeechBubble" type="PanelContainer" unique_id=663125359 node_paths=PackedStringArray("textlabel", "nextbutton", "skipbutton")]
 offset_left = 1.0
 offset_right = 150.0
 offset_bottom = 174.0
@@ -26,6 +26,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_37ts1")
 script = ExtResource("1_kdf6q")
 textlabel = NodePath("MarginContainer/RichTextLabel")
 nextbutton = NodePath("HBoxContainer/VBoxContainer/NextSpeechButton")
+skipbutton = NodePath("SkipStuff")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1952329087]
 position = Vector2(7, 7)
@@ -57,3 +58,8 @@ alignment = 2
 [node name="NextSpeechButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=836767141]
 layout_mode = 2
 text = "→"
+
+[node name="SkipStuff" type="Button" parent="." unique_id=1746732867]
+visible = false
+layout_mode = 2
+flat = true

@@ -11,6 +11,7 @@ enum State {
 @export var topics: Array[Topic]
 @export_range(1.0, 10.0, 0.05) var goal: float
 @export_multiline var starting_lines: String
+@export_multiline var ending_lines: String
 
 @export_group("Internal")
 @export var speech_bubble: SpeechBubble
@@ -27,11 +28,13 @@ var _state: State
 @export_group("")
 
 var topic_progresses: Dictionary[Topic, int]
+var goal_progress: float = 0.0
 
 
 func _ready() -> void:
 	assert(animator != null, "person needs an animator to be animated.")
 	assert(speech_bubble != null)
+	assert(ending_lines != "", "person needs lines to end encounter with")
 	_validate_topics() # TODO uncomment when the logic is implemented
 
 	state = State.IDLE
@@ -61,8 +64,14 @@ func is_topic_exhausted(topic: Topic) -> bool:
 	return get_topic_progress(topic) == topic.responses.size()
 
 
-func progress_topic(topic: Topic) -> void:
-	topic_progresses[topic] = topic_progresses.get(topic, 0) + 1
+func progress_topic_and_get_previous(topic: Topic) -> int:
+	var p: int = topic_progresses.get(topic, 0)
+	topic_progresses[topic] = p + 1
+	return p
+
+
+func further_goal(progress: float) -> void:
+	goal_progress += progress
 
 
 func _on_state_set(to: State, old: State) -> void:

@@ -29,12 +29,14 @@ script = ExtResource("2_0mxwg")
 name = "TalkAboutFamily"
 responses = PackedStringArray("My family? Thank you for asking agent Gnortz my wife and three hundred twenty six children are doing quite well, but we have a mission to get on with right now.\n")
 emotional_response = 4
+contribution_to_goal = 1.0
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_iotei"]
 script = ExtResource("2_0mxwg")
 name = "TalkAboutHobbies"
 responses = PackedStringArray("Space golf? You know i love it Gnortz!\nBut really agent, we DO have a mission to get on with here!")
+contribution_to_goal = -0.30000000000000004
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_ffpwu"]
@@ -488,6 +490,7 @@ All the radios on our homeplanet of Grogzoria were destroyed by the heinous radi
 The creation of radios is a craft long lost to our artisans.
 Only known creature capable of such feats is a great Terran inventor Ni-Cola Tesla.
 You must find him or her and request his aid to save the infrastructure of our society for without radios it will surely collapse..."
+ending_lines = "You win!!! hahahahahahahprepare_topics"
 animator = NodePath("Animator")
 
 [node name="Animator" type="AnimationPlayer" parent="." index="0" unique_id=214613681]

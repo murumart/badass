@@ -9,6 +9,7 @@ speech_bubble = NodePath("SpeechBubble")
 metadata/_custom_type_script = "uid://iujsf2pw8lm2"
 
 [node name="SpeechBubble" parent="." unique_id=663125359 instance=ExtResource("2_n8r47")]
+z_index = 5
 offset_left = -175.0
 offset_top = -127.0
 offset_right = -26.0
