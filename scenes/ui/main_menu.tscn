@@ -1,6 +1,12 @@
 [gd_scene format=3 uid="uid://2yvq6yiiep7y"]
 
 [ext_resource type="Script" uid="uid://dkj3c0fk1xv1v" path="res://scenes/ui/main_menu.gd" id="1_sl1te"]
+[ext_resource type="Texture2D" uid="uid://chq3plcx1dom5" path="res://art/boss0000.png" id="2_1g8jr"]
+[ext_resource type="FontFile" uid="uid://cln787ma2u7s8" path="res://resources/theme/Zerove-Regular.ttf" id="3_1g8jr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_m1kxf"]
+font = ExtResource("3_1g8jr")
+font_size = 32
 
 [node name="MainMenu" type="Control" unique_id=1274980500 node_paths=PackedStringArray("play_button", "options_button", "exit_button")]
 layout_mode = 3
@@ -10,11 +16,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sl1te")
-play_button = NodePath("VBoxContainer/PlayButton")
-options_button = NodePath("VBoxContainer/OptionsButton")
-exit_button = NodePath("VBoxContainer/ExitButton")
+play_button = NodePath("HBoxContainer/VBoxContainer/PlayButton")
+options_button = NodePath("HBoxContainer/VBoxContainer/OptionsButton")
+exit_button = NodePath("HBoxContainer/VBoxContainer/ExitButton")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1246975116]
+[node name="Icon" type="Sprite2D" parent="." unique_id=260533777]
+modulate = Color(0.06666667, 0.043137256, 0.15686275, 1)
+position = Vector2(371, 242)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_1g8jr")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1000560811]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,19 +34,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=1914953977]
+[node name="Fat" type="Control" parent="HBoxContainer" unique_id=1502536986]
 layout_mode = 2
-text = "badass style game"
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1246975116]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1914953977]
+layout_mode = 2
+text = "space guy game"
+label_settings = SubResource("LabelSettings_m1kxf")
 horizontal_alignment = 1
 
-[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=912897162]
+[node name="PlayButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=912897162]
 layout_mode = 2
 text = "Play"
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=495802206]
+[node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=495802206]
 layout_mode = 2
 text = "Options"
 
-[node name="ExitButton" type="Button" parent="VBoxContainer" unique_id=1713062318]
+[node name="ExitButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=1713062318]
 layout_mode = 2
 text = "Exit"
+
+[node name="Fat2" type="Control" parent="HBoxContainer" unique_id=1239420459]
+layout_mode = 2
+size_flags_horizontal = 3

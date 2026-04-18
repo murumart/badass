@@ -1,6 +1,6 @@
 class_name OptionsMenu extends PanelContainer
 
-static var _options := {
+var _options := {
 	"sound": {
 		"main_volume": {
 			"setv": func(to: float) -> void:
@@ -10,16 +10,30 @@ static var _options := {
 				return AudioServer.get_bus_volume_linear(0),
 			"default": 0.75,
 		}
+	},
+	"video": {
+		"full_screen": {
+			"setv": func(to: float) -> void:
+				assert(to == 0 or to == 1)
+				get_window().mode = Window.MODE_FULLSCREEN if to == 1 else Window.MODE_MAXIMIZED,
+			"getv": func() -> float:
+				return 1 if get_window().mode == Window.MODE_FULLSCREEN else 0.0,
+			"step": 1,
+		}
 	}
 }
 
 @export var list: Container
+@export var okay_button: Button
 
 var is_open := false
 
 
 func _ready() -> void:
 	assert(list != null)
+	assert(okay_button != null)
+
+	okay_button.pressed.connect(close)
 
 
 func display() -> void:
@@ -36,7 +50,7 @@ func display() -> void:
 			var opv: Dictionary = catv[opk]
 			var slider := OptionSlider.get_instance()
 			list.add_child(slider)
-			slider.display(opk, opv["getv"], opv["setv"], opv.get("range", Vector2(0, 1)).x, opv.get("range", Vector2(0, 1)).y)
+			slider.display(opk, opv["getv"], opv["setv"], opv.get("range", Vector2(0, 1)).x, opv.get("range", Vector2(0, 1)).y, opv.get("step", 0.05))
 
 	show.call_deferred()
 	set_deferred("is_open", true)
