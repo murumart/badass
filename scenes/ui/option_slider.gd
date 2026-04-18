@@ -23,11 +23,13 @@ func display(
 	get_value: Callable,
 	set_value: Callable,
 	range_min: float = 0.0,
-	range_max: float = 1.0
+	range_max: float = 1.0,
+	step: float = 0.05
 ) -> void:
 	label.text = option_name.capitalize()
 	slider.min_value = range_min
 	slider.max_value = range_max
+	slider.step = step
 
 	slider.set_value_no_signal(get_value.call())
 	_set_value = set_value

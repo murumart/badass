@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d15cvfito5l0" path="res://scenes/ui/options.gd" id="1_c2u1v"]
 
-[node name="Options" type="PanelContainer" unique_id=205007288 node_paths=PackedStringArray("list")]
+[node name="Options" type="PanelContainer" unique_id=205007288 node_paths=PackedStringArray("list", "okay_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,6 +10,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c2u1v")
 list = NodePath("MarginContainer/VBoxContainer/MarginContainer/List")
+okay_button = NodePath("MarginContainer/VBoxContainer/Button")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=230212620]
 layout_mode = 2
@@ -35,3 +36,7 @@ theme_override_constants/margin_bottom = 2
 
 [node name="List" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=1868170602]
 layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1111547887]
+layout_mode = 2
+text = "Okay"

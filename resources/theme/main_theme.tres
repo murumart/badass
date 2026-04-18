@@ -1,0 +1,31 @@
+[gd_resource type="Theme" format=3 uid="uid://7pwkneh6677e"]
+
+[ext_resource type="StyleBox" uid="uid://dmsmh0w41sl1p" path="res://resources/theme/button.tres" id="1_70gfe"]
+[ext_resource type="StyleBox" uid="uid://b5inq3swjg0wa" path="res://resources/theme/button_hover.tres" id="1_jtx1y"]
+[ext_resource type="StyleBox" uid="uid://dhg5qp4yd7wna" path="res://resources/theme/button_disabled.tres" id="1_kh2cq"]
+[ext_resource type="FontFile" uid="uid://cjgqwctltj4xi" path="res://resources/theme/Jupiteroid-Regular.ttf" id="2_jtx1y"]
+[ext_resource type="StyleBox" uid="uid://b1grtf3oc422c" path="res://resources/theme/button_press.tres" id="3_1ywy2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wif3f"]
+bg_color = Color(0.42352942, 0.7372549, 0.4, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmhhu"]
+bg_color = Color(0.7490196, 0.9490196, 0.4, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kh2cq"]
+content_margin_left = 2.0
+content_margin_top = 2.0
+content_margin_right = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.18039216, 0.4509804, 0.39215687, 1)
+
+[resource]
+Button/styles/disabled = ExtResource("1_kh2cq")
+Button/styles/hover = ExtResource("1_jtx1y")
+Button/styles/normal = ExtResource("1_70gfe")
+Button/styles/pressed = ExtResource("3_1ywy2")
+Control/font_sizes/font_size = 22
+Control/fonts/font = ExtResource("2_jtx1y")
+Slider/styles/grabber_area = SubResource("StyleBoxFlat_wif3f")
+Slider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_qmhhu")
+Slider/styles/slider = SubResource("StyleBoxFlat_kh2cq")
