@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chq3plcx1dom5"
-path="res://.godot/imported/boss0000.png-ed04698c86a83ce94f4d702c2c6242de.ctex"
+uid="uid://tm4ibfnbc1is"
+path="res://.godot/imported/boss rõõmus0003.png-7d33946dfa73b58466df7566088666cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/boss0000.png"
-dest_files=["res://.godot/imported/boss0000.png-ed04698c86a83ce94f4d702c2c6242de.ctex"]
+source_file="res://art/boss/boss rõõmus0003.png"
+dest_files=["res://.godot/imported/boss rõõmus0003.png-7d33946dfa73b58466df7566088666cf.ctex"]
 
 [params]
 

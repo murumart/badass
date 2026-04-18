@@ -1,0 +1,502 @@
+[gd_scene format=3 uid="uid://b0biosalooae1"]
+
+[ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_4lv0d"]
+[ext_resource type="Texture2D" uid="uid://cdfpfmxv1tlpk" path="res://art/boss/bossi taust0000.png" id="2_c3n53"]
+[ext_resource type="Texture2D" uid="uid://03rioj6bgebj" path="res://art/boss/bossi taust0001.png" id="3_cg7aa"]
+[ext_resource type="Texture2D" uid="uid://b3pyhoxfi60d4" path="res://art/boss/boss fade 1.png" id="4_466ai"]
+[ext_resource type="Texture2D" uid="uid://bnk2y0i1agccg" path="res://art/boss/boss fade 2.png" id="5_5myyt"]
+[ext_resource type="Texture2D" uid="uid://bl237f28p28ep" path="res://art/boss/boss närviline0000.png" id="5_t5ln0"]
+[ext_resource type="Texture2D" uid="uid://bv00t2i11tl3k" path="res://art/boss/boss rõõmus0000.png" id="5_tihgv"]
+[ext_resource type="Texture2D" uid="uid://cns3fabl83s8e" path="res://art/boss/boss rõõmus0001.png" id="6_0mxwg"]
+[ext_resource type="Texture2D" uid="uid://cgolr0mdpoct1" path="res://art/boss/boss fade 3.png" id="6_4d548"]
+[ext_resource type="Texture2D" uid="uid://ckmxh2i5y7umt" path="res://art/boss/boss närviline0001.png" id="6_jd7pm"]
+[ext_resource type="Material" uid="uid://df4hbxcmer40q" path="res://resources/multiply.tres" id="7_5myyt"]
+[ext_resource type="Texture2D" uid="uid://c34vag1t0a616" path="res://art/boss/boss rõõmus0002.png" id="7_bjruo"]
+[ext_resource type="Texture2D" uid="uid://donftemoq00qa" path="res://art/boss/boss närviline0002.png" id="7_km4ok"]
+[ext_resource type="Texture2D" uid="uid://tm4ibfnbc1is" path="res://art/boss/boss rõõmus0003.png" id="8_iotei"]
+[ext_resource type="Texture2D" uid="uid://bw25stakbugkv" path="res://art/boss/boss rõõmus0004.png" id="9_ffpwu"]
+
+[sub_resource type="Animation" id="Animation_5myyt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scale/Faces/Fade/BossFade1:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scale/Faces/Fade/BossFade2:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scale/Faces/Fade/BossFade3:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scale/Faces/Fade:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scale/Faces/Normal:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Scale/Faces/Smile:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Scale/Faces/Nervous:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Scale/Faces/Smile:frame")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+
+[sub_resource type="Animation" id="Animation_466ai"]
+resource_name = "fadein"
+length = 2.025
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scale/Faces/Fade/BossFade1:modulate")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.36666667),
+"transitions": PackedFloat32Array(1.3195078, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scale/Faces/Fade/BossFade2:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(2.5491211, 7.7274885),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scale/Faces/Fade/BossFade3:modulate")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.9),
+"transitions": PackedFloat32Array(3.363586, 11.7126875),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scale/Faces/Fade:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scale/Faces/Normal:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Scale/Faces/Smile:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Scale/Faces/Nervous:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_tihgv"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scale/Faces/Fade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scale/Faces/Normal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scale/Faces/Smile:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scale/Faces/Nervous:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_bjruo"]
+resource_name = "nervous"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scale/Faces/Fade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scale/Faces/Normal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scale/Faces/Smile:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scale/Faces/Nervous:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_0mxwg"]
+resource_name = "smile"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Scale/Faces/Fade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Scale/Faces/Normal:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Scale/Faces/Nervous:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Scale/Faces/Smile:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Scale/Faces/Smile:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5myyt"]
+_data = {
+&"RESET": SubResource("Animation_5myyt"),
+&"fadein": SubResource("Animation_466ai"),
+&"idle": SubResource("Animation_tihgv"),
+&"nervous": SubResource("Animation_bjruo"),
+&"smile": SubResource("Animation_0mxwg")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8830u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c3n53")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cg7aa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rl58q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_4d548")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sok8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_4d548")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tihgv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0mxwg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bjruo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_iotei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ffpwu")
+}],
+"loop": false,
+"name": &"default",
+"speed": 9.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yfbk4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_4d548")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t5ln0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jd7pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_km4ok")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Boss" unique_id=359469956 node_paths=PackedStringArray("animator") instance=ExtResource("1_4lv0d")]
+animator = NodePath("Animator")
+
+[node name="Animator" type="AnimationPlayer" parent="." index="0" unique_id=214613681]
+libraries/ = SubResource("AnimationLibrary_5myyt")
+autoplay = &"RESET"
+
+[node name="Scale" type="Node2D" parent="." index="1" unique_id=1902672446]
+scale = Vector2(0.695, 0.695)
+
+[node name="Static" type="AnimatedSprite2D" parent="Scale" index="0" unique_id=849156238]
+sprite_frames = SubResource("SpriteFrames_8830u")
+autoplay = "default"
+frame_progress = 0.45776427
+
+[node name="Faces" type="Node2D" parent="Scale" index="1" unique_id=1954123485]
+
+[node name="Fade" type="Node2D" parent="Scale/Faces" index="0" unique_id=178862978]
+visible = false
+
+[node name="BossFade1" type="Sprite2D" parent="Scale/Faces/Fade" index="0" unique_id=1666673880]
+texture = ExtResource("4_466ai")
+
+[node name="BossFade2" type="Sprite2D" parent="Scale/Faces/Fade" index="1" unique_id=291727831]
+texture = ExtResource("5_5myyt")
+
+[node name="BossFade3" type="Sprite2D" parent="Scale/Faces/Fade" index="2" unique_id=1828663423]
+texture = ExtResource("6_4d548")
+
+[node name="Normal" type="AnimatedSprite2D" parent="Scale/Faces" index="1" unique_id=1985188180]
+visible = false
+sprite_frames = SubResource("SpriteFrames_rl58q")
+
+[node name="Smile" type="AnimatedSprite2D" parent="Scale/Faces" index="2" unique_id=139217532]
+visible = false
+sprite_frames = SubResource("SpriteFrames_7sok8")
+frame = 5
+
+[node name="Nervous" type="AnimatedSprite2D" parent="Scale/Faces" index="3" unique_id=1095653097]
+visible = false
+sprite_frames = SubResource("SpriteFrames_yfbk4")
+frame_progress = 0.8267495
+
+[node name="Static2" type="AnimatedSprite2D" parent="Scale" index="2" unique_id=229697548]
+self_modulate = Color(5.912981, 5.912981, 5.912981, 1)
+material = ExtResource("7_5myyt")
+sprite_frames = SubResource("SpriteFrames_8830u")
+autoplay = "default"
+frame_progress = 0.22201948
+speed_scale = 1.11
