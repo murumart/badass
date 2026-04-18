@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7mwwv6sov5qt"
-path="res://.godot/imported/laev_väljast.png-8ebc3d0696892ac8470078cae0664fc2.ctex"
+uid="uid://bwasvn6wmjic4"
+path="res://.godot/imported/seadeldis kaes.png-282f48a7227a2993c59f1bae1495550a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/laev_väljast.png"
-dest_files=["res://.godot/imported/laev_väljast.png-8ebc3d0696892ac8470078cae0664fc2.ctex"]
+source_file="res://art/konsool/seadeldis kaes.png"
+dest_files=["res://.godot/imported/seadeldis kaes.png-282f48a7227a2993c59f1bae1495550a.ctex"]
 
 [params]
 

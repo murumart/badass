@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://brs33d5i0g0bw"]
+
+[ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_6xjub"]
+[ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_whhc5"]
+
+[sub_resource type="Resource" id="Resource_s1ryu"]
+script = ExtResource("2_whhc5")
+name = "TalkAboutDogs"
+responses = PackedStringArray("Yes i quite enjoy the company of the greates friend a human could have.\nDogs are fine companions, i value their loyalty to the highest degree.")
+emotional_response = 1
+contribution_to_goal = 0.5
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_kpdy8"]
+script = ExtResource("2_whhc5")
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[node name="nikolaTesla" unique_id=1361515156 instance=ExtResource("1_6xjub")]
+topics = Array[ExtResource("2_whhc5")]([SubResource("Resource_s1ryu"), SubResource("Resource_kpdy8"), null, null, null])

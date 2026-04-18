@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7mwwv6sov5qt"
-path="res://.godot/imported/laev_väljast.png-8ebc3d0696892ac8470078cae0664fc2.ctex"
+uid="uid://btikj84nrtpb6"
+path="res://.godot/imported/moodik.png-767227ac151dbb15187b4f0ce5205556.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/laev_väljast.png"
-dest_files=["res://.godot/imported/laev_väljast.png-8ebc3d0696892ac8470078cae0664fc2.ctex"]
+source_file="res://art/konsool/moodik.png"
+dest_files=["res://.godot/imported/moodik.png-767227ac151dbb15187b4f0ce5205556.ctex"]
 
 [params]
 

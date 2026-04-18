@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b7mwwv6sov5qt"
-path="res://.godot/imported/laev_väljast.png-8ebc3d0696892ac8470078cae0664fc2.ctex"
+uid="uid://dpsfaoqtmpd7v"
+path="res://.godot/imported/konsool seadeldisega.png-b6b6ab975e6fe33db2aff53d478627b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/laev_väljast.png"
-dest_files=["res://.godot/imported/laev_väljast.png-8ebc3d0696892ac8470078cae0664fc2.ctex"]
+source_file="res://art/konsool/konsool seadeldisega.png"
+dest_files=["res://.godot/imported/konsool seadeldisega.png-b6b6ab975e6fe33db2aff53d478627b9.ctex"]
 
 [params]
 
