@@ -14,6 +14,7 @@ enum State {
 @export_range(1.0, 10.0, 0.05) var goal: float
 @export_multiline var starting_lines: String
 @export_multiline var ending_lines: String
+@export_multiline var ending_fail_lines: String
 @export var emotion_response_animations: Dictionary[Topic.Emotion, StringName]
 
 @export_group("Internal")
@@ -40,7 +41,7 @@ func _ready() -> void:
 	assert(animator != null, "person needs an animator to be animated.")
 	assert(animator.has_animation("idle"), "animator needs idle animation")
 	assert(speech_bubble != null)
-	assert(ending_lines != "", "person needs lines to end encounter with")
+	assert(ending_fail_lines != "", "person needs ending fail lines to end encounter with")
 	assert(bullet_spawner != null, "person needs internal bullet spawner to be set")
 	_validate_topics() # TODO uncomment when the logic is implemented
 
@@ -81,7 +82,7 @@ func further_goal(progress: float) -> void:
 
 
 func further_topic_knowledge(topic: AbstractTopic, amount: int) -> void:
-	topic_knowledges[topic] = topic_knowledges.get(topic, 0) + amount
+	topic_knowledges[topic] = mini(topic_knowledges.get(topic, 0) + amount, 100)
 
 
 func get_topic_knowledge(topic: AbstractTopic) -> int:

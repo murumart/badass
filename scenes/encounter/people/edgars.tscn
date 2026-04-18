@@ -5,6 +5,11 @@
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_shbkl"]
 [ext_resource type="Texture2D" uid="uid://dl61e8f2sast7" path="res://art/edgar/edgar passiivne.png" id="4_d8d1c"]
 [ext_resource type="Script" uid="uid://gueua6osjqp7" path="res://scenes/encounter/people/goal_topic.gd" id="4_ommo6"]
+[ext_resource type="Texture2D" uid="uid://raiqniffgif1" path="res://art/edgar/edgar kuidas sa julged.png" id="6_ceaxl"]
+[ext_resource type="Texture2D" uid="uid://c7jbrboinompv" path="res://art/edgar/edgar narviline0000.png" id="6_trxmi"]
+[ext_resource type="Texture2D" uid="uid://ftif2ffassqo" path="res://art/edgar/edgar meelitatud.png" id="7_jgnw3"]
+[ext_resource type="Texture2D" uid="uid://b0mohfliiejbd" path="res://art/edgar/edgar narviline0001.png" id="7_klqs8"]
+[ext_resource type="Texture2D" uid="uid://3dtfrca8gayw" path="res://art/edgar/edgar narviline0002.png" id="8_aap2v"]
 
 [sub_resource type="Resource" id="Resource_d8d1c"]
 script = ExtResource("2_shbkl")
@@ -99,6 +104,36 @@ tracks/0/keys = {
 "values": [ExtResource("4_d8d1c")]
 }
 
+[sub_resource type="Animation" id="Animation_qsmmb"]
+resource_name = "flabbergasted"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Edgar:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_ceaxl")]
+}
+
+[sub_resource type="Animation" id="Animation_tglet"]
+resource_name = "flattered"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Edgar:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_jgnw3")]
+}
+
 [sub_resource type="Animation" id="Animation_ommo6"]
 resource_name = "idle"
 tracks/0/type = "value"
@@ -114,17 +149,41 @@ tracks/0/keys = {
 "values": [ExtResource("4_d8d1c")]
 }
 
+[sub_resource type="Animation" id="Animation_esoi5"]
+resource_name = "nervous"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Edgar:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.28, 0.67),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_trxmi"), ExtResource("7_klqs8"), ExtResource("8_aap2v")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_trxmi"]
 _data = {
 &"RESET": SubResource("Animation_d8d1c"),
-&"idle": SubResource("Animation_ommo6")
+&"flabbergasted": SubResource("Animation_qsmmb"),
+&"flattered": SubResource("Animation_tglet"),
+&"idle": SubResource("Animation_ommo6"),
+&"nervous": SubResource("Animation_esoi5")
 }
 
 [node name="Edgars" unique_id=1361515156 node_paths=PackedStringArray("animator", "bullet_spawner") instance=ExtResource("1_58dto")]
 topics = Array[ExtResource("2_d8d1c")]([SubResource("Resource_d8d1c"), SubResource("Resource_ommo6"), SubResource("Resource_trxmi"), SubResource("Resource_esoi5")])
 goal_topic = SubResource("Resource_klqs8")
 goal = 4.0
-ending_lines = "asfasfaaf"
+ending_fail_lines = "You Suck. Die."
+emotion_response_animations = Dictionary[int, StringName]({
+1: &"flattered",
+2: &"flabbergasted",
+4: &"nervous"
+})
 animator = NodePath("AnimationPlayer")
 bullet_spawner = NodePath("BulletSpawner")
 

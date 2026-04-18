@@ -3,8 +3,26 @@
 [ext_resource type="Script" uid="uid://djksjvvx7kh2g" path="res://scenes/encounter/console.gd" id="1_8uyry"]
 [ext_resource type="PackedScene" uid="uid://dniy034rjieje" path="res://scenes/ui/topic_button.tscn" id="3_nh0ls"]
 [ext_resource type="Texture2D" uid="uid://b7hejtbvg6i5f" path="res://art/konsool/konsool.png" id="3_s07ca"]
+[ext_resource type="Texture2D" uid="uid://btikj84nrtpb6" path="res://art/konsool/moodik.png" id="4_gtjfe"]
+[ext_resource type="Material" uid="uid://bv4ausw41k03c" path="res://resources/add.tres" id="4_yn47u"]
 [ext_resource type="Texture2D" uid="uid://bwasvn6wmjic4" path="res://art/konsool/seadeldis kaes.png" id="5_8k6qu"]
 [ext_resource type="Texture2D" uid="uid://daal3c740m7la" path="res://art/konsool/seadeldis 0.png" id="5_s07ca"]
+[ext_resource type="Texture2D" uid="uid://b1ubtsp6fh6w" path="res://art/particl.png" id="5_yalc1"]
+
+[sub_resource type="Gradient" id="Gradient_gtjfe"]
+offsets = PackedFloat32Array(0, 0.5265306, 1)
+colors = PackedColorArray(0.87058824, 0.34901962, 0.25490198, 1, 1, 0.7882353, 0.26666668, 1, 0.7490196, 0.9490196, 0.4, 1)
+
+[sub_resource type="Gradient" id="Gradient_cvbp2"]
+interpolation_mode = 2
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0, 0.5662393, 1)
+colors = PackedColorArray(0.9764706, 0.9764706, 0.9764706, 0, 0, 0, 0, 0.49411765, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_owg0a"]
+gradient = SubResource("Gradient_cvbp2")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
 
 [sub_resource type="LabelSettings" id="LabelSettings_nh0ls"]
 font_size = 21
@@ -12,7 +30,7 @@ font_color = Color(0.7490196, 0.9490196, 0.4, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nh0ls"]
 
-[node name="Console" type="Node2D" unique_id=611889631 node_paths=PackedStringArray("scanner", "scanner_area", "scanner_default_position", "topic_buttons", "scan_label", "device_show")]
+[node name="Console" type="Node2D" unique_id=611889631 node_paths=PackedStringArray("scanner", "scanner_area", "scanner_default_position", "topic_buttons", "scan_label", "device_show", "score_pos_top", "score_pos_bottom", "score_highlight")]
 script = ExtResource("1_8uyry")
 scanner = NodePath("Scanner")
 scanner_area = NodePath("Scanner/Eater")
@@ -20,9 +38,39 @@ scanner_default_position = NodePath("Defaultpos")
 topic_buttons = [NodePath("Control/GridContainer/TopicButton"), NodePath("Control/GridContainer/TopicButton2"), NodePath("Control/GridContainer/TopicButton3"), NodePath("Control/GridContainer/TopicButton4")]
 scan_label = NodePath("Scanner/Sprite2D/Label")
 device_show = NodePath("DeviceShow")
+score_gradient = SubResource("Gradient_gtjfe")
+score_pos_top = NodePath("Konsool/Node2D")
+score_pos_bottom = NodePath("Konsool/Node2D2")
+score_highlight = NodePath("Konsool/Highlight")
 
 [node name="Konsool" type="Sprite2D" parent="." unique_id=360942548]
 texture = ExtResource("3_s07ca")
+
+[node name="Stripe" type="Sprite2D" parent="Konsool" unique_id=526381326]
+clip_children = 1
+position = Vector2(164.03505, 87.90045)
+texture = SubResource("GradientTexture2D_owg0a")
+centered = false
+
+[node name="Sprite2D2" type="Sprite2D" parent="Konsool/Stripe" unique_id=1657470465]
+texture = ExtResource("4_gtjfe")
+centered = false
+region_enabled = true
+region_rect = Rect2(18, 19, 62, 61)
+
+[node name="Node2D" type="Node2D" parent="Konsool" unique_id=289755017]
+position = Vector2(176, 95)
+
+[node name="Node2D2" type="Node2D" parent="Konsool" unique_id=642512357]
+position = Vector2(214, 143)
+
+[node name="Highlight" type="Sprite2D" parent="Konsool" unique_id=1772887223]
+modulate = Color(1, 0.40392157, 0.3764706, 1)
+material = ExtResource("4_yn47u")
+position = Vector2(215, 142)
+rotation = -0.51461816
+scale = Vector2(1.0260227, 0.375)
+texture = ExtResource("5_yalc1")
 
 [node name="Control" type="MarginContainer" parent="." unique_id=546575652]
 offset_left = -58.0

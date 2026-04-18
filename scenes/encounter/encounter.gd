@@ -29,10 +29,12 @@ func _ready() -> void:
 	assert(person != null, "person is null (wrong type?)")
 	person.speaking_finished.connect(_on_person_spoke)
 	person_parent.add_child(person)
+	person.goal_progress = person.goal * 0.5
 	person.modulate.a = 0
 	assert(console != null)
 	console.topic_chosen.connect(_on_topic_chosen)
 
+	display_score()
 	begin_encounter()
 
 
@@ -101,11 +103,11 @@ func _on_topic_chosen(topic: int) -> void:
 			await person.speaking_finished
 			person.speak.call_deferred(person.ending_lines)
 			await person.speaking_finished
-			assert(false, "move to next enocunte")
+			_next_encounter()
 		else:
 			person.speak.call_deferred(t.lose_text)
 			await person.speaking_finished
-			assert(false, "move to gameover")
+			_gameover()
 		return
 
 	var score := 0
@@ -121,16 +123,32 @@ func _on_topic_chosen(topic: int) -> void:
 
 	stage = Stage.SPEAKING
 	person.further_goal(t.contribution_to_goal + person.get_topic_knowledge(t) * 0.1)
-	person.further_topic_knowledge(t, score)
+	person.further_topic_knowledge(t, score + int(person.get_topic_knowledge(t) * 0.05))
 	person.speak(t.responses[progress])
+	display_score()
+
+
+func display_score() -> void:
+	console.display_score(person.goal_progress / person.goal)
 
 
 func _on_person_spoke() -> void:
 	person.play_animation("idle")
 	if stage == Stage.FINAL_SPEECH:
 		return
+	if person.goal_progress <= 0:
+		person.speak(person.ending_fail_lines)
+		return
 	stage = Stage.WAITING
 	prepare_topics()
+
+
+func _next_encounter() -> void:
+	assert(false, "unimplemented")
+
+
+func _gameover() -> void:
+	assert(false, "unimplemented")
 
 
 static func enter(edata: EncounterData) -> void:
