@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://2yvq6yiiep7y"]
 
 [ext_resource type="Script" uid="uid://dkj3c0fk1xv1v" path="res://scenes/ui/main_menu.gd" id="1_sl1te"]
-[ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://icon.svg" id="2_fe2o3"]
+[ext_resource type="Texture2D" uid="uid://chq3plcx1dom5" path="res://art/boss0000.png" id="2_1g8jr"]
 [ext_resource type="FontFile" uid="uid://cln787ma2u7s8" path="res://resources/theme/Zerove-Regular.ttf" id="3_1g8jr"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m1kxf"]
@@ -22,9 +22,9 @@ exit_button = NodePath("HBoxContainer/VBoxContainer/ExitButton")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=260533777]
 modulate = Color(0.06666667, 0.043137256, 0.15686275, 1)
-position = Vector2(424, 219.00002)
-scale = Vector2(9.84375, 6.25)
-texture = ExtResource("2_fe2o3")
+position = Vector2(371, 242)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("2_1g8jr")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1000560811]
 layout_mode = 1
@@ -44,7 +44,7 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1914953977]
 layout_mode = 2
-text = "badass style game"
+text = "space guy game"
 label_settings = SubResource("LabelSettings_m1kxf")
 horizontal_alignment = 1
 
