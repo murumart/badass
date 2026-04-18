@@ -29,6 +29,8 @@ gdscript/warnings/untyped_declaration=2
 window/size/viewport_width=720
 window/size/viewport_height=480
 window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://dp7tbjy80mm11"
+mouse_cursor/custom_image_hotspot=Vector2(5, 4)
 
 [dotnet]
 

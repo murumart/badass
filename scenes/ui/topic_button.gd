@@ -7,6 +7,13 @@ enum TopicType {
 }
 
 
-func display(topic: AbstractTopic, _progress: int, _type: TopicType) -> void:
+func display(topic: AbstractTopic, person: Person, _type: TopicType) -> void:
 	text = "> " + topic.name
+	var know := person.get_topic_knowledge(topic)
+	if topic is GoalTopic:
+		pass
+	elif know < 50:
+		text += " (...?%s%%)" % know
+	elif topic is Topic:
+		text += " GOOD (+%s)" % int(topic.contribution_to_goal*100)
 	show()

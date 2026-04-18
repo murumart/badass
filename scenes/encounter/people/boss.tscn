@@ -21,14 +21,14 @@
 
 [sub_resource type="Resource" id="Resource_bjruo"]
 script = ExtResource("2_0mxwg")
-responses = PackedStringArray("Politics? Agent Gnortz you know very well our supreme leader Morkz von Knortz is doing everything for the good of our people and the peoples republic.")
+responses = PackedStringArray("Politics? Agent Gnortz you know very well our supreme leader Morkz von Knortz is doing everything for the good of our people and the peoples republic.\nOur mission is to secure the well-being of the republic...")
 emotional_response = 4
 name = "AskAboutPolitics"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_0mxwg"]
 script = ExtResource("2_0mxwg")
-responses = PackedStringArray("My family? Thank you for asking agent Gnortz my wife and three hundred twenty six children are doing quite well, but we have a mission to get on with right now.\n")
+responses = PackedStringArray("My family? Thank you for asking agent Gnortz my wife and three hundred twenty six children are doing quite well.\nWe should talk about our mission instead?")
 emotional_response = 4
 contribution_to_goal = 1.0
 name = "TalkAboutFamily"
@@ -36,7 +36,7 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_iotei"]
 script = ExtResource("2_0mxwg")
-responses = PackedStringArray("Space golf? You know i love it Gnortz!\nBut really agent, we DO have a mission to get on with here!")
+responses = PackedStringArray("Space golf? You know I love it Gnortz!\nBut really agent, we DO have a mission to get on with here!")
 contribution_to_goal = -0.30000000000000004
 name = "TalkAboutHobbies"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
@@ -53,8 +53,11 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_rl58q"]
 script = ExtResource("3_bjruo")
-win_text = "asdasd"
-lose_text = "YOU::::: LOOOOSEEE"
+win_text = "Agent, you have shown you are capable.
+You have the coordinates of your first target on Earth.
+Good luck out there."
+lose_text = "Agent! You fool! The tutorial isn't over! In a real interaction, you wouldn't get any information at this stage!
+You are clearly not fit for this mission. Come back later, once you have learned some basic discipline..."
 name = "CompleteTutorial"
 metadata/_custom_type_script = "uid://gueua6osjqp7"
 
@@ -541,12 +544,12 @@ func do(emotion: Topic.Emotion) -> void:
 	var tex := Bullet.TEX_SPARKLE
 	if emotion == Topic.Emotion.NERVOUS:
 		tex = Bullet.TEX_DROPLET
-	await get_tree().create_timer(0.5).timeout
-	await spawn_circle(eye1.position, 12, tex, 0.05, 80)
-	await get_tree().create_timer(0.5).timeout
-	await spawn_circle(eye2.position + Vector2.RIGHT * 32, 12, tex, 0.05, 80)
-	await get_tree().create_timer(0.5).timeout
-	await spawn_circle(mouth.position + Vector2.LEFT * 32, 12, tex, 0.05, 80)
+	await wait_t(0.5)
+	await spawn_circle(eye1.global_position, 12, tex, 0.05, 80)
+	await wait_t(0.5)
+	await spawn_circle(eye2.global_position + Vector2.RIGHT * 32, 12, tex, 0.05, 80)
+	await wait_t(0.5)
+	await spawn_circle(mouth.global_position + Vector2.LEFT * 32, 12, tex, 0.05, 80)
 	done.emit()
 "
 
@@ -559,7 +562,8 @@ Your mission requires you to interact with them and find out the whereabouts of 
 This is why we have equipped you with the latest [color=red]social signal[/color] interpreting tech.
 Let's familiarise you with it... When one exhibits an [color=blue]emotional response[/color], use your [color=blue]tech device[/color] to collect bits of info.
 These disappear quick and move around wildly, so expertise is required.
-With enough [color=blue]info[/color], the machine can determine what conversation topics are optimal to continue.
+With enough [color=blue]info[/color], the machine can determine what conversation topics are optimal to continue with to build [color=blue]trust[/color].
+And with enough [color=blue]trust[/color], you can acquire the information you need.
 Let's try it out. Pick a conversation topic."
 ending_lines = "You win!!! hahahahahahahprepare_topics"
 emotion_response_animations = Dictionary[int, StringName]({

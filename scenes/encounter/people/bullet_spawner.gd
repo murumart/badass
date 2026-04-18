@@ -6,6 +6,10 @@ signal done
 @abstract func do(emotion: Topic.Emotion) -> void
 
 
+func wait_t(amt: float) -> void:
+	await get_tree().create_timer(amt).timeout
+
+
 func spawn_circle(centre: Vector2, amt: int, texture: int, wait := 0.01, speed := 180.0) -> void:
 	for i in amt:
 		var angle := float(i) / (amt / TAU)
@@ -14,4 +18,4 @@ func spawn_circle(centre: Vector2, amt: int, texture: int, wait := 0.01, speed :
 		bullet.set_direction(vec, speed)
 		bullet.set_texture(texture)
 		add_child(bullet)
-		await get_tree().create_timer(wait).timeout
+		await wait_t(wait)

@@ -20,17 +20,19 @@ enum State {
 @export var speech_bubble: SpeechBubble
 @export var animator: AnimationPlayer
 @export var bullet_spawner: BulletSpawner
+@export_group("")
+
 var _state: State
-@export var state: State:
+var state: State:
 	get:
 		return _state
 	set(value):
 		var old := _state
 		_state = value
 		_on_state_set(value, old)
-@export_group("")
 
 var topic_progresses: Dictionary[AbstractTopic, int]
+var topic_knowledges: Dictionary[AbstractTopic, int]
 var goal_progress: float = 0.0
 
 
@@ -76,6 +78,14 @@ func progress_topic_and_get_previous(topic: AbstractTopic) -> int:
 
 func further_goal(progress: float) -> void:
 	goal_progress += progress
+
+
+func further_topic_knowledge(topic: AbstractTopic, amount: int) -> void:
+	topic_knowledges[topic] = topic_knowledges.get(topic, 0) + amount
+
+
+func get_topic_knowledge(topic: AbstractTopic) -> int:
+	return topic_knowledges.get(topic, 0)
 
 
 func _on_state_set(_to: State, _old: State) -> void:

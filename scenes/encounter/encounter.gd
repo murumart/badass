@@ -65,15 +65,17 @@ func prepare_topics() -> void:
 	stage = Stage.CHOOSING_TOPIC
 	var topics := _get_available_topics()
 	topics.shuffle()
-	if topics.size() > 4:
-		topics = topics.slice(0, 4)
-	console.prepare_topics(topics, person.topic_progresses)
+	if topics.size() > 3:
+		topics = topics.slice(0, 3)
+	topics.append(person.goal_topic)
+	assert(not topics.is_empty(), "no topics are available....")
+	console.prepare_topics(topics, person)
 	_prepared_topics = topics
 
 
 func _get_available_topics() -> Array[AbstractTopic]:
 	if person.goal_progress >= person.goal:
-		return [person.goal_topic]
+		return [] # goaltopic get added in prepare_topics
 	var ts: Array[AbstractTopic] = []
 	for t in person.topics:
 		match t.topic_appears_when:
@@ -84,7 +86,6 @@ func _get_available_topics() -> Array[AbstractTopic]:
 					continue # don't add this topic
 		if person.is_topic_exhausted(t): continue
 		ts.append(t)
-	assert(not ts.is_empty(), "no topics are available....")
 	return ts
 
 
@@ -107,6 +108,7 @@ func _on_topic_chosen(topic: int) -> void:
 			assert(false, "move to gameover")
 		return
 
+	var score := 0
 	if t.emotional_response != Topic.Emotion.NONE:
 		person.respond_to_topic(t.emotional_response)
 		console.start_scanning()
@@ -114,10 +116,12 @@ func _on_topic_chosen(topic: int) -> void:
 		stage = Stage.REACTING
 
 		await person.emoting_finished
-		await console.end_scanning()
+		console.end_scanning()
+		score = await console.scanning_ended
 
 	stage = Stage.SPEAKING
-	person.further_goal(t.contribution_to_goal)
+	person.further_goal(t.contribution_to_goal + person.get_topic_knowledge(t) * 0.1)
+	person.further_topic_knowledge(t, score)
 	person.speak(t.responses[progress])
 
 
