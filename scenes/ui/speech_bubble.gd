@@ -41,6 +41,7 @@ func speak_lines(lines: PackedStringArray) -> void:
 		await _next_line_requested
 		nextbutton.hide()
 	state = State.IDLE
+	skipbutton.hide()
 	speaking_finished.emit()
 	hide()
 

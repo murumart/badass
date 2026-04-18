@@ -4,7 +4,7 @@ signal speaking_finished
 
 enum State {
 	IDLE,
-	SEND_SIGNAL,
+	SENDING_SIGNAL,
 	SPEAKING,
 }
 
