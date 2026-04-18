@@ -496,6 +496,9 @@ script/source = "extends BulletSpawner
 
 
 func do(emotion: Topic.Emotion) -> void:
+	await get_tree().create_timer(0.5).timeout
+	await spawn_circle(bullet_spawnpoint.position, 12, 0)
+	await get_tree().create_timer(0.5).timeout
 	done.emit()
 "
 
@@ -566,5 +569,9 @@ offset_top = -137.0
 offset_right = -184.0
 offset_bottom = 37.0
 
-[node name="BulletSpawner" parent="." index="4" unique_id=608059629]
+[node name="BulletSpawnPoint" parent="." index="3" unique_id=846058525]
+position = Vector2(0, -49)
+
+[node name="BulletSpawner" parent="." index="4" unique_id=608059629 node_paths=PackedStringArray("bullet_spawnpoint")]
 script = SubResource("GDScript_iotei")
+bullet_spawnpoint = NodePath("../BulletSpawnPoint")

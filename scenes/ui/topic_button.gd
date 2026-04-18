@@ -7,6 +7,6 @@ enum TopicType {
 }
 
 
-func display(topic: Topic, progress: int, type: TopicType) -> void:
+func display(topic: AbstractTopic, progress: int, type: TopicType) -> void:
 	text = "> " + topic.name
 	show()

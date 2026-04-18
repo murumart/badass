@@ -17,8 +17,6 @@ enum State {
 
 @export_group("Internal")
 @export var speech_bubble: SpeechBubble
-@export var bullet_spawn_point: Marker2D
-
 @export var animator: AnimationPlayer
 @export var bullet_spawner: BulletSpawner
 var _state: State
@@ -38,7 +36,6 @@ var goal_progress: float = 0.0
 func _ready() -> void:
 	assert(animator != null, "person needs an animator to be animated.")
 	assert(speech_bubble != null)
-	assert(bullet_spawn_point != null)
 	assert(ending_lines != "", "person needs lines to end encounter with")
 	assert(bullet_spawner != null, "person needs internal bullet spawner to be set")
 	_validate_topics() # TODO uncomment when the logic is implemented
