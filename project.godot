@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="New Game Project"
+config/name="badass game"
 run/main_scene="uid://2yvq6yiiep7y"
 config/features=PackedStringArray("4.6", "Mobile")
 config/icon="res://icon.svg"
@@ -19,9 +19,24 @@ config/icon="res://icon.svg"
 
 UI="*uid://dbtxw1jpbbb5i"
 
+[debug]
+
+gdscript/warnings/standalone_expression=2
+gdscript/warnings/untyped_declaration=2
+
+[display]
+
+window/size/viewport_width=720
+window/size/viewport_height=480
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="New Game Project"
+
+[gui]
+
+theme/custom="uid://7pwkneh6677e"
 
 [physics]
 
@@ -29,5 +44,6 @@ project/assembly_name="New Game Project"
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="mobile"
