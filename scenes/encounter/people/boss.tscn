@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_4lv0d"]
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_0mxwg"]
+[ext_resource type="Script" uid="uid://cqpti41vi2kf5" path="res://scenes/encounter/people/abstract_topic.gd" id="2_bjruo"]
 [ext_resource type="Texture2D" uid="uid://cdfpfmxv1tlpk" path="res://art/boss/bossi taust0000.png" id="2_c3n53"]
 [ext_resource type="Texture2D" uid="uid://03rioj6bgebj" path="res://art/boss/bossi taust0001.png" id="3_cg7aa"]
 [ext_resource type="Texture2D" uid="uid://b3pyhoxfi60d4" path="res://art/boss/boss fade 1.png" id="4_466ai"]
@@ -19,33 +20,33 @@
 
 [sub_resource type="Resource" id="Resource_bjruo"]
 script = ExtResource("2_0mxwg")
-name = "AskAboutPolitics"
 responses = PackedStringArray("Politics? Agent Gnortz you know very well our supreme leader Morkz von Knortz is doing everything for the good of our people and the peoples republic.")
 emotional_response = 4
+name = "AskAboutPolitics"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_0mxwg"]
 script = ExtResource("2_0mxwg")
-name = "TalkAboutFamily"
 responses = PackedStringArray("My family? Thank you for asking agent Gnortz my wife and three hundred twenty six children are doing quite well, but we have a mission to get on with right now.\n")
 emotional_response = 4
 contribution_to_goal = 1.0
+name = "TalkAboutFamily"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_iotei"]
 script = ExtResource("2_0mxwg")
-name = "TalkAboutHobbies"
 responses = PackedStringArray("Space golf? You know i love it Gnortz!\nBut really agent, we DO have a mission to get on with here!")
 contribution_to_goal = -0.30000000000000004
+name = "TalkAboutHobbies"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_ffpwu"]
 script = ExtResource("2_0mxwg")
-name = "TalkAboutMission"
 responses = PackedStringArray("Good! You are fit for this mission. Good luck. Gnortz. Our hopes lie with you. All Hail the supreme leader of people`s republic of Grogzoria!")
 contribution_to_goal = 17.0
 topic_appears_when = 1
 prerequisite_topic_index = 1
+name = "TalkAboutMission"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Animation" id="Animation_5myyt"]
@@ -483,7 +484,7 @@ animations = [{
 }]
 
 [node name="Boss" unique_id=359469956 node_paths=PackedStringArray("animator") instance=ExtResource("1_4lv0d")]
-topics = Array[ExtResource("2_0mxwg")]([SubResource("Resource_bjruo"), SubResource("Resource_0mxwg"), SubResource("Resource_iotei"), SubResource("Resource_ffpwu")])
+topics = Array[ExtResource("2_bjruo")]([SubResource("Resource_bjruo"), SubResource("Resource_0mxwg"), SubResource("Resource_iotei"), SubResource("Resource_ffpwu")])
 goal = 4.0
 starting_lines = "Agent Gnortz, your people call you to duty!
 All the radios on our homeplanet of Grogzoria were destroyed by the heinous radio eating locust.

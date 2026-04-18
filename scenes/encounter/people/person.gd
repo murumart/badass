@@ -8,8 +8,8 @@ enum State {
 	SPEAKING,
 }
 
-@export var topics: Array[Topic]
-@export var goal_topic: Topic
+@export var topics: Array[AbstractTopic]
+@export var goal_topic: GoalTopic
 @export_range(1.0, 10.0, 0.05) var goal: float
 @export_multiline var starting_lines: String
 @export_multiline var ending_lines: String
@@ -28,7 +28,7 @@ var _state: State
 		_on_state_set(value, old)
 @export_group("")
 
-var topic_progresses: Dictionary[Topic, int]
+var topic_progresses: Dictionary[AbstractTopic, int]
 var goal_progress: float = 0.0
 
 
@@ -57,15 +57,15 @@ func speak(text: String) -> void:
 	speaking_finished.emit()
 
 
-func get_topic_progress(topic: Topic) -> int:
+func get_topic_progress(topic: AbstractTopic) -> int:
 	return topic_progresses.get(topic, 0)
 
 
-func is_topic_exhausted(topic: Topic) -> bool:
+func is_topic_exhausted(topic: AbstractTopic) -> bool:
 	return get_topic_progress(topic) == topic.responses.size()
 
 
-func progress_topic_and_get_previous(topic: Topic) -> int:
+func progress_topic_and_get_previous(topic: AbstractTopic) -> int:
 	var p: int = topic_progresses.get(topic, 0)
 	topic_progresses[topic] = p + 1
 	return p
