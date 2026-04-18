@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://dqukdjfl11tln"]
+[gd_scene format=3 uid="uid://cakmfi0mal443"]
 
 [ext_resource type="Texture2D" uid="uid://cju0kaak3xvi2" path="res://art/laev_väljast1.png" id="1_carac"]
 [ext_resource type="Texture2D" uid="uid://chlm20l68wgrn" path="res://art/laev_väljast2.png" id="2_k337x"]
@@ -98,223 +98,91 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Node2D/LaevVäljast:scale")
+tracks/7/path = NodePath("Node2D/LaevVäljast:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.15, 0.15)]
+"values": [Vector2(-95, 126)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Node2D/LaevVäljast:rotation")
+tracks/8/path = NodePath("Node2D/CanvasGroup/Laev:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.23916398]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Node2D/LaevVäljast:position")
+tracks/9/path = NodePath("Node2D/CanvasGroup:modulate")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-95, 126)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Node2D/CanvasGroup/Laev:modulate")
+tracks/10/path = NodePath("Node2D/LaevVäljast:texture")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [ExtResource("1_carac")]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Node2D/CanvasGroup:modulate")
+tracks/11/path = NodePath("Node2D/LaevVäljast/CPUParticles2D:emitting")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
+"update": 1,
+"values": [false]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Node2D/LaevVäljast2:position")
+tracks/12/path = NodePath("Node2D/LaevVäljast/CPUParticles2D:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-201.5, -392)]
+"values": [Vector2(-17.716675, 30.696777)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Node2D/LaevVäljast1:position")
+tracks/13/path = NodePath("Node2D/LaevVäljast:scale")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-201.5, -392)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Node2D/LaevVäljast3:position")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-201.5, -392)]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Node2D/LaevVäljast2:scale")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
 "values": [Vector2(1, 1)]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Node2D/LaevVäljast1:scale")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Node2D/LaevVäljast3:scale")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("Node2D/LaevVäljast2:visible")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("Node2D/LaevVäljast1:visible")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath("Node2D/LaevVäljast3:visible")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("Node2D/LaevVäljast:texture")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_carac")]
-}
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("Node2D/LaevVäljast/CPUParticles2D:emitting")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("Node2D/LaevVäljast/CPUParticles2D:amount")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [8]
-}
-tracks/24/type = "value"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath("Node2D/LaevVäljast/CPUParticles2D:position")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-17.716675, 30.696777)]
 }
 
 [sub_resource type="Animation" id="Animation_bar4x"]
 resource_name = "landing"
-length = 19.333334
+length = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -401,219 +269,87 @@ tracks/6/keys = {
 }
 tracks/7/type = "value"
 tracks/7/imported = false
-tracks/7/enabled = false
-tracks/7/path = NodePath("Node2D/LaevVäljast:scale")
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node2D/LaevVäljast:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(7.366667, 14.633333),
-"transitions": PackedFloat32Array(0.39229214, 1),
-"update": 0,
-"values": [Vector2(1.625, 1.625), Vector2(0.15, 0.15)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = false
-tracks/8/path = NodePath("Node2D/LaevVäljast:rotation")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(7.4666667, 14.633333),
-"transitions": PackedFloat32Array(2.9281716, 1),
-"update": 0,
-"values": [0.0, 0.23916398]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Node2D/LaevVäljast:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(7.47, 10.766666, 11.733334, 12.633333, 13.17, 14.633333),
-"transitions": PackedFloat32Array(0.46651652, 1, 2.4622886, 0.34151006, 0.07694675, 1),
+"transitions": PackedFloat32Array(0.46651652, 1, 2.4622886, 0.34151006, 10.196505, 1),
 "update": 0,
 "values": [Vector2(-141, -441.565), Vector2(-98.56351, 5.656708), Vector2(-98.56351, 5.656708), Vector2(-98.564, -55.388), Vector2(-98.564, -55.388), Vector2(-87.715, 119.985)]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Node2D/CanvasGroup/Laev:modulate")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node2D/CanvasGroup/Laev:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "update": 0,
 "values": []
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Node2D/CanvasGroup:modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node2D/CanvasGroup:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(5, 7.68),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = false
-tracks/12/path = NodePath("Node2D/LaevVäljast2:position")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(9.95, 13.65),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-89, -11), Vector2(-89, 102)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = false
-tracks/13/path = NodePath("Node2D/LaevVäljast1:position")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(6.333333, 9.95),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-201.5, -392), Vector2(-105, -5)]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = false
-tracks/14/path = NodePath("Node2D/LaevVäljast3:position")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(13.9, 15.62),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-82.315, 94.725), Vector2(-75, 112)]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = false
-tracks/15/path = NodePath("Node2D/LaevVäljast2:scale")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(6.333333, 13.889144),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.38, 0.38)]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = false
-tracks/16/path = NodePath("Node2D/LaevVäljast1:scale")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(6.3333335, 9.933333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = false
-tracks/17/path = NodePath("Node2D/LaevVäljast3:scale")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(15.933333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = false
-tracks/18/path = NodePath("Node2D/LaevVäljast2:visible")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
-"times": PackedFloat32Array(0, 9.9, 13.9),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, false, false]
-}
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = false
-tracks/19/path = NodePath("Node2D/LaevVäljast1:visible")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
-"times": PackedFloat32Array(-0.2, 0, 6.3333335, 9.9),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [false, false, false, false]
-}
-tracks/20/type = "value"
-tracks/20/imported = false
-tracks/20/enabled = false
-tracks/20/path = NodePath("Node2D/LaevVäljast3:visible")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
-"times": PackedFloat32Array(0, 14.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, false]
-}
-tracks/21/type = "value"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("Node2D/LaevVäljast:texture")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"times": PackedFloat32Array(0, 9.95, 13.426668),
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Node2D/LaevVäljast:texture")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 9.933333, 13.366667),
 "transitions": PackedFloat32Array(1, 1.7411013, 1),
 "update": 1,
 "values": [ExtResource("1_carac"), ExtResource("2_k337x"), ExtResource("3_04uw8")]
 }
-tracks/22/type = "value"
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/path = NodePath("Node2D/LaevVäljast/CPUParticles2D:emitting")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/keys = {
-"times": PackedFloat32Array(0, 10.666667, 17.733334),
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Node2D/LaevVäljast/CPUParticles2D:emitting")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 12.933333, 17.733334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
 }
-tracks/23/type = "value"
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/path = NodePath("Node2D/LaevVäljast/CPUParticles2D:amount")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/keys = {
-"times": PackedFloat32Array(10.833333, 11.54, 12.18, 13.166667, 14.333333, 15, 15.933333, 16.766666, 17.7),
-"transitions": PackedFloat32Array(0.5176319, 0.5176319, 0.5176319, 1, 0.40612635, 0.40612635, 0.40612635, 0.40612635, 1),
-"update": 1,
-"values": [1, 3, 5, 8, 8, 6, 4, 2, 1]
-}
-tracks/24/type = "value"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath("Node2D/LaevVäljast/CPUParticles2D:position")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Node2D/LaevVäljast/CPUParticles2D:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0, 13.1, 13.440001),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(-17.716675, 30.696777), Vector2(-17.716675, 30.696777), Vector2(-10.519104, 18.395996)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Node2D/LaevVäljast:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(7.4333334, 9.933333, 9.934569, 13.366667, 13.370722),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.46, 0.46), Vector2(1, 1), Vector2(0.34, 0.34), Vector2(1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k7j73"]
@@ -621,6 +357,13 @@ _data = {
 &"RESET": SubResource("Animation_k7j73"),
 &"landing": SubResource("Animation_bar4x")
 }
+
+[sub_resource type="Curve" id="Curve_carac"]
+_data = [Vector2(0, 0.65065145), 0.0, 0.0, 0, 0, Vector2(0.5196998, 0.9400108), 0.0, 0.0, 0, 0, Vector2(0.9981238, 0.62242126), -0.48226553, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_carac"]
+colors = PackedColorArray(0.3172787, 0.31727865, 0.31727865, 1, 0.4, 0.4, 0.4, 0)
 
 [node name="landingScene" type="Control" unique_id=970784039]
 layout_mode = 3
@@ -661,20 +404,25 @@ texture = ExtResource("6_lxjaf")
 [node name="LaevVäljast" type="Sprite2D" parent="Node2D" unique_id=515655328]
 visible = false
 position = Vector2(-95, 126)
-rotation = 0.23916398
-scale = Vector2(0.15, 0.15)
 texture = ExtResource("1_carac")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Node2D/LaevVäljast" unique_id=955475146]
 position = Vector2(-17.716675, 30.696777)
+emitting = false
+amount = 16
 texture = ExtResource("7_carac")
+explosiveness = 0.29
 emission_shape = 1
-emission_sphere_radius = 23.14
+emission_sphere_radius = 8.83
 direction = Vector2(0, 1)
 spread = 120.0
 gravity = Vector2(0, -40)
 initial_velocity_min = 25.31
-initial_velocity_max = 132.91
+initial_velocity_max = 50.63
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_carac")
+color_ramp = SubResource("Gradient_carac")
 
 [node name="LandingAnim" type="Sprite2D" parent="Node2D" unique_id=137195654]
 visible = false
