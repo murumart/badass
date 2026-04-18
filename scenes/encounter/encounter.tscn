@@ -1,17 +1,17 @@
 [gd_scene format=3 uid="uid://cjhydkqnw5146"]
 
 [ext_resource type="Script" uid="uid://dx8l81ck3hbqo" path="res://scenes/encounter/encounter.gd" id="1_lp88p"]
+[ext_resource type="PackedScene" uid="uid://cga1h887afsxr" path="res://scenes/encounter/backgrounds/farm.tscn" id="2_0kgjb"]
 [ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/person.tscn" id="2_j3lg0"]
 [ext_resource type="Script" uid="uid://cbbv8uq1aexko" path="res://scenes/encounter/encounter_data.gd" id="2_s1k85"]
 [ext_resource type="Texture2D" uid="uid://5yj643yre0ip" path="res://art/console_placeholder.png" id="3_13rki"]
 [ext_resource type="Script" uid="uid://djksjvvx7kh2g" path="res://scenes/encounter/console.gd" id="5_0kgjb"]
-[ext_resource type="PackedScene" uid="uid://b63pdqo826iud" path="res://scenes/encounter/spaceship.tscn" id="5_yyo66"]
 [ext_resource type="Texture2D" uid="uid://cym7e07xngq7b" path="res://art/scanner_placeholder.png" id="6_lbagw"]
 
 [sub_resource type="Resource" id="Resource_yyo66"]
 script = ExtResource("2_s1k85")
 person = ExtResource("2_j3lg0")
-background = ExtResource("5_yyo66")
+background = ExtResource("2_0kgjb")
 metadata/_custom_type_script = "uid://cbbv8uq1aexko"
 
 [node name="Encounter" type="Node2D" unique_id=1195995178 node_paths=PackedStringArray("background_parent", "person_parent")]
