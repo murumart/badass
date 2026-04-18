@@ -77,7 +77,7 @@ func further_goal(progress: float) -> void:
 	goal_progress += progress
 
 
-func _on_state_set(to: State, old: State) -> void:
+func _on_state_set(_to: State, _old: State) -> void:
 	pass
 
 

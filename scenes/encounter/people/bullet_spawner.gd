@@ -1,5 +1,6 @@
 @abstract class_name BulletSpawner extends Node
 
+@warning_ignore("unused_signal")
 signal done
 
 @export var bullet_spawnpoint: Marker2D

@@ -495,7 +495,7 @@ animations = [{
 script/source = "extends BulletSpawner
 
 
-func do(emotion: Topic.Emotion) -> void:
+func do(_emotion: Topic.Emotion) -> void:
 	await get_tree().create_timer(0.5).timeout
 	await spawn_circle(bullet_spawnpoint.position, 12, 0)
 	await get_tree().create_timer(0.5).timeout
