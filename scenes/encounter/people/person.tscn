@@ -2,14 +2,25 @@
 
 [ext_resource type="Script" uid="uid://iujsf2pw8lm2" path="res://scenes/encounter/people/person.gd" id="1_mw3jb"]
 [ext_resource type="PackedScene" uid="uid://cjs3lg8yk7gne" path="res://scenes/ui/speech_bubble.tscn" id="2_n8r47"]
+[ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_tbtmf"]
+
+[sub_resource type="Resource" id="Resource_vq6ox"]
+script = ExtResource("2_tbtmf")
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [node name="Person" type="Node2D" unique_id=1361515156 node_paths=PackedStringArray("speech_bubble")]
 script = ExtResource("1_mw3jb")
+goal_topic = SubResource("Resource_vq6ox")
 speech_bubble = NodePath("SpeechBubble")
 metadata/_custom_type_script = "uid://iujsf2pw8lm2"
 
 [node name="SpeechBubble" parent="." unique_id=663125359 instance=ExtResource("2_n8r47")]
+z_index = 5
 offset_left = -175.0
 offset_top = -127.0
 offset_right = -26.0
 offset_bottom = 47.0
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=846058525]
+
+[node name="BulletSpawner" type="Node" parent="." unique_id=608059629]

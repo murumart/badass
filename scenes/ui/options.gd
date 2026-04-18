@@ -17,7 +17,7 @@ var _options := {
 				assert(to == 0 or to == 1)
 				get_window().mode = Window.MODE_FULLSCREEN if to == 1 else Window.MODE_MAXIMIZED,
 			"getv": func() -> float:
-				return 1 if get_window().mode == Window.MODE_FULLSCREEN else 0.0,
+				return 1.0 if get_window().mode == Window.MODE_FULLSCREEN else 0.0,
 			"step": 1,
 		}
 	}

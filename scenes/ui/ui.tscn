@@ -3,8 +3,72 @@
 [ext_resource type="Script" uid="uid://b7jvypyetaqfi" path="res://scenes/ui/ui.gd" id="1_nt7q6"]
 [ext_resource type="PackedScene" uid="uid://bmxpvw37hc7s1" path="res://scenes/ui/options.tscn" id="2_x4jx1"]
 
+[sub_resource type="Animation" id="Animation_f5cxw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Swipe:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1355, -279)]
+}
+
+[sub_resource type="Animation" id="Animation_aac20"]
+resource_name = "swipe_in"
+length = 0.54
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Swipe:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2.3784142, 1),
+"update": 0,
+"values": [Vector2(-1355, -279), Vector2(-189, -297)]
+}
+
+[sub_resource type="Animation" id="Animation_g5kmx"]
+resource_name = "swipe_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Swipe:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.44),
+"transitions": PackedFloat32Array(2.6390157, 1),
+"update": 0,
+"values": [Vector2(-220, -292), Vector2(769, -302)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g5kmx"]
+_data = {
+&"RESET": SubResource("Animation_f5cxw"),
+&"swipe_in": SubResource("Animation_aac20"),
+&"swipe_out": SubResource("Animation_g5kmx")
+}
+
 [node name="Ui" type="CanvasLayer" unique_id=1835273871 node_paths=PackedStringArray("options")]
 script = ExtResource("1_nt7q6")
 options = NodePath("Options")
 
 [node name="Options" parent="." unique_id=205007288 instance=ExtResource("2_x4jx1")]
+visible = false
+
+[node name="Swipe" type="ColorRect" parent="." unique_id=880943026]
+offset_left = -1355.0
+offset_top = -279.0
+offset_right = -36.0
+offset_bottom = 733.0
+color = Color(0, 0, 0, 1)
+
+[node name="SwipeAnimation" type="AnimationPlayer" parent="." unique_id=1662235842]
+libraries/ = SubResource("AnimationLibrary_g5kmx")

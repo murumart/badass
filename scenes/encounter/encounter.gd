@@ -1,5 +1,13 @@
 class_name Encounter extends Node2D
 
+enum Stage {
+	WAITING,
+	CHOOSING_TOPIC,
+	REACTING,
+	SPEAKING,
+	FINAL_SPEECH,
+}
+
 @export var data: EncounterData
 
 @export var background_parent: Node
@@ -8,16 +16,22 @@ class_name Encounter extends Node2D
 
 var person: Person
 var background: Node2D
+var stage: Stage
 
 
 func _ready() -> void:
+	stage = Stage.WAITING
+
 	assert(data != null)
 	background = data.background.instantiate()
 	background_parent.add_child(background)
 	person = data.person.instantiate() as Person
 	assert(person != null, "person is null (wrong type?)")
+	person.speaking_finished.connect(_on_person_spoke)
 	person_parent.add_child(person)
 	person.modulate.a = 0
+	assert(console != null)
+	console.topic_chosen.connect(_on_topic_chosen)
 
 	begin_encounter()
 
@@ -28,21 +42,32 @@ func begin_encounter() -> void:
 	person.play_animation("idle")
 	tw.tween_property(person, "modulate:a", 1.0, 1.0).from(0.0)
 	tw.tween_interval(1)
-	if not person.starting_lines.is_empty():
+	if false and not person.starting_lines.is_empty():
 		tw.tween_callback(func() -> void:
 			person.speak(person.starting_lines)
 		)
 	tw.tween_callback(func() -> void:
-		var topics := _get_available_topics()
-		topics.shuffle()
-		if topics.size() > 4:
-			topics = topics.slice(0, 4)
-		console.prepare_topics(topics)
+		prepare_topics()
 	)
 
 
-func _get_available_topics() -> Array[String]:
-	var ts: Array[String] = []
+var _prepared_topics: Array[AbstractTopic] = []
+func prepare_topics() -> void:
+	assert(stage == Stage.WAITING)
+
+	stage = Stage.CHOOSING_TOPIC
+	var topics := _get_available_topics()
+	topics.shuffle()
+	if topics.size() > 4:
+		topics = topics.slice(0, 4)
+	console.prepare_topics(topics, person.topic_progresses)
+	_prepared_topics = topics
+
+
+func _get_available_topics() -> Array[AbstractTopic]:
+	if person.goal_progress >= person.goal:
+		return [person.goal_topic]
+	var ts: Array[AbstractTopic] = []
 	for t in person.topics:
 		match t.topic_appears_when:
 			Topic.PrereqBehaviour.NO_PREREQUISITE: pass
@@ -51,17 +76,50 @@ func _get_available_topics() -> Array[String]:
 				if not person.is_topic_exhausted(prerec):
 					continue # don't add this topic
 		if person.is_topic_exhausted(t): continue
-		ts.append(t.name)
+		ts.append(t)
 	assert(not ts.is_empty(), "no topics are available....")
 	return ts
 
 
-func _on_topic_chosen(topic: String) -> void:
-	for t in person.topics:
-		if t.name != topic: continue
-		person.progress_topic(t)
+func _on_topic_chosen(topic: int) -> void:
+	assert(stage == Stage.CHOOSING_TOPIC)
+	var t: AbstractTopic = _prepared_topics[topic]
+	var progress := person.progress_topic_and_get_previous(t)
+
+	if t is GoalTopic:
+		stage = Stage.FINAL_SPEECH
+		if person.goal_progress >= person.goal:
+			person.speak.call_deferred(t.win_text)
+			await person.speaking_finished
+			person.speak.call_deferred(person.ending_lines)
+			await person.speaking_finished
+			assert(false, "move to next enocunte")
+		else:
+			person.speak.call_deferred(t.lose_text)
+			await person.speaking_finished
+			assert(false, "move to gameover")
 		return
-	assert(false, "don't have this topic at all.")
+
+	if t.emotional_response != Topic.Emotion.NONE:
+		person.respond_to_topic(t.emotional_response)
+		console.start_scanning()
+
+		stage = Stage.REACTING
+
+		await person.emoting_finished
+		await console.end_scanning()
+
+	stage = Stage.SPEAKING
+	person.further_goal(t.contribution_to_goal)
+	person.speak(t.responses[progress])
+
+
+func _on_person_spoke() -> void:
+	person.play_animation("idle")
+	if stage == Stage.FINAL_SPEECH:
+		return
+	stage = Stage.WAITING
+	prepare_topics()
 
 
 static func enter(tree: SceneTree, edata: EncounterData) -> void:

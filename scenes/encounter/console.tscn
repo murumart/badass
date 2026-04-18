@@ -3,12 +3,16 @@
 [ext_resource type="Script" uid="uid://djksjvvx7kh2g" path="res://scenes/encounter/console.gd" id="1_8uyry"]
 [ext_resource type="Texture2D" uid="uid://5yj643yre0ip" path="res://art/console_placeholder.png" id="2_nh0ls"]
 [ext_resource type="Texture2D" uid="uid://cym7e07xngq7b" path="res://art/scanner_placeholder.png" id="3_8k6qu"]
+[ext_resource type="PackedScene" uid="uid://dniy034rjieje" path="res://scenes/ui/topic_button.tscn" id="3_nh0ls"]
 
-[node name="Console" type="Node2D" unique_id=611889631 node_paths=PackedStringArray("scanner", "scanner_default_position", "topic_buttons")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_nh0ls"]
+
+[node name="Console" type="Node2D" unique_id=611889631 node_paths=PackedStringArray("scanner", "scanner_area", "scanner_default_position", "topic_buttons")]
 script = ExtResource("1_8uyry")
 scanner = NodePath("Scanner")
+scanner_area = NodePath("Scanner/Eater")
 scanner_default_position = NodePath("Defaultpos")
-topic_buttons = [NodePath("Control/GridContainer/Button"), NodePath("Control/GridContainer/Button2"), NodePath("Control/GridContainer/Button3"), NodePath("Control/GridContainer/Button4")]
+topic_buttons = [NodePath("Control/GridContainer/TopicButton"), NodePath("Control/GridContainer/TopicButton2"), NodePath("Control/GridContainer/TopicButton3"), NodePath("Control/GridContainer/TopicButton4")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1281161686]
 position = Vector2(0, 167)
@@ -24,35 +28,39 @@ theme_override_constants/margin_top = 2
 theme_override_constants/margin_right = 2
 theme_override_constants/margin_bottom = 2
 
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1785692678]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
 [node name="GridContainer" type="GridContainer" parent="Control" unique_id=1046658577]
 layout_mode = 2
 columns = 2
 
-[node name="Button" type="Button" parent="Control/GridContainer" unique_id=1700003160]
+[node name="TopicButton" parent="Control/GridContainer" unique_id=1746476138 instance=ExtResource("3_nh0ls")]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Option"
 
-[node name="Button2" type="Button" parent="Control/GridContainer" unique_id=140275105]
+[node name="TopicButton2" parent="Control/GridContainer" unique_id=463342645 instance=ExtResource("3_nh0ls")]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Option"
 
-[node name="Button3" type="Button" parent="Control/GridContainer" unique_id=2073828343]
+[node name="TopicButton3" parent="Control/GridContainer" unique_id=1272109055 instance=ExtResource("3_nh0ls")]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Option"
 
-[node name="Button4" type="Button" parent="Control/GridContainer" unique_id=325149148]
+[node name="TopicButton4" parent="Control/GridContainer" unique_id=1785763759 instance=ExtResource("3_nh0ls")]
 layout_mode = 2
-size_flags_horizontal = 3
-text = "Option"
 
 [node name="Scanner" type="Node2D" parent="." unique_id=314995541]
 
 [node name="Sprite2D" type="Sprite2D" parent="Scanner" unique_id=1188561081]
 position = Vector2(-8, 19)
 texture = ExtResource("3_8k6qu")
+
+[node name="Eater" type="Area2D" parent="Scanner" unique_id=2064790196]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scanner/Eater" unique_id=797876587]
+shape = SubResource("CircleShape2D_nh0ls")
 
 [node name="Defaultpos" type="Marker2D" parent="." unique_id=1083295766]
 position = Vector2(0, 304)

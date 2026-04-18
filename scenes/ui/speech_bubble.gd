@@ -13,6 +13,7 @@ var state: State
 
 @export var textlabel: RichTextLabel
 @export var nextbutton: Button
+@export var skipbutton: Button
 
 var _remove_bbcode_regex := RegEx.new()
 
@@ -20,10 +21,13 @@ var _remove_bbcode_regex := RegEx.new()
 func _ready() -> void:
 	assert(textlabel != null)
 	assert(nextbutton != null)
+	assert(skipbutton != null)
 	hide()
 	_remove_bbcode_regex.compile("\\[.+?\\]")
 	nextbutton.pressed.connect(request_next_line)
+	skipbutton.pressed.connect(_on_skip_pressed)
 	nextbutton.hide()
+	skipbutton.hide()
 
 
 func speak_lines(lines: PackedStringArray) -> void:
@@ -33,6 +37,7 @@ func speak_lines(lines: PackedStringArray) -> void:
 	for line in lines:
 		speak_text(line)
 		await line_finished
+		skipbutton.hide()
 		nextbutton.show()
 		await _next_line_requested
 		nextbutton.hide()
@@ -41,17 +46,27 @@ func speak_lines(lines: PackedStringArray) -> void:
 	hide()
 
 
+var speaker_tween: Tween
 func speak_text(text: String) -> void:
 	assert(state == State.SPEAKING)
+	skipbutton.show()
 	state = State.SPEAKING
 	textlabel.text = text
 	textlabel.visible_ratio = 0.0
-	var tw := create_tween()
+	speaker_tween = create_tween()
 	var stripped := _remove_bbcode_regex.sub(text, "", true)
-	tw.tween_property(textlabel, ^"visible_ratio", 1.0, stripped.length() * 0.03)
-	tw.tween_callback(func() -> void:
+	speaker_tween.tween_property(textlabel, ^"visible_ratio", 1.0, stripped.length() * 0.03)
+	speaker_tween.tween_callback(func() -> void:
 		line_finished.emit()
 	)
+
+
+func _on_skip_pressed() -> void:
+	assert(state == State.SPEAKING)
+	speaker_tween.kill()
+	textlabel.visible_ratio = 1.0
+	line_finished.emit()
+	skipbutton.hide()
 
 
 func request_next_line() -> void:

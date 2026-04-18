@@ -1,6 +1,14 @@
 extends CanvasLayer
 
 @export var options: OptionsMenu
+@export var swipe_animation: AnimationPlayer
+
+var _transitioning: bool
+var transitioning: bool:
+	get:
+		return _transitioning
+	set(to):
+		assert(false)
 
 
 func _ready() -> void:
@@ -17,3 +25,23 @@ func _unhandled_key_input(event: InputEvent) -> void:
 			options.close()
 		elif false:
 			options.display()
+
+
+func swipe_transition(to: PackedScene) -> void:
+	assert(not _transitioning, "don't start transitioning while already transitioning")
+	_transitioning = true
+	var root := get_tree().root
+	var current := root.get_child(-1)
+
+	swipe_animation.play("swipe_in")
+	await swipe_animation.animation_finished
+	root.remove_child(current)
+	current.queue_free()
+
+	var next := to.instantiate()
+
+	root.add_child(next)
+	get_tree().current_scene = next
+	swipe_animation.play("swipe_out")
+	await swipe_animation.animation_finished
+	_transitioning = false

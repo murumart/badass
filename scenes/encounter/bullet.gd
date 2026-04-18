@@ -1,8 +1,13 @@
-class_name Bullet extends Node2D
+class_name Bullet extends Area2D
+
+enum {
+	TEX_SPARKLE,
+	TEX_DROPLET,
+	TEX_SPARK,
+}
 
 @export var sprite: Sprite2D
 @export var sprites: Array[Texture2D]
-@export var sprite_index: int
 
 var velocity: Vector2
 
@@ -14,7 +19,6 @@ var life: float
 
 func _ready() -> void:
 	assert(sprite != null and not sprites.is_empty())
-	assert(sprite_index < sprites.size())
 
 
 func _physics_process(delta: float) -> void:
@@ -33,6 +37,11 @@ func set_direction(dir: Vector2, mag: float) -> void:
 
 func add_velocity(vec: Vector2) -> void:
 	velocity += vec
+
+
+func set_texture(tx: int) -> void:
+	assert(tx < sprites.size())
+	sprite.texture = sprites[tx]
 
 
 static func make(pos: Vector2) -> Bullet:
