@@ -13,7 +13,7 @@ func _ready() -> void:
 	assert(bullet_spawnpoint != null)
 
 
-func spawn_circle(centre: Vector2, amt: int, texture: int, wait := 0.01, speed := 60.0) -> void:
+func spawn_circle(centre: Vector2, amt: int, texture: int, wait := 0.01, speed := 180.0) -> void:
 	for i in amt:
 		var angle := float(i) / (amt / TAU)
 		var vec := Vector2.from_angle(angle)

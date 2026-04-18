@@ -5,9 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://cym7e07xngq7b" path="res://art/scanner_placeholder.png" id="3_8k6qu"]
 [ext_resource type="PackedScene" uid="uid://dniy034rjieje" path="res://scenes/ui/topic_button.tscn" id="3_nh0ls"]
 
-[node name="Console" type="Node2D" unique_id=611889631 node_paths=PackedStringArray("scanner", "scanner_default_position", "topic_buttons")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_nh0ls"]
+
+[node name="Console" type="Node2D" unique_id=611889631 node_paths=PackedStringArray("scanner", "scanner_area", "scanner_default_position", "topic_buttons")]
 script = ExtResource("1_8uyry")
 scanner = NodePath("Scanner")
+scanner_area = NodePath("Scanner/Eater")
 scanner_default_position = NodePath("Defaultpos")
 topic_buttons = [NodePath("Control/GridContainer/TopicButton"), NodePath("Control/GridContainer/TopicButton2"), NodePath("Control/GridContainer/TopicButton3"), NodePath("Control/GridContainer/TopicButton4")]
 
@@ -50,6 +53,14 @@ layout_mode = 2
 [node name="Sprite2D" type="Sprite2D" parent="Scanner" unique_id=1188561081]
 position = Vector2(-8, 19)
 texture = ExtResource("3_8k6qu")
+
+[node name="Eater" type="Area2D" parent="Scanner" unique_id=2064790196]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scanner/Eater" unique_id=797876587]
+shape = SubResource("CircleShape2D_nh0ls")
 
 [node name="Defaultpos" type="Marker2D" parent="." unique_id=1083295766]
 position = Vector2(0, 304)

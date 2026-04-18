@@ -38,6 +38,11 @@ project/assembly_name="New Game Project"
 
 theme/custom="uid://7pwkneh6677e"
 
+[layer_names]
+
+2d_physics/layer_2="bullet"
+2d_physics/layer_3="bullet catcher"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
