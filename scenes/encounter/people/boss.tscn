@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_0mxwg"]
 [ext_resource type="Script" uid="uid://cqpti41vi2kf5" path="res://scenes/encounter/people/abstract_topic.gd" id="2_bjruo"]
 [ext_resource type="Texture2D" uid="uid://cdfpfmxv1tlpk" path="res://art/boss/bossi taust0000.png" id="2_c3n53"]
+[ext_resource type="Script" uid="uid://gueua6osjqp7" path="res://scenes/encounter/people/goal_topic.gd" id="3_bjruo"]
 [ext_resource type="Texture2D" uid="uid://03rioj6bgebj" path="res://art/boss/bossi taust0001.png" id="3_cg7aa"]
 [ext_resource type="Texture2D" uid="uid://b3pyhoxfi60d4" path="res://art/boss/boss fade 1.png" id="4_466ai"]
 [ext_resource type="Texture2D" uid="uid://bnk2y0i1agccg" path="res://art/boss/boss fade 2.png" id="5_5myyt"]
@@ -48,6 +49,13 @@ topic_appears_when = 1
 prerequisite_topic_index = 1
 name = "TalkAboutMission"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_rl58q"]
+script = ExtResource("3_bjruo")
+win_text = "asdasd"
+lose_text = "YOU::::: LOOOOSEEE"
+name = "CompleteTutorial"
+metadata/_custom_type_script = "uid://gueua6osjqp7"
 
 [sub_resource type="Animation" id="Animation_5myyt"]
 length = 0.001
@@ -485,6 +493,7 @@ animations = [{
 
 [node name="Boss" unique_id=359469956 node_paths=PackedStringArray("animator") instance=ExtResource("1_4lv0d")]
 topics = Array[ExtResource("2_bjruo")]([SubResource("Resource_bjruo"), SubResource("Resource_0mxwg"), SubResource("Resource_iotei"), SubResource("Resource_ffpwu")])
+goal_topic = SubResource("Resource_rl58q")
 goal = 4.0
 starting_lines = "Agent Gnortz, your people call you to duty!
 All the radios on our homeplanet of Grogzoria were destroyed by the heinous radio eating locust.

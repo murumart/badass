@@ -3,8 +3,8 @@ class_name Encounter extends Node2D
 enum Stage {
 	WAITING,
 	CHOOSING_TOPIC,
-	SPEAKING,
 	REACTING,
+	SPEAKING,
 	FINAL_SPEECH,
 }
 
@@ -51,7 +51,7 @@ func begin_encounter() -> void:
 	)
 
 
-var _prepared_topics: Array[Topic] = []
+var _prepared_topics: Array[AbstractTopic] = []
 func prepare_topics() -> void:
 	assert(stage == Stage.WAITING)
 
@@ -64,10 +64,10 @@ func prepare_topics() -> void:
 	_prepared_topics = topics
 
 
-func _get_available_topics() -> Array[Topic]:
+func _get_available_topics() -> Array[AbstractTopic]:
 	if person.goal_progress >= person.goal:
 		return [person.goal_topic]
-	var ts: Array[Topic] = []
+	var ts: Array[AbstractTopic] = []
 	for t in person.topics:
 		match t.topic_appears_when:
 			Topic.PrereqBehaviour.NO_PREREQUISITE: pass
@@ -83,8 +83,31 @@ func _get_available_topics() -> Array[Topic]:
 
 func _on_topic_chosen(topic: int) -> void:
 	assert(stage == Stage.CHOOSING_TOPIC)
-	var t: Topic = _prepared_topics[topic]
+	var t: AbstractTopic = _prepared_topics[topic]
 	var progress := person.progress_topic_and_get_previous(t)
+
+	if t is GoalTopic:
+		if person.goal_progress >= person.goal:
+			person.speak.call_deferred(t.win_text)
+			await person.speaking_finished
+			person.speak.call_deferred(person.ending_lines)
+			await person.speaking_finished
+			assert(false, "move to next enocunte")
+		else:
+			person.speak.call_deferred(t.lose_text)
+			await person.speaking_finished
+			assert(false, "move to gameover")
+		return
+
+	if t.emotional_response != Topic.Emotion.NONE:
+		person.respond_to_topic(t.emotional_response)
+
+		stage = Stage.REACTING
+		console.start_scanning()
+
+		await person.emoting_finished
+		console.end_scanning()
+
 	stage = Stage.SPEAKING
 	person.further_goal(t.contribution_to_goal)
 	person.speak(t.responses[progress])

@@ -8,10 +8,11 @@
 script = ExtResource("2_tbtmf")
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
-[node name="Person" type="Node2D" unique_id=1361515156 node_paths=PackedStringArray("speech_bubble")]
+[node name="Person" type="Node2D" unique_id=1361515156 node_paths=PackedStringArray("speech_bubble", "bullet_spawn_point")]
 script = ExtResource("1_mw3jb")
 goal_topic = SubResource("Resource_vq6ox")
 speech_bubble = NodePath("SpeechBubble")
+bullet_spawn_point = NodePath("BulletSpawnPoint")
 metadata/_custom_type_script = "uid://iujsf2pw8lm2"
 
 [node name="SpeechBubble" parent="." unique_id=663125359 instance=ExtResource("2_n8r47")]
@@ -20,3 +21,5 @@ offset_left = -175.0
 offset_top = -127.0
 offset_right = -26.0
 offset_bottom = 47.0
+
+[node name="BulletSpawnPoint" type="Marker2D" parent="." unique_id=846058525]

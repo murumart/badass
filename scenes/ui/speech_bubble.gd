@@ -37,11 +37,11 @@ func speak_lines(lines: PackedStringArray) -> void:
 	for line in lines:
 		speak_text(line)
 		await line_finished
+		skipbutton.hide()
 		nextbutton.show()
 		await _next_line_requested
 		nextbutton.hide()
 	state = State.IDLE
-	skipbutton.hide()
 	speaking_finished.emit()
 	hide()
 

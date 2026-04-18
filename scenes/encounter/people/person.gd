@@ -1,5 +1,6 @@
 class_name Person extends Node2D
 
+signal emoting_finished
 signal speaking_finished
 
 enum State {
@@ -16,6 +17,7 @@ enum State {
 
 @export_group("Internal")
 @export var speech_bubble: SpeechBubble
+@export var bullet_spawn_point: Marker2D
 
 @export var animator: AnimationPlayer
 var _state: State
@@ -35,6 +37,7 @@ var goal_progress: float = 0.0
 func _ready() -> void:
 	assert(animator != null, "person needs an animator to be animated.")
 	assert(speech_bubble != null)
+	assert(bullet_spawn_point != null)
 	assert(ending_lines != "", "person needs lines to end encounter with")
 	_validate_topics() # TODO uncomment when the logic is implemented
 
@@ -79,19 +82,27 @@ func _on_state_set(to: State, old: State) -> void:
 	pass
 
 
+func respond_to_topic(emotion: Topic.Emotion) -> void:
+	assert(emotion != Topic.Emotion.NONE)
+	await get_tree().create_timer(2.0).timeout
+	match emotion:
+		Topic.Emotion.SURPRISED:
+			pass
+	emoting_finished.emit()
+
+
 func _validate_topics() -> void:
 	var i := 0
 	var found := []
 	assert(goal_topic != null)
 	var alltopics := topics + [goal_topic]
-	for topic: Topic in alltopics:
+	for topic: AbstractTopic in alltopics:
 		assert(topic != null, "null topic no good")
 		assert(topic.name not in found, "topic name used already")
 		assert(topic.name != "", "topic name is empty")
-		assert(not topic.responses.is_empty(), "topic has no text responses")
+		if topic is Topic: assert(not topic.responses.is_empty(), "topic has no text responses")
 		found.append(topic.name)
-		if topic.topic_appears_when == Topic.PrereqBehaviour.PREREQUISITE_EXHAUSTED:
+		if topic is Topic: if topic.topic_appears_when == Topic.PrereqBehaviour.PREREQUISITE_EXHAUSTED:
 			assert(topic.prerequisite_topic_index != i, "topic's prerequisite index is itself's index")
 			assert(topic.prerequisite_topic_index >= 0 and topic.prerequisite_topic_index < topics.size(), "topic's prerequisite index out of range")
 		i += 1
-	assert(goal_topic.topic_appears_when == Topic.PrereqBehaviour.NO_PREREQUISITE, "goal topic prerequisite should be no")
