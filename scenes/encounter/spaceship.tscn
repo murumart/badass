@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b63pdqo826iud"]
+
+[ext_resource type="Texture2D" uid="uid://cqj6jouqres6q" path="res://art/laev_backround.png" id="1_dpq2m"]
+[ext_resource type="Texture2D" uid="uid://nhq57intx4dl" path="res://art/maa.png" id="2_cp02l"]
+[ext_resource type="Texture2D" uid="uid://dyietpdon844w" path="res://art/laev.png" id="3_5xmwl"]
+
+[node name="Spaceship" type="Node2D" unique_id=93757977]
+
+[node name="LaevBackround" type="Sprite2D" parent="." unique_id=1745776801]
+texture = ExtResource("1_dpq2m")
+
+[node name="Maa" type="Sprite2D" parent="." unique_id=628214884]
+texture = ExtResource("2_cp02l")
+
+[node name="Laev" type="Sprite2D" parent="." unique_id=471321587]
+texture = ExtResource("3_5xmwl")
