@@ -146,6 +146,13 @@ func _on_topic_chosen(topic: int) -> void:
 			tw.tween_property(good_convo_topic, ^"modulate", colors[0], 0.1)
 			tw.tween_property(good_convo_topic, ^"modulate", colors[1], 0.1)
 		tw.tween_callback(good_convo_topic.hide)
+	elif t not in _notified and t is Topic:
+		good_convo_topic.modulate = Color.WHITE
+		good_convo_topic.text = "didn't get enough information..."
+		good_convo_topic.show()
+		var tw := create_tween().set_trans(Tween.TRANS_EXPO)
+		tw.tween_interval(4)
+		tw.tween_callback(good_convo_topic.hide)
 	person.speak(t.responses[progress])
 	display_score()
 

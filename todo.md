@@ -1,6 +1,5 @@
 - [ ] bossi bulletid ilusaks
 - [ ] taustad mängu sisse
-- [ ] metal gear boss cutscenid
 - [ ] implementeeri maale lendamise animatsioon
 - [ ] skanneri helid
 - [ ] mary visuaalid
@@ -9,7 +8,9 @@
 - [ ] tesla visuaalid
 - [ ] gameover stseen
 - [ ] muusika igale tegelasele
-- [ ] näita et protsent on choicide jaoks
+- [ ] mgs peale edgarit
+- [X] metal gear boss cutscenid
+- [X] näita et protsent on choicide jaoks
 - [X] implementeeri scene transition animatsioon maale lendamine
 - [X] skanneri protsent
 - [X] play button võiks töötada
