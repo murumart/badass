@@ -28,6 +28,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = -38.0
+offset_right = 66.0
+offset_bottom = 57.5578
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_m1kxf")
@@ -50,7 +54,7 @@ size_flags_horizontal = 3
 
 [node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1914953977]
 layout_mode = 2
-text = "space guy game"
+text = "agent gnortz"
 label_settings = SubResource("LabelSettings_m1kxf")
 horizontal_alignment = 1
 
