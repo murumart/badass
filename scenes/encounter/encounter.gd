@@ -33,7 +33,6 @@ func _ready() -> void:
 	assert(person != null, "person is null (wrong type?)")
 	person.speaking_finished.connect(_on_person_spoke)
 	person_parent.add_child(person)
-	person.goal_progress = person.goal * 0.5
 	person.modulate.a = 0
 	assert(console != null)
 	console.topic_chosen.connect(_on_topic_chosen)

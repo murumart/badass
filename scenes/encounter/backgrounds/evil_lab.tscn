@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bo71jux1tw276"]
+
+[ext_resource type="Texture2D" uid="uid://b2k8am4bhfls0" path="res://art/evyl_layr_of_tesla_bot.png" id="1_b2idf"]
+
+[node name="EvilLab" type="Node2D" unique_id=522613775]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=429592402]
+texture = ExtResource("1_b2idf")

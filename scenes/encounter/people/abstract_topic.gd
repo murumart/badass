@@ -7,6 +7,7 @@ enum Emotion {
 	SURPRISED,
 	NERVOUS,
 	SAD,
+	SMUG,
 }
 
 enum PrereqBehaviour {

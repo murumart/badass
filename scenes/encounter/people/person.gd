@@ -11,7 +11,7 @@ enum State {
 
 @export var topics: Array[AbstractTopic]
 @export var goal_topic: GoalTopic
-@export_range(1.0, 10.0, 0.05) var goal: float
+@export_range(1.0, 10.0, 0.05) var goal: float = 1.0
 @export_multiline var starting_lines: String
 @export_multiline var ending_lines: String
 @export_multiline var ending_fail_lines: String
@@ -46,6 +46,7 @@ func _ready() -> void:
 	for v: StringName in emotion_response_animations.values(): assert(animator.has_animation(v), "dont have emotion animation")
 	_validate_topics()
 	state = State.IDLE
+	goal_progress = goal * 0.5
 
 
 func play_animation(anim: StringName) -> void:
@@ -133,3 +134,19 @@ func _validate_topics() -> void:
 			assert(topic.prerequisite_topic_index != i, "topic's prerequisite index is itself's index")
 			assert(topic.prerequisite_topic_index >= 0 and topic.prerequisite_topic_index < topics.size(), "topic's prerequisite index out of range")
 		i += 1
+	for line: String in goal_topic.win_text.split("\n"):
+		if line == "\n" or line == "":
+			push_error(goal_topic, " ", line)
+			assert(false, "empty line")
+	for line: String in goal_topic.lose_text.split("\n"):
+		if line == "\n" or line == "":
+			push_error(goal_topic, " ", line)
+			assert(false, "empty line")
+	if ending_lines: for line: String in ending_lines.split("\n"):
+		if line == "\n" or line == "":
+			push_error(ending_lines, " ", line)
+			assert(false, "empty line")
+	for line: String in ending_fail_lines.split("\n"):
+		if line == "\n" or line == "":
+			push_error(ending_fail_lines, " ", line)
+			assert(false, "empty line")

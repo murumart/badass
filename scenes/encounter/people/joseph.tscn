@@ -1,13 +1,25 @@
-[gd_scene format=3 uid="uid://c0snjt8aute74"]
+[gd_scene format=3 uid="uid://b6he1grq6575g"]
 
 [ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_i2e50"]
-[ext_resource type="Script" path="res://scenes/encounter/people/abstract_topic.gd" id="2_ioo8f"]
+[ext_resource type="Script" uid="uid://cqpti41vi2kf5" path="res://scenes/encounter/people/abstract_topic.gd" id="2_ioo8f"]
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_m71ut"]
-[ext_resource type="Script" path="res://scenes/encounter/people/goal_topic.gd" id="4_60lpe"]
+[ext_resource type="Script" uid="uid://gueua6osjqp7" path="res://scenes/encounter/people/goal_topic.gd" id="4_60lpe"]
+[ext_resource type="Texture2D" uid="uid://cw60mlppc3g0a" path="res://art/joosep/joosep neutraalne0000.png" id="5_60lpe"]
+[ext_resource type="Texture2D" uid="uid://cwso0i7oopvav" path="res://art/joosep/joosep hirmul0000.png" id="6_m2ove"]
+[ext_resource type="Texture2D" uid="uid://s6t6d0raidg5" path="res://art/joosep/joosep neutraalne0001.png" id="6_tim23"]
+[ext_resource type="Texture2D" uid="uid://ccichvc2xasoh" path="res://art/joosep/joosep hirmul0001.png" id="7_dyl3h"]
+[ext_resource type="Texture2D" uid="uid://brjnx0irsp5nf" path="res://art/joosep/joosep pahur0000.png" id="7_rjj7t"]
+[ext_resource type="Texture2D" uid="uid://qatygpfhorl2" path="res://art/joosep/joosep hirmul0002.png" id="8_620in"]
+[ext_resource type="Texture2D" uid="uid://c84c388myan4w" path="res://art/joosep/joosep pahur0001.png" id="8_v31fj"]
+[ext_resource type="Texture2D" uid="uid://eox7mske4br1" path="res://art/joosep/joosep roomus0000.png" id="12_620in"]
+[ext_resource type="Texture2D" uid="uid://fsoa2evnw32o" path="res://art/joosep/joosep roomus0001.png" id="13_ul667"]
+[ext_resource type="Texture2D" uid="uid://dro3oh4kf2yn3" path="res://art/joosep/joosep vaga tark0000.png" id="14_gajwf"]
+[ext_resource type="Texture2D" uid="uid://keo3crmfrbg5" path="res://art/joosep/joosep vaga tark0001.png" id="15_y1w16"]
 
 [sub_resource type="Resource" id="Resource_ioo8f"]
 script = ExtResource("2_m71ut")
 responses = PackedStringArray("This lab here? Yeah I`m quite a scientist myself, of course none of these moron`s here see that.\nNo matter though, soon I will make it big with my investments and finance my own projects.")
+emotional_response = 6
 contribution_to_goal = -0.5
 name = "TalkAboutScience"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
@@ -21,7 +33,7 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_p74aw"]
 script = ExtResource("2_m71ut")
-responses = PackedStringArray("Oh yeah wait a minute, I have a free bet in GIGAMEGABET.\nGambling is really just another income I have man.\nYeah I`m down a few thousand dollars right now but I`m about to make it back and more!\n")
+responses = PackedStringArray("Oh yeah wait a minute, I have a free bet in GIGAMEGABET.\nGambling is really just another income I have man.\nYeah I`m down a few thousand dollars right now but I`m about to make it back and more!")
 contribution_to_goal = 1.0
 name = "TalkAboutGambling"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
@@ -36,6 +48,7 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 [sub_resource type="Resource" id="Resource_v31fj"]
 script = ExtResource("2_m71ut")
 responses = PackedStringArray("Mary was my biggest mistake man. She always nagged on me for smoking and my interest in investing.\nShe`s going to be real mad when I`m going to make it real big and buy myself a mansion and really expensive Porche.")
+emotional_response = 4
 contribution_to_goal = -1.0
 name = "TalkAboutMary"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
@@ -46,6 +59,144 @@ win_text = "Radios? I dont really know much, but there is a weird old man in the
 lose_text = "Who are you? What do you want from here? Radios? No, I don`t know anything about any radios. Get out!"
 name = "Ask about radios"
 
-[node name="joseph" unique_id=1361515156 instance=ExtResource("1_i2e50")]
+[sub_resource type="GDScript" id="GDScript_ioo8f"]
+script/source = "extends BulletSpawner
+
+
+
+
+func do(emotion: Topic.Emotion) -> void:
+
+	await wait_t(0.75)
+	done.emit()
+"
+
+[sub_resource type="Animation" id="Animation_p74aw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_60lpe")]
+}
+
+[sub_resource type="Animation" id="Animation_ul667"]
+resource_name = "hirmul"
+length = 4.345
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333, 0.4, 0.6333333, 0.75666666, 0.9, 1, 1.1666667, 1.2666667, 1.4333333, 1.5566666, 1.71, 1.8333334, 1.89, 2.0133333, 2.12, 2.2433333, 2.33, 2.4533334, 2.66, 2.7, 2.7666667, 2.8, 2.8666666, 2.9, 3.71, 3.8333335, 4.2, 4.3233333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("6_m2ove"), ExtResource("7_dyl3h"), ExtResource("8_620in"), ExtResource("7_dyl3h"), ExtResource("8_620in"), ExtResource("7_dyl3h"), ExtResource("7_dyl3h"), ExtResource("8_620in"), ExtResource("8_620in"), ExtResource("7_dyl3h"), ExtResource("8_620in"), ExtResource("7_dyl3h"), ExtResource("8_620in"), ExtResource("7_dyl3h"), ExtResource("8_620in"), ExtResource("7_dyl3h"), ExtResource("8_620in"), ExtResource("7_dyl3h"), ExtResource("8_620in"), ExtResource("7_dyl3h"), ExtResource("8_620in"), ExtResource("7_dyl3h"), ExtResource("8_620in"), ExtResource("7_dyl3h"), ExtResource("8_620in"), ExtResource("7_dyl3h"), ExtResource("8_620in"), ExtResource("7_dyl3h"), ExtResource("8_620in")]
+}
+
+[sub_resource type="Animation" id="Animation_rjj7t"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.48),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("5_60lpe"), ExtResource("6_tim23")]
+}
+
+[sub_resource type="Animation" id="Animation_6qq6g"]
+resource_name = "pahur"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("7_rjj7t"), ExtResource("8_v31fj")]
+}
+
+[sub_resource type="Animation" id="Animation_gajwf"]
+resource_name = "roomus"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("12_620in"), ExtResource("13_ul667")]
+}
+
+[sub_resource type="Animation" id="Animation_3hfl7"]
+resource_name = "tark"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("14_gajwf"), ExtResource("15_y1w16")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v31fj"]
+_data = {
+&"RESET": SubResource("Animation_p74aw"),
+&"hirmul": SubResource("Animation_ul667"),
+&"idle": SubResource("Animation_rjj7t"),
+&"pahur": SubResource("Animation_6qq6g"),
+&"roomus": SubResource("Animation_gajwf"),
+&"tark": SubResource("Animation_3hfl7")
+}
+
+[node name="joseph" unique_id=1361515156 node_paths=PackedStringArray("animator", "bullet_spawner") instance=ExtResource("1_i2e50")]
 topics = Array[ExtResource("2_ioo8f")]([SubResource("Resource_ioo8f"), SubResource("Resource_60lpe"), SubResource("Resource_p74aw"), SubResource("Resource_rjj7t"), SubResource("Resource_v31fj")])
 goal_topic = SubResource("Resource_tim23")
+ending_fail_lines = "Freak"
+emotion_response_animations = Dictionary[int, StringName]({
+1: &"roomus",
+2: &"pahur",
+3: &"hirmul",
+4: &"hirmul",
+6: &"tark"
+})
+animator = NodePath("AnimationPlayer")
+bullet_spawner = NodePath("BulletSpawner")
+
+[node name="SpeechBubble" parent="." index="0" unique_id=663125359]
+offset_left = -293.0
+offset_right = -144.0
+
+[node name="BulletSpawner" parent="." index="1" unique_id=608059629]
+script = SubResource("GDScript_ioo8f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2" unique_id=1169355870]
+scale = Vector2(0.84166664, 0.84166664)
+texture = ExtResource("5_60lpe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=1025230055]
+libraries/ = SubResource("AnimationLibrary_v31fj")
