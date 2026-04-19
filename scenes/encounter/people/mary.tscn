@@ -5,6 +5,15 @@
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_og1gi"]
 [ext_resource type="Script" uid="uid://gueua6osjqp7" path="res://scenes/encounter/people/goal_topic.gd" id="4_wwbfv"]
 [ext_resource type="Texture2D" uid="uid://bp8bs6u2nt7ui" path="res://art/mary/mary neutraalne.png" id="5_wwbfv"]
+[ext_resource type="Texture2D" uid="uid://cev2kbnuefwio" path="res://art/mary/mary impressed0000.png" id="6_53xiv"]
+[ext_resource type="Texture2D" uid="uid://b67fcaxc6ulbv" path="res://art/mary/mary naerab0000.png" id="6_rwqpo"]
+[ext_resource type="Texture2D" uid="uid://ba2lx74fbuw1" path="res://art/mary/mary hairitud0000.png" id="6_xjd17"]
+[ext_resource type="Texture2D" uid="uid://decxgp1bwfrtx" path="res://art/mary/mary impressed0001.png" id="7_0eqa2"]
+[ext_resource type="Texture2D" uid="uid://pwpydekvd1n8" path="res://art/mary/mary hairitud0002.png" id="7_1pcpc"]
+[ext_resource type="Texture2D" uid="uid://c52a1gev8nw6u" path="res://art/mary/mary naerab0001.png" id="7_b3vnm"]
+[ext_resource type="Texture2D" uid="uid://clmwb4qeoibcx" path="res://art/mary/mary kardab0001.png" id="8_axxi7"]
+[ext_resource type="Texture2D" uid="uid://cw0c3ow7w2hb0" path="res://art/mary/mary kardab0002.png" id="9_do3uv"]
+[ext_resource type="Texture2D" uid="uid://c8tx6e6ay38rv" path="res://art/mary/mary kardab0000.png" id="10_xjd17"]
 
 [sub_resource type="Resource" id="Resource_gcp41"]
 script = ExtResource("2_og1gi")
@@ -23,7 +32,7 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_wwbfv"]
 script = ExtResource("2_og1gi")
-responses = PackedStringArray("Music is really the source of all happiness in my life right now. And thats not a bad thing!\n", "Either listening to music I love, or discovering new music, it makes me feel happy and alive!", "I like to listen to everything really. Pop, Jazz, Rock and Techno.")
+responses = PackedStringArray("Music is really the source of all happiness in my life right now. And thats not a bad thing!", "Either listening to music I love, or discovering new music, it makes me feel happy and alive!", "I like to listen to everything really. Pop, Jazz, Rock and Techno.")
 emotional_response = 1
 contribution_to_goal = 1.0
 name = "TalkAboutMusic"
@@ -55,7 +64,9 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_rwqpo"]
 script = ExtResource("4_wwbfv")
-win_text = "Hmm radios? I work in a radio station, but i doubt you mean that. My ex-boyfriend Joseph works in a university. A few months ago there was a huge news story about the university was sending out very strong radio waves. You might get betters answers asking him."
+win_text = "Hmm radios? I work in a radio station, but i doubt you mean that.
+My ex-boyfriend Joseph works in a university.
+A few months ago there was a huge news story about the university was sending out very strong radio waves. You might get betters answers asking him."
 lose_text = "You assume just because i work in a radio station i know about radios? I dont even know you, get lost!"
 name = "Ask about radios"
 
@@ -65,6 +76,36 @@ script/source = "extends BulletSpawner
 
 
 func do(emotion: Topic.Emotion) -> void:
+	await wait_t(1.0)
+
+	var mode := randi() % 2
+
+	var tx := Bullet.TEX_DROPLET
+	if emotion == Topic.Emotion.HAPPY:
+		tx = Bullet.TEX_SPARKLE
+	elif emotion == Topic.Emotion.ANGRY:
+		tx = Bullet.TEX_SPARK
+
+	if mode == 0:
+		var i := 0
+		Console.scan_max = int(12 * 12 * 12 * 0.75)
+		for x: float in range(-6, 7):
+			for y: float in range(-6, 7):
+				spawn_circle(Vector2(x / 12 * 720 + sin(y), y / 12 * 480 + cos(x)) * 0.75, 12, tx, maxf(0.1 - i * 0.001, 0.001), 110)
+		await wait_t(0.8)
+	elif mode == 1:
+		Console.scan_max = int(10 * 120 * 0.5)
+		for y in range(-5, 5):
+			for x in range(-60, 60):
+				var b := Bullet.make(Vector2(float(x) / 120 * 720, sin(x) * y * 240))
+				b.set_direction(Vector2.DOWN if x % 2 == 0 else Vector2.UP, 80)
+				b.max_lifetime = 3.0
+				b.drag = -0.05
+				add_child(b)
+		await wait_t(4.0)
+
+	await wait_t(0.75)
+
 	done.emit()
 "
 
@@ -83,6 +124,37 @@ tracks/0/keys = {
 "values": [ExtResource("5_wwbfv")]
 }
 
+[sub_resource type="Animation" id="Animation_petca"]
+resource_name = "disturbed"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_xjd17"), ExtResource("7_1pcpc")]
+}
+
+[sub_resource type="Animation" id="Animation_drvme"]
+resource_name = "happy"
+length = 0.365
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_rwqpo"), ExtResource("7_b3vnm")]
+}
+
 [sub_resource type="Animation" id="Animation_yy4xl"]
 resource_name = "idle"
 tracks/0/type = "value"
@@ -98,10 +170,45 @@ tracks/0/keys = {
 "values": [ExtResource("5_wwbfv")]
 }
 
+[sub_resource type="Animation" id="Animation_1pcpc"]
+resource_name = "scared"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_axxi7"), ExtResource("9_do3uv"), ExtResource("10_xjd17")]
+}
+
+[sub_resource type="Animation" id="Animation_rwqpo"]
+resource_name = "surprised"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_53xiv"), ExtResource("7_0eqa2")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_53xiv"]
 _data = {
 &"RESET": SubResource("Animation_wwbfv"),
-&"idle": SubResource("Animation_yy4xl")
+&"disturbed": SubResource("Animation_petca"),
+&"happy": SubResource("Animation_drvme"),
+&"idle": SubResource("Animation_yy4xl"),
+&"scared": SubResource("Animation_1pcpc"),
+&"surprised": SubResource("Animation_rwqpo")
 }
 
 [node name="Mary" unique_id=1361515156 node_paths=PackedStringArray("animator", "bullet_spawner") instance=ExtResource("1_flsc6")]
@@ -110,12 +217,21 @@ goal_topic = SubResource("Resource_rwqpo")
 goal = 4.0
 starting_lines = "Hello, my father sent you? Sure i can answer some questions."
 ending_lines = "Good luck with your search! Hope you find what you need."
+ending_fail_lines = "I don`t know why my father sent you here. Get lost you disgusting person!"
+emotion_response_animations = Dictionary[int, StringName]({
+1: &"happy",
+2: &"disturbed",
+3: &"surprised",
+4: &"scared"
+})
 animator = NodePath("AnimationPlayer")
 bullet_spawner = NodePath("BulletSpawner")
 
 [node name="SpeechBubble" parent="." index="0" unique_id=663125359]
 offset_left = -328.0
+offset_top = -97.0
 offset_right = -179.0
+offset_bottom = 77.0
 
 [node name="Line2D" parent="SpeechBubble" index="0" unique_id=1952329087]
 points = PackedVector2Array(129, 101, 213, 108)
@@ -124,10 +240,11 @@ points = PackedVector2Array(129, 101, 213, 108)
 script = SubResource("GDScript_wwbfv")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="2" unique_id=523778290]
+position = Vector2(0, 44)
+scale = Vector2(0.85833323, 0.8583333)
 texture = ExtResource("5_wwbfv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=1011303469]
 libraries/ = SubResource("AnimationLibrary_53xiv")
 
 [editable path="SpeechBubble"]
-ending_fail_lines = "I don`t know why my father sent you here. Get lost you disgusting person!"

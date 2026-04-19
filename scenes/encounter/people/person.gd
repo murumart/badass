@@ -43,6 +43,7 @@ func _ready() -> void:
 	assert(speech_bubble != null)
 	assert(ending_fail_lines != "", "person needs ending fail lines to end encounter with")
 	assert(bullet_spawner != null, "person needs internal bullet spawner to be set")
+	for v: StringName in emotion_response_animations.values(): assert(animator.has_animation(v), "dont have emotion animation")
 	_validate_topics()
 	state = State.IDLE
 
@@ -93,12 +94,16 @@ func _on_state_set(_to: State, _old: State) -> void:
 
 
 func respond_to_topic(emotion: Topic.Emotion) -> void:
+	var tw := create_tween().set_trans(Tween.TRANS_CUBIC)
+	tw.set_ease(Tween.EASE_OUT).tween_property(self, "modulate", Color.DIM_GRAY, 0.75)
 	assert(emotion != Topic.Emotion.NONE)
 	if emotion in emotion_response_animations:
 		play_animation(emotion_response_animations[emotion])
 	bullet_spawner.do(emotion)
 	await bullet_spawner.done
 	await get_tree().create_timer(1.0).timeout
+	tw = create_tween().set_trans(Tween.TRANS_CUBIC)
+	tw.set_ease(Tween.EASE_OUT).tween_property(self, "modulate", Color.WHITE, 0.75)
 	match emotion:
 		Topic.Emotion.SURPRISED:
 			pass
@@ -120,9 +125,9 @@ func _validate_topics() -> void:
 			assert(not topic.responses.is_empty(), "topic has no text responses")
 			for response: String in topic.responses:
 				for line: String in response.split("\n"):
-					if line == "\n":
-						printerr(response, " ", line)
-						assert(false)
+					if line == "\n" or line == "":
+						push_error(response, " ", line)
+						assert(false, "empty line")
 		found.append(topic.name)
 		if topic is Topic: if topic.topic_appears_when == Topic.PrereqBehaviour.PREREQUISITE_EXHAUSTED:
 			assert(topic.prerequisite_topic_index != i, "topic's prerequisite index is itself's index")

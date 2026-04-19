@@ -120,6 +120,8 @@ func _on_topic_chosen(topic: int) -> void:
 
 	var score := 0
 	if t.emotional_response != Topic.Emotion.NONE:
+		var tw := create_tween().set_trans(Tween.TRANS_CUBIC)
+		tw.tween_property(background_parent, "modulate", Color.DARK_SLATE_GRAY, 1.0)
 		person.respond_to_topic(t.emotional_response)
 		console.start_scanning()
 
@@ -128,6 +130,8 @@ func _on_topic_chosen(topic: int) -> void:
 		await person.emoting_finished
 		console.end_scanning()
 		score = await console.scanning_ended
+		tw = create_tween().set_trans(Tween.TRANS_CUBIC)
+		tw.tween_property(background_parent, "modulate", Color.WHITE, 1.0)
 
 	stage = Stage.SPEAKING
 	person.further_goal(t.contribution_to_goal + person.get_topic_knowledge(t) * 0.1)
@@ -168,9 +172,12 @@ func display_score() -> void:
 func _on_person_spoke() -> void:
 	person.play_animation("idle")
 	if stage == Stage.FINAL_SPEECH:
+		if person.goal_progress <= 0:
+			_gameover()
 		return
 	if person.goal_progress <= 0:
-		person.speak(person.ending_fail_lines)
+		stage = Stage.FINAL_SPEECH
+		person.speak.call_deferred(person.ending_fail_lines)
 		return
 	stage = Stage.WAITING
 	prepare_topics()
