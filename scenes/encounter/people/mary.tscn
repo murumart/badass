@@ -130,3 +130,4 @@ texture = ExtResource("5_wwbfv")
 libraries/ = SubResource("AnimationLibrary_53xiv")
 
 [editable path="SpeechBubble"]
+ending_fail_lines = "I don`t know why my father sent you here. Get lost you disgusting person!"
