@@ -178,7 +178,7 @@ func menusound(pitch := 1.0, options := {}) -> void:
 
 # clearing silent audio players
 func _on_sound_clear_timer_timeout() -> void:
-	for s: Node in playing_sounds:
+	for s: Variant in playing_sounds:
 		if not is_instance_valid(s):
 			continue
 		var player: Node = s as AudioStreamPlayer
@@ -187,7 +187,7 @@ func _on_sound_clear_timer_timeout() -> void:
 		if not player.playing and not player.stream_paused:
 			playing_sounds.erase(player)
 			player.call_deferred("queue_free")
-	for s: Node in playing_sounds:
+	for s: Variant in playing_sounds:
 		if not is_instance_valid(s):
 			playing_sounds.erase(s)
 

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_6xjub"]
 [ext_resource type="Script" uid="uid://cqpti41vi2kf5" path="res://scenes/encounter/people/abstract_topic.gd" id="2_kpdy8"]
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_whhc5"]
-[ext_resource type="Script" path="res://scenes/encounter/people/goal_topic.gd" id="4_vy8ul"]
+[ext_resource type="Script" uid="uid://gueua6osjqp7" path="res://scenes/encounter/people/goal_topic.gd" id="4_vy8ul"]
 [ext_resource type="AudioStream" uid="uid://cts0hj44oe22l" path="res://sounds/voice/teslavoice-01.ogg" id="5_m1b7a"]
 [ext_resource type="Texture2D" uid="uid://c6sr1q7rvepml" path="res://art/tesla/tesla neutraalne.png" id="5_vy8ul"]
 [ext_resource type="AudioStream" uid="uid://be2nj06he8hn5" path="res://sounds/voice/teslavoice-02.ogg" id="6_k25d1"]

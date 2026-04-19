@@ -17,4 +17,5 @@ background = ExtResource("1_7sbix")
 delay_before_begin_s = 2.0
 person_enter_animation = &"fadein"
 next = SubResource("Resource_lbvj3")
+gameover_scene_path = "res://scenes/mgs_cutscene.tscn"
 metadata/_custom_type_script = "uid://cbbv8uq1aexko"
