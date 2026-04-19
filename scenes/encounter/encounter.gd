@@ -187,7 +187,8 @@ func _next_encounter() -> void:
 
 
 func _gameover() -> void:
-	assert(false, "unimplemented")
+	Cutscene.last_encounter = data
+	UI.swipe_transition(load("res://scenes/Cutscenes/men_in_black.tscn"))
 
 
 static func enter(edata: EncounterData) -> void:

@@ -1,0 +1,255 @@
+[gd_scene format=3 uid="uid://4ytd48voi8cq"]
+
+[ext_resource type="Script" uid="uid://8ghnjek1wxjv" path="res://scenes/Cutscenes/cutscene.gd" id="1_rmxne"]
+[ext_resource type="Texture2D" uid="uid://pfsncpgsdufp" path="res://art/cutscene/mehed mustas krabavad0000.png" id="2_aw58n"]
+[ext_resource type="Texture2D" uid="uid://csub14q3nu6xm" path="res://art/cutscene/mehed mustas krabavad0001.png" id="3_oapk7"]
+[ext_resource type="Texture2D" uid="uid://58vfrfmjraqk" path="res://art/cutscene/mehed mustas krabavad0002.png" id="4_onivu"]
+[ext_resource type="Texture2D" uid="uid://den6n8sy3lk5q" path="res://art/cutscene/mehed mustas krabavad0003.png" id="5_ktvow"]
+[ext_resource type="Texture2D" uid="uid://dtur65uw6w8fp" path="res://art/cutscene/mehed mustas krabavad0004.png" id="6_mct7m"]
+[ext_resource type="Texture2D" uid="uid://bo7ps6ll8rypg" path="res://art/cutscene/mehed mustas krabavad0005.png" id="7_4lmkb"]
+[ext_resource type="Texture2D" uid="uid://dmssceccf2fee" path="res://art/mehed mustas.png" id="8_oapk7"]
+[ext_resource type="FontFile" uid="uid://cln787ma2u7s8" path="res://resources/theme/Zerove-Regular.ttf" id="9_onivu"]
+
+[sub_resource type="GDScript" id="GDScript_onivu"]
+script/source = "extends ColorRect
+
+@onready var button: Button = $\"../ColorRect2/Button\"
+
+
+func _ready() -> void:
+	Sounds.play_song(\"bad_end\", 99, {\"play_from_beginning\": true, \"start_volume\": 0})
+	button.pressed.connect(func() -> void:
+		button.disabled = true
+		Encounter.enter(Cutscene.last_encounter)
+	)
+"
+
+[sub_resource type="Animation" id="Animation_onivu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.06666667, 0.043137256, 0.15686275, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1111, 400)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.42745098)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_aw58n"]
+resource_name = "yes"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.0333333, 1.9666667),
+"transitions": PackedFloat32Array(4.924576, 1),
+"update": 0,
+"values": [0, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7666667),
+"transitions": PackedFloat32Array(5.2780294, 1),
+"update": 0,
+"values": [Color(0.28627452, 0.12941177, 0.25882354, 1), Color(0.62352943, 0.13725491, 0.29411766, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7, 1.67),
+"transitions": PackedFloat32Array(0.3077861, 1),
+"update": 0,
+"values": [Vector2(1111, 400), Vector2(-370, 400)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.42745098)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("ColorRect2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oapk7"]
+_data = {
+&"RESET": SubResource("Animation_onivu"),
+&"yes": SubResource("Animation_aw58n")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bacoh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_aw58n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_oapk7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_onivu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ktvow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_mct7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4lmkb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ktvow"]
+font = ExtResource("9_onivu")
+font_size = 55
+font_color = Color(0.18039216, 0.4509804, 0.39215687, 1)
+
+[node name="MenInBlack" type="Node2D" unique_id=2031403583]
+script = ExtResource("1_rmxne")
+metadata/_custom_type_script = "uid://8ghnjek1wxjv"
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1600247824]
+offset_left = -116.0
+offset_top = -97.0
+offset_right = 858.0
+offset_bottom = 629.0
+color = Color(0.06666667, 0.043137256, 0.15686275, 1)
+script = SubResource("GDScript_onivu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1407015060]
+libraries/ = SubResource("AnimationLibrary_oapk7")
+autoplay = &"yes"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1411888947]
+sprite_frames = SubResource("SpriteFrames_bacoh")
+frame = 5
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1032186078]
+modulate = Color(1, 1, 1, 0.42745098)
+position = Vector2(1111, 400)
+scale = Vector2(3.8712447, 2.369159)
+texture = ExtResource("8_oapk7")
+region_enabled = true
+region_rect = Rect2(73, 39, 233, 428)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=2018774069]
+visible = false
+offset_right = 735.0
+offset_bottom = 493.0
+color = Color(0.06666667, 0.043137256, 0.15686275, 1)
+
+[node name="Label" type="Label" parent="ColorRect2" unique_id=1222885249]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -227.0
+offset_top = -112.5
+offset_right = 227.0
+offset_bottom = -48.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "you were caught..."
+label_settings = SubResource("LabelSettings_ktvow")
+
+[node name="Button" type="Button" parent="ColorRect2" unique_id=105073514]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -15.0
+offset_right = 47.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Retry"

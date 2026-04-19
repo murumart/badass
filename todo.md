@@ -1,15 +1,15 @@
-- [ ] bossi bulletid ilusaks
-- [ ] taustad mängu sisse
-- [ ] implementeeri maale lendamise animatsioon
-- [ ] skanneri helid
-- [ ] mary visuaalid
-- [ ] joosepi visuaalid
-- [ ] maaka visuaalid
-- [ ] tesla visuaalid
 - [ ] gameover stseen
 - [ ] muusika igale tegelasele
-- [ ] mgs peale edgarit
-- [ ] button soudning mängivad topelt consolis
+- [X] mgs peale edgarit
+- [X] button soudning mängivad topelt consolis
+- [X] bossi bulletid ilusaks
+- [X] taustad mängu sisse
+- [X] implementeeri maale lendamise animatsioon
+- [X] skanneri helid
+- [X] mary visuaalid
+- [X] joosepi visuaalid
+- [X] maaka visuaalid
+- [X] tesla visuaalid
 - [X] metal gear boss cutscenid
 - [X] näita et protsent on choicide jaoks
 - [X] implementeeri scene transition animatsioon maale lendamine
@@ -22,6 +22,6 @@
 - [X] bossi tutorial tekst
 
 - heliefektid
-  - [ ] klikk blip
+  - [X] klikk blip
   - [ ] paneb skinsuiti selga nagu thrive cell death
   - [ ]
