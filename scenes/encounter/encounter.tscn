@@ -4,6 +4,7 @@
 [ext_resource type="Resource" uid="uid://bkfwhatrbcrtm" path="res://resources/game/edgars_encounter.tres" id="2_13rki"]
 [ext_resource type="Script" uid="uid://utfgxr8if0yd" path="res://sounds/button_sound_adder.gd" id="4_s1k85"]
 [ext_resource type="PackedScene" uid="uid://dluhpk1fpwdjd" path="res://scenes/encounter/console.tscn" id="5_lbagw"]
+[ext_resource type="AudioStream" uid="uid://cl8eps8nby3rn" path="res://sounds/awesome_open.ogg" id="5_yyo66"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_13rki"]
 font_size = 24
@@ -40,3 +41,8 @@ label_settings = SubResource("LabelSettings_13rki")
 [node name="ButtonSoundAdder" type="Node" parent="." unique_id=806476581]
 script = ExtResource("4_s1k85")
 metadata/_custom_type_script = "uid://utfgxr8if0yd"
+
+[node name="ScanningGoodSound" type="AudioStreamPlayer" parent="." unique_id=1391622179]
+unique_name_in_owner = true
+stream = ExtResource("5_yyo66")
+volume_db = -4.0

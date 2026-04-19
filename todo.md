@@ -9,6 +9,7 @@
 - [ ] gameover stseen
 - [ ] muusika igale tegelasele
 - [ ] mgs peale edgarit
+- [ ] button soudning mängivad topelt consolis
 - [X] metal gear boss cutscenid
 - [X] näita et protsent on choicide jaoks
 - [X] implementeeri scene transition animatsioon maale lendamine

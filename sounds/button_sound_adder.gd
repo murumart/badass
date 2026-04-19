@@ -10,7 +10,7 @@ func _recurse(nod: Node, buttons: Array[Button]) -> void:
 
 func _ready() -> void:
 	var buttons: Array[Button]
-	_recurse(get_tree().root, buttons)
+	_recurse(get_parent(), buttons)
 	#print(buttons)
 	var sd := {"volume": -14.0}
 	for b in buttons:

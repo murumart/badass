@@ -16,6 +16,8 @@ enum Stage {
 
 @export var good_convo_topic: Label
 
+@onready var scanning_good_sound: AudioStreamPlayer = %ScanningGoodSound
+
 var person: Person
 var background: Node2D
 var stage: Stage
@@ -134,6 +136,8 @@ func _on_topic_chosen(topic: int) -> void:
 		_notified[t] = true
 		good_convo_topic.show()
 		var good := (t as Topic).contribution_to_goal > 0
+		if good:
+			scanning_good_sound.play()
 		var bad := (t as Topic).contribution_to_goal < 0
 		good_convo_topic.text = t.name + " is a " + ("good" if good else "bad" if bad else "useless") + " convo topic!"
 		var colors: PackedColorArray = (

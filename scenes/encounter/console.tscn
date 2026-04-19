@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://2hjsaksolc3b" path="res://sounds/beign_scan.ogg" id="9_yn47u"]
 [ext_resource type="AudioStream" uid="uid://eov3yefknc0n" path="res://sounds/machine_back.ogg" id="10_em5rv"]
 [ext_resource type="AudioStream" uid="uid://d0ubmd8el4gmw" path="res://sounds/end_scan.ogg" id="10_t43mj"]
-[ext_resource type="AudioStream" uid="uid://cl8eps8nby3rn" path="res://sounds/awesome_open.ogg" id="11_lvpy5"]
 [ext_resource type="AudioStream" uid="uid://btyy2gbmp30nj" path="res://sounds/modelm-01.ogg" id="11_t43mj"]
 [ext_resource type="AudioStream" uid="uid://p5dtb4n0v0r7" path="res://sounds/modelm-02.ogg" id="12_lvpy5"]
 [ext_resource type="AudioStream" uid="uid://cdkyn4wejda5c" path="res://sounds/modelm-03.ogg" id="13_q4foa"]
@@ -164,11 +163,6 @@ stream = ExtResource("9_yn47u")
 [node name="EndSound" type="AudioStreamPlayer" parent="Scanner" unique_id=1816056075]
 unique_name_in_owner = true
 stream = ExtResource("10_t43mj")
-
-[node name="EndGoodSound" type="AudioStreamPlayer" parent="Scanner" unique_id=1598504165]
-unique_name_in_owner = true
-stream = ExtResource("11_lvpy5")
-volume_db = -4.0
 
 [node name="SnapBackSound" type="AudioStreamPlayer" parent="Scanner" unique_id=878256134]
 unique_name_in_owner = true

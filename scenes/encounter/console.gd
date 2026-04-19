@@ -13,7 +13,6 @@ enum Mode {
 @onready var snap_back_sound: AudioStreamPlayer = %SnapBackSound
 @onready var collect_sound: AudioStreamPlayer = %CollectSound
 @onready var end_sound: AudioStreamPlayer = %EndSound
-@onready var end_good_sound: AudioStreamPlayer = %EndGoodSound
 
 @export var scanner: Node2D
 @export var scanner_area: Area2D
@@ -74,8 +73,6 @@ func end_scanning() -> void:
 	tw.tween_property(scanner, "position", scanner_default_position.position, 0.3)
 	await tw.finished
 	scanning_ended.emit(_score)
-	if _score >= 50:
-		end_good_sound.play()
 	_reset_scanner()
 
 
