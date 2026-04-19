@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EncounterData" format=3 uid="uid://jglpkudlf0st"]
+
+[ext_resource type="Script" uid="uid://cbbv8uq1aexko" path="res://scenes/encounter/encounter_data.gd" id="1_kh3ld"]
+[ext_resource type="PackedScene" uid="uid://bo71jux1tw276" path="res://scenes/encounter/backgrounds/evil_lab.tscn" id="1_kl0mq"]
+[ext_resource type="PackedScene" uid="uid://brs33d5i0g0bw" path="res://scenes/encounter/people/nikola_tesla.tscn" id="2_5e4lr"]
+
+[resource]
+script = ExtResource("1_kh3ld")
+person = ExtResource("2_5e4lr")
+background = ExtResource("1_kl0mq")
+metadata/_custom_type_script = "uid://cbbv8uq1aexko"

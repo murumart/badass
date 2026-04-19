@@ -1,13 +1,23 @@
 [gd_scene format=3 uid="uid://brs33d5i0g0bw"]
 
 [ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_6xjub"]
-[ext_resource type="Script" path="res://scenes/encounter/people/abstract_topic.gd" id="2_kpdy8"]
+[ext_resource type="Script" uid="uid://cqpti41vi2kf5" path="res://scenes/encounter/people/abstract_topic.gd" id="2_kpdy8"]
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_whhc5"]
-[ext_resource type="Script" path="res://scenes/encounter/people/goal_topic.gd" id="4_vy8ul"]
+[ext_resource type="Script" uid="uid://gueua6osjqp7" path="res://scenes/encounter/people/goal_topic.gd" id="4_vy8ul"]
+[ext_resource type="Texture2D" uid="uid://c6sr1q7rvepml" path="res://art/tesla/tesla neutraalne.png" id="5_vy8ul"]
+[ext_resource type="Texture2D" uid="uid://df37u12mpt05m" path="res://art/tesla/tesla hirmul0000.png" id="6_n6ofg"]
+[ext_resource type="Texture2D" uid="uid://drxcomeg3i134" path="res://art/tesla/tesla hirmul0001.png" id="7_p2d1j"]
+[ext_resource type="Texture2D" uid="uid://b5ts0kyot1gwg" path="res://art/tesla/tesla roomus0000.png" id="8_2y8x4"]
+[ext_resource type="Texture2D" uid="uid://c12xvm4uhj3n4" path="res://art/tesla/tesla punastab0000.png" id="8_vcofo"]
+[ext_resource type="Texture2D" uid="uid://gbqtqo2xlupi" path="res://art/tesla/tesla punastab0001.png" id="9_coqqi"]
+[ext_resource type="Texture2D" uid="uid://bjn4f5uq6s5e4" path="res://art/tesla/tesla roomus0001.png" id="9_vcofo"]
+[ext_resource type="Texture2D" uid="uid://bxt0dfob0axil" path="res://art/tesla/tesla vihane0000.png" id="12_fryi2"]
+[ext_resource type="Texture2D" uid="uid://61rb2epepukx" path="res://art/tesla/tesla vihane0001.png" id="13_ujt35"]
+[ext_resource type="Texture2D" uid="uid://q2upmke20lrk" path="res://art/tesla/tesla vihane0002.png" id="14_cojs8"]
 
 [sub_resource type="Resource" id="Resource_s1ryu"]
 script = ExtResource("2_whhc5")
-responses = PackedStringArray("Yes i quite enjoy the company of the greates friend a human could have.\n", "Dogs are fine companions, i value their loyalty to the highest degree.")
+responses = PackedStringArray("Yes i quite enjoy the company of the greates friend a human could have.", "Dogs are fine companions, i value their loyalty to the highest degree.")
 emotional_response = 1
 contribution_to_goal = 0.5
 name = "TalkAboutDogs"
@@ -41,11 +51,168 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 script = ExtResource("4_vy8ul")
 win_text = "Allright, i will help you, i think your people will appreciate me more then humankind ever did."
 lose_text = "No! Sorry, but i cannot leave humanity behind. No hard feeling, but i must report you to the men in black now."
+name = "SavePlanet"
 
-[node name="nikolaTesla" unique_id=1361515156 instance=ExtResource("1_6xjub")]
-topics = Array[ExtResource("2_kpdy8")]([SubResource("Resource_s1ryu"), SubResource("Resource_kpdy8"), SubResource("Resource_5xhy3"), SubResource("Resource_w7355"), null])
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vy8ul"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.69803923, 0.81960785, 0.9098039, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="SystemFont" id="SystemFont_5xhy3"]
+font_names = PackedStringArray("Serif")
+
+[sub_resource type="GDScript" id="GDScript_kpdy8"]
+script/source = "extends BulletSpawner
+
+
+func do(emotion: Topic.Emotion) -> void:
+
+	await wait_t(0.5)
+	done.emit()
+"
+
+[sub_resource type="Animation" id="Animation_vy8ul"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_vy8ul")]
+}
+
+[sub_resource type="Animation" id="Animation_coqqi"]
+resource_name = "hirmul"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_n6ofg"), ExtResource("7_p2d1j")]
+}
+
+[sub_resource type="Animation" id="Animation_5xhy3"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_vy8ul")]
+}
+
+[sub_resource type="Animation" id="Animation_ujt35"]
+resource_name = "punastab"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("8_vcofo"), ExtResource("9_coqqi")]
+}
+
+[sub_resource type="Animation" id="Animation_fryi2"]
+resource_name = "roomus"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("8_2y8x4"), ExtResource("9_vcofo")]
+}
+
+[sub_resource type="Animation" id="Animation_bcbx0"]
+resource_name = "vihane"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("12_fryi2"), ExtResource("13_ujt35"), ExtResource("14_cojs8")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w7355"]
+_data = {
+&"RESET": SubResource("Animation_vy8ul"),
+&"hirmul": SubResource("Animation_coqqi"),
+&"idle": SubResource("Animation_5xhy3"),
+&"punastab": SubResource("Animation_ujt35"),
+&"roomus": SubResource("Animation_fryi2"),
+&"vihane": SubResource("Animation_bcbx0")
+}
+
+[node name="nikolaTesla" unique_id=1361515156 node_paths=PackedStringArray("animator", "bullet_spawner") instance=ExtResource("1_6xjub")]
+topics = Array[ExtResource("2_kpdy8")]([SubResource("Resource_s1ryu"), SubResource("Resource_kpdy8"), SubResource("Resource_5xhy3"), SubResource("Resource_w7355")])
 goal_topic = SubResource("Resource_cu8d5")
 goal = 5.0
 starting_lines = "Hello *unkown lifeform* I am Ni-Cola Tesla Bot. I am a cloned body of Nikola Tesla made one with the machine."
 ending_lines = "Let us go! Your civilizations needs a saviour, and it will be I! Ni-Cola Tesla. Humankind deservers no salvation anyways."
 ending_fail_lines = "No, i must stay here and work tirelessly in the shadows. Only in this way may humanity prosper."
+emotion_response_animations = Dictionary[int, StringName]({
+1: &"punastab",
+2: &"vihane",
+4: &"hirmul"
+})
+animator = NodePath("AnimationPlayer")
+bullet_spawner = NodePath("BulletSpawner")
+
+[node name="SpeechBubble" parent="." index="0" unique_id=663125359]
+offset_left = -255.0
+offset_right = -106.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_vy8ul")
+
+[node name="Line2D" parent="SpeechBubble" index="0" unique_id=1952329087]
+points = PackedVector2Array(129, 101, 199, 106)
+default_color = Color(0.69803923, 0.81960785, 0.9098039, 1)
+
+[node name="RichTextLabel" parent="SpeechBubble/MarginContainer" parent_id_path=PackedInt32Array(663125359, 1217526062) index="0" unique_id=603030193]
+theme_override_fonts/normal_font = SubResource("SystemFont_5xhy3")
+theme_override_font_sizes/normal_font_size = 15
+
+[node name="BulletSpawner" parent="." index="1" unique_id=608059629]
+script = SubResource("GDScript_kpdy8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2" unique_id=155770438]
+scale = Vector2(0.8208333, 0.8208333)
+texture = ExtResource("5_vy8ul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=1158359562]
+libraries/ = SubResource("AnimationLibrary_w7355")
+
+[editable path="SpeechBubble"]
