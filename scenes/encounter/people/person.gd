@@ -43,8 +43,7 @@ func _ready() -> void:
 	assert(speech_bubble != null)
 	assert(ending_fail_lines != "", "person needs ending fail lines to end encounter with")
 	assert(bullet_spawner != null, "person needs internal bullet spawner to be set")
-	_validate_topics() # TODO uncomment when the logic is implemented
-
+	_validate_topics()
 	state = State.IDLE
 
 
@@ -110,12 +109,20 @@ func _validate_topics() -> void:
 	var i := 0
 	var found := []
 	assert(goal_topic != null)
+	assert(goal_topic.win_text)
+	assert(goal_topic.lose_text)
 	var alltopics := topics + [goal_topic]
 	for topic: AbstractTopic in alltopics:
 		assert(topic != null, "null topic no good")
 		assert(topic.name not in found, "topic name used already")
 		assert(topic.name != "", "topic name is empty")
-		if topic is Topic: assert(not topic.responses.is_empty(), "topic has no text responses")
+		if topic is Topic:
+			assert(not topic.responses.is_empty(), "topic has no text responses")
+			for response: String in topic.responses:
+				for line: String in response.split("\n"):
+					if line == "\n":
+						printerr(response, " ", line)
+						assert(false)
 		found.append(topic.name)
 		if topic is Topic: if topic.topic_appears_when == Topic.PrereqBehaviour.PREREQUISITE_EXHAUSTED:
 			assert(topic.prerequisite_topic_index != i, "topic's prerequisite index is itself's index")

@@ -47,6 +47,18 @@ _data = {
 &"f": SubResource("Animation_3yw15")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxph8"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.16470589, 0.1882353, 0.32156864, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.18039216, 0.4509804, 0.39215687, 1)
+
 [sub_resource type="Animation" id="Animation_p4v3c"]
 length = 0.001
 tracks/0/type = "value"
@@ -189,14 +201,18 @@ autoplay = "default"
 frame_progress = 0.23572293
 
 [node name="SpeechBubble" parent="." unique_id=663125359 instance=ExtResource("5_3yw15")]
-visible = false
-offset_left = 250.0
+offset_left = 55.0
 offset_top = 55.0
 offset_right = 421.0
 offset_bottom = 229.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_lxph8")
 
 [node name="Line2D" parent="SpeechBubble" index="0" unique_id=1952329087]
-points = PackedVector2Array(153, 104, 218, 85)
+points = PackedVector2Array(354, 102, 447, 102)
+default_color = Color(0.18039216, 0.4509804, 0.39215687, 1)
+
+[node name="RichTextLabel" parent="SpeechBubble/MarginContainer" parent_id_path=PackedInt32Array(663125359, 1217526062) index="0" unique_id=603030193]
+theme_override_colors/default_color = Color(0.7490196, 0.9490196, 0.4, 1)
 
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=1887097381]
 libraries/ = SubResource("AnimationLibrary_lxph8")

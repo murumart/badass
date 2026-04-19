@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://dluhpk1fpwdjd" path="res://scenes/encounter/console.tscn" id="5_lbagw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_13rki"]
-font_size = 22
-outline_size = 2
+font_size = 24
+outline_size = 4
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Encounter" type="Node2D" unique_id=1195995178 node_paths=PackedStringArray("background_parent", "person_parent", "console", "good_convo_topic")]
