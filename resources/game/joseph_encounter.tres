@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="EncounterData" format=3 uid="uid://8r0aasvsw7ll"]
 
-[ext_resource type="PackedScene" uid="uid://b6he1grq6575g" path="res://scenes/encounter/people/joseph.tscn" id="1_blr0b"]
+[ext_resource type="PackedScene" uid="uid://c0snjt8aute74" path="res://scenes/encounter/people/joseph.tscn" id="1_blr0b"]
 [ext_resource type="PackedScene" uid="uid://c5l6dmlb6dw6b" path="res://scenes/encounter/backgrounds/lab.tscn" id="1_mm4qq"]
 [ext_resource type="Resource" uid="uid://jglpkudlf0st" path="res://resources/game/tesla_encounter.tres" id="2_asnyn"]
 [ext_resource type="Script" uid="uid://cbbv8uq1aexko" path="res://scenes/encounter/encounter_data.gd" id="2_mm4qq"]

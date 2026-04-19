@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b6he1grq6575g"]
+[gd_scene format=3 uid="uid://c0snjt8aute74"]
 
 [ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_i2e50"]
 [ext_resource type="Script" uid="uid://cqpti41vi2kf5" path="res://scenes/encounter/people/abstract_topic.gd" id="2_ioo8f"]
@@ -27,7 +27,7 @@
 
 [sub_resource type="Resource" id="Resource_ioo8f"]
 script = ExtResource("2_m71ut")
-responses = PackedStringArray("This lab here? Yeah I`m quite a scientist myself, of course none of these moron`s here see that.\nNo matter though, soon I will make it big with my investments and finance my own projects.")
+responses = PackedStringArray("This lab here? Yeah I`m quite a scientist myself, of course none of these moron`s here see that.\n", "Soon I will make it big with my investments and finance my own projects.")
 emotional_response = 6
 contribution_to_goal = -0.5
 name = "TalkAboutScience"
@@ -35,31 +35,28 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_60lpe"]
 script = ExtResource("2_m71ut")
-responses = PackedStringArray("You invest yourself? Nice, what apps do you use? I`m outperforming SP500 by quite a lot myself you know.\nAnd you`ve got to invest into Bitcoin these days, otherwise you are just lagging behind man.")
-emotional_response = 1
+responses = PackedStringArray("You invest yourself? Nice, what apps do you use? I`m outperforming SP500 by quite a lot myself you know.\n", "You`ve got to invest into Bitcoin these days, otherwise you are just lagging behind man.")
 contribution_to_goal = 1.0
 name = "TalkAboutFinance"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_p74aw"]
 script = ExtResource("2_m71ut")
-responses = PackedStringArray("Oh yeah wait a minute, I have a free bet in GIGAMEGABET.\nGambling is really just another income I have man.\nYeah I`m down a few thousand dollars right now but I`m about to make it back and more!")
-emotional_response = 1
+responses = PackedStringArray("Oh yeah wait a minute, I have a free bet in GIGAMEGABET.", "Gambling is really just another income I have man.", "Yeah I`m down a few thousand dollars right now but I`m about to make it back and more!")
 contribution_to_goal = 1.0
 name = "TalkAboutGambling"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_rjj7t"]
 script = ExtResource("2_m71ut")
-responses = PackedStringArray("Man yeah you`ve got to read \"Master of the Cubes\" and \"Waves\", It`s really the peak literature.\nIt has old kingdoms, little people and evil necromancers who are really just misunderstood in my opinion.")
-emotional_response = 6
+responses = PackedStringArray("Man yeah you`ve got to read \"Master of the Cubes\" and \"Waves\", It`s really the peak literature.\nIt has old kingdoms, little people and evil necromancers who are really just misunderstood in my opinion.", "Actually i mostly just read a little fantasy and a lot of financial booksm like \"rich man, poor man\"")
 contribution_to_goal = 0.5
 name = "TalkAboutBooks"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_v31fj"]
 script = ExtResource("2_m71ut")
-responses = PackedStringArray("Mary was my biggest mistake man. She always nagged on me for smoking and my interest in investing.\nShe`s going to be real mad when I`m going to make it real big and buy myself a mansion and really expensive Porche.")
+responses = PackedStringArray("Mary was my biggest mistake man. She always nagged on me for smoking and my interest in investing.\n", "She`s going to be real mad when I`m going to make it real big and buy myself a mansion and really expensive Porche.")
 emotional_response = 4
 contribution_to_goal = -1.0
 name = "TalkAboutMary"
@@ -231,8 +228,9 @@ _data = {
 [node name="joseph" unique_id=1361515156 node_paths=PackedStringArray("animator", "bullet_spawner") instance=ExtResource("1_i2e50")]
 topics = Array[ExtResource("2_ioo8f")]([SubResource("Resource_ioo8f"), SubResource("Resource_60lpe"), SubResource("Resource_p74aw"), SubResource("Resource_rjj7t"), SubResource("Resource_v31fj")])
 goal_topic = SubResource("Resource_tim23")
-goal = 6.0
-ending_fail_lines = "Freak"
+starting_lines = "Who are you? Mary sent you? What does SHE want, we broke up some time ago already."
+ending_lines = "Good luck in the cellars man, that place spooks me out real good."
+ending_fail_lines = "Security! Security! We have a lunatic in the laboratory!"
 emotion_response_animations = Dictionary[int, StringName]({
 1: &"roomus",
 2: &"pahur",
