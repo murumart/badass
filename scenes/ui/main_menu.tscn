@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b66pk56ktxcef" path="res://art/boss/boss algus0000.png" id="2_m1kxf"]
 [ext_resource type="FontFile" uid="uid://cln787ma2u7s8" path="res://resources/theme/Zerove-Regular.ttf" id="3_1g8jr"]
 [ext_resource type="Texture2D" uid="uid://i5eqpsh6cygm" path="res://art/bad ass.png" id="4_m1kxf"]
+[ext_resource type="Script" uid="uid://utfgxr8if0yd" path="res://sounds/button_sound_adder.gd" id="5_x2yvf"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_m1kxf"]
 font = ExtResource("3_1g8jr")
@@ -80,3 +81,7 @@ offset_right = -0.12005615
 offset_bottom = -0.040008545
 texture = ExtResource("4_m1kxf")
 metadata/_edit_use_anchors_ = true
+
+[node name="ButtonSoundAdder" type="Node" parent="." unique_id=1719664428]
+script = ExtResource("5_x2yvf")
+metadata/_custom_type_script = "uid://utfgxr8if0yd"

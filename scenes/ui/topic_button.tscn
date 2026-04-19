@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dniy034rjieje"]
 
 [ext_resource type="Script" uid="uid://cdgnwltr2t7fj" path="res://scenes/ui/topic_button.gd" id="1_ypfbv"]
+[ext_resource type="AudioStream" uid="uid://ce5pmpm0w8yyv" path="res://sounds/bleep.ogg" id="2_g6hyk"]
 
 [node name="TopicButton" type="Button" unique_id=1746476138]
 offset_right = 4.0
@@ -13,3 +14,8 @@ text = "> Topic"
 flat = true
 alignment = 0
 script = ExtResource("1_ypfbv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1660995137]
+stream = ExtResource("2_g6hyk")
+
+[connection signal="pressed" from="." to="AudioStreamPlayer" method="play"]

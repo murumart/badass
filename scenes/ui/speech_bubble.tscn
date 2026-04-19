@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cjs3lg8yk7gne"]
 
 [ext_resource type="Script" uid="uid://c8ocqu8f6hf1s" path="res://scenes/ui/speech_bubble.gd" id="1_kdf6q"]
+[ext_resource type="Script" uid="uid://utfgxr8if0yd" path="res://sounds/button_sound_adder.gd" id="2_rtw6t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37ts1"]
 content_margin_left = 3.0
@@ -63,3 +64,7 @@ text = "→"
 visible = false
 layout_mode = 2
 flat = true
+
+[node name="ButtonSoundAdder" type="Node" parent="." unique_id=1587238107]
+script = ExtResource("2_rtw6t")
+metadata/_custom_type_script = "uid://utfgxr8if0yd"

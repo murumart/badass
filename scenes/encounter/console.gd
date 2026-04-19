@@ -12,6 +12,8 @@ enum Mode {
 @onready var begin_sound: AudioStreamPlayer = %BeginSound
 @onready var snap_back_sound: AudioStreamPlayer = %SnapBackSound
 @onready var collect_sound: AudioStreamPlayer = %CollectSound
+@onready var end_sound: AudioStreamPlayer = %EndSound
+@onready var end_good_sound: AudioStreamPlayer = %EndGoodSound
 
 @export var scanner: Node2D
 @export var scanner_area: Area2D
@@ -63,6 +65,7 @@ func end_scanning() -> void:
 	assert(mode == Mode.SCANNING)
 	mode = Mode.IDLE
 	loop_sound.stop()
+	end_sound.play()
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 	var tw := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tw.tween_property(scanner, "position", Vector2.ZERO, 0.5)
@@ -71,6 +74,8 @@ func end_scanning() -> void:
 	tw.tween_property(scanner, "position", scanner_default_position.position, 0.3)
 	await tw.finished
 	scanning_ended.emit(_score)
+	if _score >= 50:
+		end_good_sound.play()
 	_reset_scanner()
 
 

@@ -15,3 +15,5 @@ func _ready() -> void:
 		MGSAnimation.line_index = 0
 		UI.swipe_transition(load("res://scenes/mgs_cutscene.tscn"))
 	, CONNECT_ONE_SHOT)
+
+	Sounds.play_song("alien_music")

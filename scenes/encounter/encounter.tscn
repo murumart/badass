@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dx8l81ck3hbqo" path="res://scenes/encounter/encounter.gd" id="1_lp88p"]
 [ext_resource type="Resource" uid="uid://bkfwhatrbcrtm" path="res://resources/game/edgars_encounter.tres" id="2_13rki"]
+[ext_resource type="Script" uid="uid://utfgxr8if0yd" path="res://sounds/button_sound_adder.gd" id="4_s1k85"]
 [ext_resource type="PackedScene" uid="uid://dluhpk1fpwdjd" path="res://scenes/encounter/console.tscn" id="5_lbagw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_13rki"]
@@ -35,3 +36,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_13rki")
+
+[node name="ButtonSoundAdder" type="Node" parent="." unique_id=806476581]
+script = ExtResource("4_s1k85")
+metadata/_custom_type_script = "uid://utfgxr8if0yd"
