@@ -78,10 +78,6 @@ script/source = "extends BulletSpawner
 @export var spawn_pos: Node2D
 
 
-static func rand2() -> float:
-	return 1.0 - randf() * 2.0
-
-
 func do(emotion: Topic.Emotion) -> void:
 
 	var tx := Bullet.TEX_SPARKLE

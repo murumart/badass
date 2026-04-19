@@ -3,9 +3,17 @@
 [ext_resource type="PackedScene" uid="uid://cm15lbs8ibk6b" path="res://scenes/encounter/backgrounds/radioroom.tscn" id="1_agkfa"]
 [ext_resource type="Script" uid="uid://cbbv8uq1aexko" path="res://scenes/encounter/encounter_data.gd" id="1_g7lkm"]
 [ext_resource type="PackedScene" uid="uid://chdr48d7faee" path="res://scenes/encounter/people/mary.tscn" id="1_vqvrh"]
+[ext_resource type="Script" uid="uid://d2r1lkwdqib3c" path="res://scenes/Cutscenes/next_scene.gd" id="2_bobpc"]
+
+[sub_resource type="Resource" id="Resource_dpks2"]
+script = ExtResource("2_bobpc")
+mgs_cutscene_index = 2
+next_scene_path = "res://scenes/mgs_cutscene.tscn"
+metadata/_custom_type_script = "uid://d2r1lkwdqib3c"
 
 [resource]
 script = ExtResource("1_g7lkm")
 person = ExtResource("1_vqvrh")
 background = ExtResource("1_agkfa")
+next = SubResource("Resource_dpks2")
 metadata/_custom_type_script = "uid://cbbv8uq1aexko"

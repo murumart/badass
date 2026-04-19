@@ -79,6 +79,7 @@ corner_radius_bottom_left = 6
 
 [sub_resource type="SystemFont" id="SystemFont_5xhy3"]
 font_names = PackedStringArray("Serif")
+subpixel_positioning = 0
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_fryi2"]
 streams_count = 13
@@ -99,8 +100,77 @@ stream_12/stream = ExtResource("9_x3xi7")
 [sub_resource type="GDScript" id="GDScript_kpdy8"]
 script/source = "extends BulletSpawner
 
+@export var eye1: Marker2D
+@export var eye2: Marker2D
+@export var mouth: Marker2D
+
+var progress := 0
+
 
 func do(emotion: Topic.Emotion) -> void:
+
+	var tex := Bullet.TEX_SPARK
+
+	match progress:
+		0:
+			Console.scan_max = int(12 * 3 * 1.5)
+			await wait_t(0.5)
+			await spawn_circle(eye1.global_position, 12, tex, 0.05, 80)
+			await wait_t(0.5)
+			await spawn_circle(eye2.global_position + Vector2.RIGHT * 32, 12, tex, 0.05, 80)
+			await wait_t(0.5)
+			await spawn_circle(mouth.global_position + Vector2.LEFT * 32, 12, tex, 0.05, 80)
+		1:
+			Console.scan_max = int((40 + 40) * 1.5)
+			for i in 40:
+				var b := Bullet.make(mouth.global_position + Vector2(rand2(), rand2()) * 120)
+				b.set_direction(Vector2.DOWN, rand2() + 80.0)
+				b.set_texture(tex)
+				b.max_lifetime = 3.0
+				add_child(b)
+				await wait_t(0.03)
+			spawn_circle(eye1.global_position, 40, tex, 0.01, 80)
+		2:
+			var i := 0
+			Console.scan_max = int(12 * 12 * 12 * 1.5)
+			for x: float in range(-6, 7):
+				for y: float in range(-6, 7):
+					spawn_circle(Vector2(x / 12 * 720 + sin(y), y / 12 * 480 + cos(x)) * 0.75, 12, tex, maxf(0.1 - i * 0.001, 0.001), 110)
+			await wait_t(0.8)
+		3:
+			Console.scan_max = int(10 * 120 * 1.25)
+			for y in range(-5, 5):
+				for x in range(-60, 60):
+					var b := Bullet.make(Vector2(float(x) / 120 * 720, sin(x) * y * 240))
+					b.set_texture(tex)
+					b.set_direction(Vector2.DOWN if x % 2 == 0 else Vector2.UP, 80)
+					b.max_lifetime = 3.0
+					b.drag = -0.05
+					add_child(b)
+			await wait_t(4.0)
+		4:
+			Console.scan_max = 120
+			for i in range(-60, 60):
+				var b := Bullet.make(Vector2(i * 5, sin(i) * 120))
+				b.set_direction(Vector2(sin(b.position.x), cos(b.position.y)), 120.0)
+				b.set_texture(tex)
+				add_child(b)
+				await wait_t(0.05)
+		5:
+			Console.scan_max = int(10 * 24 * 0.75)
+			for y in range(-5, 5):
+				for x in range(-12, 12):
+					var b := Bullet.make(Vector2(float(x) / 24 * 480, sin(x) * y * 240))
+					b.set_direction(Vector2.DOWN if x % 2 == 0 else Vector2.UP, 80)
+					b.set_texture(tex)
+					b.max_lifetime = 3.0
+					b.drag = -0.05
+					add_child(b)
+			await wait_t(2.0)
+		6:
+			await spawn_crazy_shape(120)
+
+	progress = clampi(progress + 1, 0, 6)
 
 	await wait_t(0.5)
 	done.emit()
@@ -209,7 +279,7 @@ _data = {
 [node name="nikolaTesla" unique_id=1361515156 node_paths=PackedStringArray("animator", "bullet_spawner") instance=ExtResource("1_6xjub")]
 topics = Array[ExtResource("2_kpdy8")]([SubResource("Resource_s1ryu"), SubResource("Resource_kpdy8"), SubResource("Resource_5xhy3"), SubResource("Resource_w7355")])
 goal_topic = SubResource("Resource_cu8d5")
-goal = 5.0
+goal = 10.0
 starting_lines = "Hello *unkown lifeform* I am Ni-Cola Tesla Bot. I am a cloned body of Nikola Tesla made one with the machine."
 ending_lines = "Let us go! Your civilizations needs a saviour, and it will be I! Ni-Cola Tesla. Humankind deservers no salvation anyways."
 ending_fail_lines = "No, i must stay here and work tirelessly in the shadows. Only in this way may humanity prosper."
@@ -238,8 +308,11 @@ theme_override_font_sizes/normal_font_size = 15
 stream = SubResource("AudioStreamRandomizer_fryi2")
 bus = &"TeslaVOice"
 
-[node name="BulletSpawner" parent="." index="1" unique_id=608059629]
+[node name="BulletSpawner" parent="." index="1" unique_id=608059629 node_paths=PackedStringArray("eye1", "eye2", "mouth")]
 script = SubResource("GDScript_kpdy8")
+eye1 = NodePath("../Marker2D")
+eye2 = NodePath("../Marker2D2")
+mouth = NodePath("../Marker2D3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="2" unique_id=155770438]
 scale = Vector2(0.8208333, 0.8208333)
@@ -247,5 +320,14 @@ texture = ExtResource("5_vy8ul")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=1158359562]
 libraries/ = SubResource("AnimationLibrary_w7355")
+
+[node name="Marker2D" type="Marker2D" parent="." index="4" unique_id=1336340798]
+position = Vector2(-21, -42)
+
+[node name="Marker2D2" type="Marker2D" parent="." index="5" unique_id=698568566]
+position = Vector2(14, -48)
+
+[node name="Marker2D3" type="Marker2D" parent="." index="6" unique_id=1076498434]
+position = Vector2(8, -3)
 
 [editable path="SpeechBubble"]
