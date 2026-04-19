@@ -18,7 +18,7 @@ corner_radius_bottom_left = 9
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="SpeechBubble" type="PanelContainer" unique_id=663125359 node_paths=PackedStringArray("textlabel", "nextbutton", "skipbutton")]
+[node name="SpeechBubble" type="PanelContainer" unique_id=663125359 node_paths=PackedStringArray("textlabel", "nextbutton", "skipbutton", "voice_sound")]
 offset_left = 1.0
 offset_right = 150.0
 offset_bottom = 174.0
@@ -28,6 +28,7 @@ script = ExtResource("1_kdf6q")
 textlabel = NodePath("MarginContainer/RichTextLabel")
 nextbutton = NodePath("HBoxContainer/VBoxContainer/NextSpeechButton")
 skipbutton = NodePath("SkipStuff")
+voice_sound = NodePath("VoiceSound")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1952329087]
 position = Vector2(7, 7)
@@ -68,3 +69,7 @@ flat = true
 [node name="ButtonSoundAdder" type="Node" parent="." unique_id=1587238107]
 script = ExtResource("2_rtw6t")
 metadata/_custom_type_script = "uid://utfgxr8if0yd"
+
+[node name="VoiceSound" type="AudioStreamPlayer" parent="." unique_id=1443993807]
+max_polyphony = 8
+bus = &"Voice"

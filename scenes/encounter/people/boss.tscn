@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://donftemoq00qa" path="res://art/boss/boss närviline0002.png" id="7_km4ok"]
 [ext_resource type="Texture2D" uid="uid://tm4ibfnbc1is" path="res://art/boss/boss rõõmus0003.png" id="8_iotei"]
 [ext_resource type="Texture2D" uid="uid://bw25stakbugkv" path="res://art/boss/boss rõõmus0004.png" id="9_ffpwu"]
+[ext_resource type="AudioStream" uid="uid://bbettm1mvn462" path="res://sounds/voice/boss_voice.tres" id="19_ffpwu"]
 
 [sub_resource type="Resource" id="Resource_bjruo"]
 script = ExtResource("2_0mxwg")
@@ -630,6 +631,10 @@ offset_top = -137.0
 offset_right = -184.0
 offset_bottom = 37.0
 
+[node name="VoiceSound" parent="SpeechBubble" index="5" unique_id=1443993807]
+stream = ExtResource("19_ffpwu")
+bus = &"BossVoice"
+
 [node name="Marker2D" type="Marker2D" parent="." index="3" unique_id=978928491]
 position = Vector2(-45, -15)
 
@@ -644,3 +649,5 @@ script = SubResource("GDScript_iotei")
 eye1 = NodePath("../Marker2D")
 eye2 = NodePath("../Marker2D2")
 mouth = NodePath("../Marker2D3")
+
+[editable path="SpeechBubble"]

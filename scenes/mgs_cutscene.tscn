@@ -8,6 +8,7 @@
 [ext_resource type="SpriteFrames" uid="uid://cln2e56vlepga" path="res://art/boss_static.tres" id="4_4bc54"]
 [ext_resource type="PackedScene" uid="uid://cjs3lg8yk7gne" path="res://scenes/ui/speech_bubble.tscn" id="5_3yw15"]
 [ext_resource type="Texture2D" uid="uid://ck4jmr1a12j68" path="res://art/tulnukas.png" id="6_p4v3c"]
+[ext_resource type="AudioStream" uid="uid://bbettm1mvn462" path="res://sounds/voice/boss_voice.tres" id="8_6bd2i"]
 
 [sub_resource type="Animation" id="Animation_4bc54"]
 length = 0.001
@@ -213,6 +214,10 @@ default_color = Color(0.18039216, 0.4509804, 0.39215687, 1)
 
 [node name="RichTextLabel" parent="SpeechBubble/MarginContainer" parent_id_path=PackedInt32Array(663125359, 1217526062) index="0" unique_id=603030193]
 theme_override_colors/default_color = Color(0.7490196, 0.9490196, 0.4, 1)
+
+[node name="VoiceSound" parent="SpeechBubble" index="5" unique_id=1443993807]
+stream = ExtResource("8_6bd2i")
+bus = &"BossVoice"
 
 [node name="Animation" type="AnimationPlayer" parent="." unique_id=1887097381]
 libraries/ = SubResource("AnimationLibrary_lxph8")

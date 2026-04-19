@@ -4,15 +4,21 @@
 [ext_resource type="Script" uid="uid://cqpti41vi2kf5" path="res://scenes/encounter/people/abstract_topic.gd" id="2_fghyt"]
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_og1gi"]
 [ext_resource type="Script" uid="uid://gueua6osjqp7" path="res://scenes/encounter/people/goal_topic.gd" id="4_wwbfv"]
+[ext_resource type="AudioStream" uid="uid://btqem8lu8e4ls" path="res://sounds/voice/maryvoice-01.ogg" id="5_606lu"]
 [ext_resource type="Texture2D" uid="uid://bp8bs6u2nt7ui" path="res://art/mary/mary neutraalne.png" id="5_wwbfv"]
 [ext_resource type="Texture2D" uid="uid://cev2kbnuefwio" path="res://art/mary/mary impressed0000.png" id="6_53xiv"]
+[ext_resource type="AudioStream" uid="uid://csigm1i4ftb6y" path="res://sounds/voice/maryvoice-02.ogg" id="6_ijgon"]
 [ext_resource type="Texture2D" uid="uid://b67fcaxc6ulbv" path="res://art/mary/mary naerab0000.png" id="6_rwqpo"]
 [ext_resource type="Texture2D" uid="uid://ba2lx74fbuw1" path="res://art/mary/mary hairitud0000.png" id="6_xjd17"]
 [ext_resource type="Texture2D" uid="uid://decxgp1bwfrtx" path="res://art/mary/mary impressed0001.png" id="7_0eqa2"]
 [ext_resource type="Texture2D" uid="uid://pwpydekvd1n8" path="res://art/mary/mary hairitud0002.png" id="7_1pcpc"]
 [ext_resource type="Texture2D" uid="uid://c52a1gev8nw6u" path="res://art/mary/mary naerab0001.png" id="7_b3vnm"]
+[ext_resource type="AudioStream" uid="uid://6qym35br5i2t" path="res://sounds/voice/maryvoice-03.ogg" id="7_p377s"]
 [ext_resource type="Texture2D" uid="uid://clmwb4qeoibcx" path="res://art/mary/mary kardab0001.png" id="8_axxi7"]
+[ext_resource type="AudioStream" uid="uid://wxt3c3l4qxnc" path="res://sounds/voice/maryvoice-04.ogg" id="8_fn05i"]
 [ext_resource type="Texture2D" uid="uid://cw0c3ow7w2hb0" path="res://art/mary/mary kardab0002.png" id="9_do3uv"]
+[ext_resource type="AudioStream" uid="uid://ibe6ehcl077g" path="res://sounds/voice/maryvoice-05.ogg" id="9_pld3a"]
+[ext_resource type="AudioStream" uid="uid://boycv3ob4ncwl" path="res://sounds/voice/maryvoice-06.ogg" id="10_dnm3s"]
 [ext_resource type="Texture2D" uid="uid://c8tx6e6ay38rv" path="res://art/mary/mary kardab0000.png" id="10_xjd17"]
 
 [sub_resource type="Resource" id="Resource_gcp41"]
@@ -69,6 +75,15 @@ My ex-boyfriend Joseph works in a university.
 A few months ago there was a huge news story about the university was sending out very strong radio waves. You might get betters answers asking him."
 lose_text = "You assume just because i work in a radio station i know about radios? I dont even know you, get lost!"
 name = "Ask about radios"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xjd17"]
+streams_count = 6
+stream_0/stream = ExtResource("5_606lu")
+stream_1/stream = ExtResource("6_ijgon")
+stream_2/stream = ExtResource("7_p377s")
+stream_3/stream = ExtResource("8_fn05i")
+stream_4/stream = ExtResource("9_pld3a")
+stream_5/stream = ExtResource("10_dnm3s")
 
 [sub_resource type="GDScript" id="GDScript_wwbfv"]
 script/source = "extends BulletSpawner
@@ -235,6 +250,9 @@ offset_bottom = 77.0
 
 [node name="Line2D" parent="SpeechBubble" index="0" unique_id=1952329087]
 points = PackedVector2Array(129, 101, 213, 108)
+
+[node name="VoiceSound" parent="SpeechBubble" index="5" unique_id=1443993807]
+stream = SubResource("AudioStreamRandomizer_xjd17")
 
 [node name="BulletSpawner" parent="." index="1" unique_id=608059629]
 script = SubResource("GDScript_wwbfv")
