@@ -36,6 +36,7 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 [sub_resource type="Resource" id="Resource_60lpe"]
 script = ExtResource("2_m71ut")
 responses = PackedStringArray("You invest yourself? Nice, what apps do you use? I`m outperforming SP500 by quite a lot myself you know.\nAnd you`ve got to invest into Bitcoin these days, otherwise you are just lagging behind man.")
+emotional_response = 1
 contribution_to_goal = 1.0
 name = "TalkAboutFinance"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
@@ -43,6 +44,7 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 [sub_resource type="Resource" id="Resource_p74aw"]
 script = ExtResource("2_m71ut")
 responses = PackedStringArray("Oh yeah wait a minute, I have a free bet in GIGAMEGABET.\nGambling is really just another income I have man.\nYeah I`m down a few thousand dollars right now but I`m about to make it back and more!")
+emotional_response = 1
 contribution_to_goal = 1.0
 name = "TalkAboutGambling"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
@@ -50,6 +52,7 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 [sub_resource type="Resource" id="Resource_rjj7t"]
 script = ExtResource("2_m71ut")
 responses = PackedStringArray("Man yeah you`ve got to read \"Master of the Cubes\" and \"Waves\", It`s really the peak literature.\nIt has old kingdoms, little people and evil necromancers who are really just misunderstood in my opinion.")
+emotional_response = 6
 contribution_to_goal = 0.5
 name = "TalkAboutBooks"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
@@ -84,9 +87,35 @@ stream_8/stream = ExtResource("13_mu1ra")
 script/source = "extends BulletSpawner
 
 
-
+var mode := 0
 
 func do(emotion: Topic.Emotion) -> void:
+
+	var tx := Bullet.TEX_DROPLET
+	if emotion == Topic.Emotion.HAPPY:
+		tx = Bullet.TEX_SPARKLE
+	elif emotion == Topic.Emotion.ANGRY:
+		tx = Bullet.TEX_SPARK
+
+	if mode == 0:
+		Console.scan_max = 120
+		for i in range(-60, 60):
+			var b := Bullet.make(Vector2(i * 5, sin(i) * 120))
+			b.set_direction(Vector2(sin(b.position.x), cos(b.position.y)), 120.0)
+			add_child(b)
+			await wait_t(0.05)
+	elif mode == 1:
+		Console.scan_max = int(10 * 24)
+		for y in range(-5, 5):
+			for x in range(-12, 12):
+				var b := Bullet.make(Vector2(float(x) / 24 * 480, sin(x) * y * 240))
+				b.set_direction(Vector2.DOWN if x % 2 == 0 else Vector2.UP, 80)
+				b.max_lifetime = 3.0
+				b.drag = -0.05
+				add_child(b)
+		await wait_t(4.0)
+
+	mode = wrapi(mode + 1, 0, 2)
 
 	await wait_t(0.75)
 	done.emit()
@@ -197,6 +226,7 @@ _data = {
 [node name="joseph" unique_id=1361515156 node_paths=PackedStringArray("animator", "bullet_spawner") instance=ExtResource("1_i2e50")]
 topics = Array[ExtResource("2_ioo8f")]([SubResource("Resource_ioo8f"), SubResource("Resource_60lpe"), SubResource("Resource_p74aw"), SubResource("Resource_rjj7t"), SubResource("Resource_v31fj")])
 goal_topic = SubResource("Resource_tim23")
+goal = 6.0
 ending_fail_lines = "Freak"
 emotion_response_animations = Dictionary[int, StringName]({
 1: &"roomus",

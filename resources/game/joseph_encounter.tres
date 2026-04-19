@@ -2,10 +2,18 @@
 
 [ext_resource type="PackedScene" uid="uid://b6he1grq6575g" path="res://scenes/encounter/people/joseph.tscn" id="1_blr0b"]
 [ext_resource type="PackedScene" uid="uid://c5l6dmlb6dw6b" path="res://scenes/encounter/backgrounds/lab.tscn" id="1_mm4qq"]
+[ext_resource type="Resource" uid="uid://jglpkudlf0st" path="res://resources/game/tesla_encounter.tres" id="2_asnyn"]
 [ext_resource type="Script" uid="uid://cbbv8uq1aexko" path="res://scenes/encounter/encounter_data.gd" id="2_mm4qq"]
+[ext_resource type="Script" uid="uid://d2r1lkwdqib3c" path="res://scenes/Cutscenes/next_scene.gd" id="3_y22ms"]
+
+[sub_resource type="Resource" id="Resource_7kjev"]
+script = ExtResource("3_y22ms")
+next_encounter = ExtResource("2_asnyn")
+metadata/_custom_type_script = "uid://d2r1lkwdqib3c"
 
 [resource]
 script = ExtResource("2_mm4qq")
 person = ExtResource("1_blr0b")
 background = ExtResource("1_mm4qq")
+next = SubResource("Resource_7kjev")
 metadata/_custom_type_script = "uid://cbbv8uq1aexko"

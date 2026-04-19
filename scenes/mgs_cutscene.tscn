@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://03rioj6bgebj" path="res://art/boss/bossi taust0001.png" id="2_m37qf"]
 [ext_resource type="Resource" uid="uid://buby5ciigrd1j" path="res://resources/game/boss_encounter.tres" id="3_lxph8"]
 [ext_resource type="SpriteFrames" uid="uid://cln2e56vlepga" path="res://art/boss_static.tres" id="4_4bc54"]
+[ext_resource type="Resource" uid="uid://dcnm4hd6x8x28" path="res://resources/game/mary_encounter.tres" id="4_bd8sf"]
 [ext_resource type="PackedScene" uid="uid://cjs3lg8yk7gne" path="res://scenes/ui/speech_bubble.tscn" id="5_3yw15"]
+[ext_resource type="Resource" uid="uid://8r0aasvsw7ll" path="res://resources/game/joseph_encounter.tres" id="5_kfvwq"]
 [ext_resource type="Texture2D" uid="uid://ck4jmr1a12j68" path="res://art/tulnukas.png" id="6_p4v3c"]
 [ext_resource type="AudioStream" uid="uid://bbettm1mvn462" path="res://sounds/voice/boss_voice.tres" id="8_6bd2i"]
 
@@ -175,8 +177,8 @@ _data = {
 
 [node name="MgsCutscene" type="Node2D" unique_id=781728290]
 script = ExtResource("1_m37qf")
-lines = PackedStringArray("Agent Gnortz, your people call you to duty!\nAll the radios on our homeplanet of Grogzoria were destroyed by the heinous radio eating locust.\nThe creation of radios is a craft long lost to our artisans.\nOnly known creature capable of such feats is a great Terran inventor Ni-Cola Tesla.\nYou must find him or her and request his aid to save the infrastructure of our society for without radios it will surely collapse...")
-encounters = Array[ExtResource("2_6bd2i")]([ExtResource("3_lxph8")])
+lines = PackedStringArray("Agent Gnortz, your people call you to duty!\nAll the radios on our homeplanet of Grogzoria were destroyed by the heinous radio eating locust.\nThe creation of radios is a craft long lost to our artisans.\nOnly known creature capable of such feats is a great Terran inventor Ni-Cola Tesla.\nYou must find him or her and request his aid to save the infrastructure of our society for without radios it will surely collapse...", "Good job agent! Continue to next target! We triangulated the location of the farmer\'s offspring.", "Agent Gnortz, I feel we are getting closer to our target...\nTerran radio engineers and educators must have close ties to Tesla.")
+encounters = Array[ExtResource("2_6bd2i")]([ExtResource("3_lxph8"), ExtResource("4_bd8sf"), ExtResource("5_kfvwq")])
 
 [node name="Static" type="Sprite2D" parent="." unique_id=504377060]
 modulate = Color(0.18039216, 0.4509804, 0.39215687, 1)
