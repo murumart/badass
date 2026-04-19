@@ -64,3 +64,4 @@ goal_topic = SubResource("Resource_rwqpo")
 goal = 4.0
 starting_lines = "Hello, my father sent you? Sure i can answer some questions."
 ending_lines = "Good luck with your search! Hope you find what you need."
+ending_fail_lines = "I don`t know why my father sent you here. Get lost you disgusting person!"
