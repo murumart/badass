@@ -8,6 +8,11 @@ enum Mode {
 	SCANNING,
 }
 
+@onready var loop_sound: AudioStreamPlayer2D = %LoopSound
+@onready var begin_sound: AudioStreamPlayer = %BeginSound
+@onready var snap_back_sound: AudioStreamPlayer = %SnapBackSound
+@onready var collect_sound: AudioStreamPlayer = %CollectSound
+
 @export var scanner: Node2D
 @export var scanner_area: Area2D
 @export var scanner_default_position: Marker2D
@@ -43,6 +48,8 @@ func _ready() -> void:
 
 func start_scanning() -> void:
 	scanner.show()
+	begin_sound.play()
+	loop_sound.play()
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_HIDDEN)
 	assert(mode == Mode.IDLE)
 	scan_caught = 0
@@ -55,10 +62,12 @@ func start_scanning() -> void:
 func end_scanning() -> void:
 	assert(mode == Mode.SCANNING)
 	mode = Mode.IDLE
+	loop_sound.stop()
 	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
 	var tw := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tw.tween_property(scanner, "position", Vector2.ZERO, 0.5)
 	tw.tween_interval(1.0)
+	tw.tween_callback(snap_back_sound.play)
 	tw.tween_property(scanner, "position", scanner_default_position.position, 0.3)
 	await tw.finished
 	scanning_ended.emit(_score)
@@ -89,6 +98,7 @@ func _process(_delta: float) -> void:
 				scan_caught += 1
 				_score = int(float(scan_caught) / scan_max * 100)
 				scan_label.text = str(_score) + "%"
+				collect_sound.play()
 
 
 func display_score(scorep: float) -> void:

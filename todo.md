@@ -19,3 +19,8 @@
 - [X] skanneri visuaal
 - [X] bossi sisenemise animatsioon
 - [X] bossi tutorial tekst
+
+- heliefektid
+  - [ ] klikk blip
+  - [ ] paneb skinsuiti selga nagu thrive cell death
+  - [ ]
