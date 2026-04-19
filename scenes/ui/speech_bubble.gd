@@ -15,6 +15,7 @@ var state: State
 @export var textlabel: RichTextLabel
 @export var nextbutton: Button
 @export var skipbutton: Button
+@export var voice_sound: AudioStreamPlayer
 
 var _remove_bbcode_regex := RegEx.new()
 
@@ -23,6 +24,7 @@ func _ready() -> void:
 	assert(textlabel != null)
 	assert(nextbutton != null)
 	assert(skipbutton != null)
+	assert(voice_sound != null)
 	hide()
 	_remove_bbcode_regex.compile("\\[.+?\\]")
 	nextbutton.pressed.connect(request_next_line)
@@ -31,13 +33,23 @@ func _ready() -> void:
 	skipbutton.hide()
 
 
+var _delay := 0.0
+func _process(delta: float) -> void:
+	if state == State.SPEAKING:
+		_delay += delta
+		if _delay > randf() * 0.3 + 0.05:
+			_delay = 0
+			voice_sound.play()
+
+
 func speak_lines(lines: PackedStringArray) -> void:
 	assert(state == State.IDLE)
 	show()
-	state = State.SPEAKING
 	for line in lines:
+		state = State.SPEAKING
 		speak_text(line)
 		await line_finished
+		state = State.IDLE
 		skipbutton.hide()
 		nextbutton.show()
 		await _next_line_requested

@@ -1,0 +1,23 @@
+[gd_resource type="AudioStreamRandomizer" format=3 uid="uid://bbettm1mvn462"]
+
+[ext_resource type="AudioStream" uid="uid://cdayru2iydgwl" path="res://sounds/voice/bossvoice-01.ogg" id="1_l6tss"]
+[ext_resource type="AudioStream" uid="uid://qlfd8su0fs0n" path="res://sounds/voice/bossvoice-02.ogg" id="2_p30r8"]
+[ext_resource type="AudioStream" uid="uid://baw450unxwuln" path="res://sounds/voice/bossvoice-03.ogg" id="3_6r2cs"]
+[ext_resource type="AudioStream" uid="uid://dvb5ci18csu6u" path="res://sounds/voice/bossvoice-04.ogg" id="4_y3eqr"]
+[ext_resource type="AudioStream" uid="uid://cxp8n1un50h74" path="res://sounds/voice/bossvoice-05.ogg" id="5_qnhfl"]
+[ext_resource type="AudioStream" uid="uid://decg4c6qw452x" path="res://sounds/voice/bossvoice-06.ogg" id="6_3wqh4"]
+[ext_resource type="AudioStream" uid="uid://hxbx54lmadfg" path="res://sounds/voice/bossvoice-07.ogg" id="7_48r23"]
+[ext_resource type="AudioStream" uid="uid://cyavgoxcuqe2i" path="res://sounds/voice/bossvoice-08.ogg" id="8_twkmg"]
+[ext_resource type="AudioStream" uid="uid://b651lu0wrfy3v" path="res://sounds/voice/bossvoice-09.ogg" id="9_7ttp4"]
+
+[resource]
+streams_count = 9
+stream_0/stream = ExtResource("1_l6tss")
+stream_1/stream = ExtResource("2_p30r8")
+stream_2/stream = ExtResource("3_6r2cs")
+stream_3/stream = ExtResource("4_y3eqr")
+stream_4/stream = ExtResource("5_qnhfl")
+stream_5/stream = ExtResource("6_3wqh4")
+stream_6/stream = ExtResource("7_48r23")
+stream_7/stream = ExtResource("8_twkmg")
+stream_8/stream = ExtResource("9_7ttp4")
