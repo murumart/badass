@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjhydkqnw5146"]
 
 [ext_resource type="Script" uid="uid://dx8l81ck3hbqo" path="res://scenes/encounter/encounter.gd" id="1_lp88p"]
-[ext_resource type="Resource" uid="uid://8r0aasvsw7ll" path="res://resources/game/joseph_encounter.tres" id="2_yyo66"]
+[ext_resource type="Resource" uid="uid://jglpkudlf0st" path="res://resources/game/tesla_encounter.tres" id="2_yyo66"]
 [ext_resource type="Script" uid="uid://utfgxr8if0yd" path="res://sounds/button_sound_adder.gd" id="4_s1k85"]
 [ext_resource type="PackedScene" uid="uid://dluhpk1fpwdjd" path="res://scenes/encounter/console.tscn" id="5_lbagw"]
 [ext_resource type="AudioStream" uid="uid://cl8eps8nby3rn" path="res://sounds/awesome_open.ogg" id="5_yyo66"]

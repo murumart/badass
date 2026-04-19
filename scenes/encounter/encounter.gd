@@ -133,7 +133,7 @@ func _on_topic_chosen(topic: int) -> void:
 		tw.tween_property(background_parent, "modulate", Color.WHITE, 1.0)
 
 	stage = Stage.SPEAKING
-	person.further_goal(t.contribution_to_goal + person.get_topic_knowledge(t) * 0.1)
+	person.further_goal(t.contribution_to_goal + person.get_topic_knowledge(t) * 0.01)
 	person.further_topic_knowledge(t, score + int(person.get_topic_knowledge(t) * 0.05))
 	if person.get_topic_knowledge(t) >= 50 and t not in _notified and t is Topic:
 		_notified[t] = true
