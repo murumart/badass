@@ -39,11 +39,13 @@ func _ready() -> void:
 	assert(good_convo_topic != null)
 	good_convo_topic.hide()
 
+
 	display_score()
 	begin_encounter()
 
 
 func begin_encounter() -> void:
+	Sounds.play_song(data.music)
 	var tw := create_tween().set_trans(Tween.TRANS_CUBIC)
 	tw.tween_interval(data.delay_before_begin_s)
 	if not data.person_enter_animation:

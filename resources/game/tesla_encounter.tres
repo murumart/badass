@@ -16,4 +16,5 @@ person = ExtResource("2_5e4lr")
 background = ExtResource("1_kl0mq")
 delay_before_begin_s = 2.0
 next = SubResource("Resource_3e3ld")
+music = &"tesla"
 metadata/_custom_type_script = "uid://cbbv8uq1aexko"

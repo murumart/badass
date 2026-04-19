@@ -205,6 +205,9 @@ class SongsList:
 		&"alien_music": {
 			&"stream" : preload("res://music/alien_music.ogg")
 		},
+		&"tesla": {
+			&"stream" : preload("res://music/tesla.ogg")
+		},
 		&"bad_end": {
 			&"stream" : preload("res://music/badend.ogg"),
 			&"loop": false
