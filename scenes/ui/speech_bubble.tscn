@@ -59,7 +59,7 @@ alignment = 2
 
 [node name="NextSpeechButton" type="Button" parent="HBoxContainer/VBoxContainer" unique_id=836767141]
 layout_mode = 2
-text = "→"
+text = "->"
 
 [node name="SkipStuff" type="Button" parent="." unique_id=1746732867]
 visible = false
