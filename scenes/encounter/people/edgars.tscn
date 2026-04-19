@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dxlxhwdl2a4k5"]
 
 [ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_58dto"]
-[ext_resource type="Script" path="res://scenes/encounter/people/abstract_topic.gd" id="2_d8d1c"]
+[ext_resource type="Script" uid="uid://cqpti41vi2kf5" path="res://scenes/encounter/people/abstract_topic.gd" id="2_d8d1c"]
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_shbkl"]
 [ext_resource type="Texture2D" uid="uid://dl61e8f2sast7" path="res://art/edgar/edgar passiivne.png" id="4_d8d1c"]
 [ext_resource type="Script" path="res://scenes/encounter/people/goal_topic.gd" id="4_ommo6"]
@@ -47,7 +47,7 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 script = ExtResource("4_ommo6")
 win_text = "Heh pal, I don`t think i can aswer your question. You better seek out my daughter Mary in town. She is a smart girl."
 lose_text = "Get off my land you commie scum!"
-name = "Robot"
+name = "Ask About his Radio"
 
 [sub_resource type="GDScript" id="GDScript_shbkl"]
 script/source = "extends BulletSpawner
