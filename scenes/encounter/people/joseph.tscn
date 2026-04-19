@@ -1,49 +1,51 @@
 [gd_scene format=3 uid="uid://c0snjt8aute74"]
 
 [ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_i2e50"]
+[ext_resource type="Script" path="res://scenes/encounter/people/abstract_topic.gd" id="2_ioo8f"]
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_m71ut"]
+[ext_resource type="Script" path="res://scenes/encounter/people/goal_topic.gd" id="4_60lpe"]
 
 [sub_resource type="Resource" id="Resource_ioo8f"]
 script = ExtResource("2_m71ut")
-name = "TalkAboutScience"
 responses = PackedStringArray("This lab here? Yeah I`m quite a scientist myself, of course none of these moron`s here see that.\nNo matter though, soon I will make it big with my investments and finance my own projects.")
 contribution_to_goal = -0.5
+name = "TalkAboutScience"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_60lpe"]
 script = ExtResource("2_m71ut")
-name = "TalkAboutFinance"
 responses = PackedStringArray("You invest yourself? Nice, what apps do you use? I`m outperforming SP500 by quite a lot myself you know.\nAnd you`ve got to invest into Bitcoin these days, otherwise you are just lagging behind man.")
 contribution_to_goal = 1.0
-metadata/_custom_type_script = "uid://dv5b43nkgajqi"
-
-[sub_resource type="Resource" id="Resource_tim23"]
-script = ExtResource("2_m71ut")
-name = "TalkAboutReligion"
-responses = PackedStringArray("God? Have you talked to Mary or something? She always loved to discuss god and religion. \nAbsolute nonsense if you ask me, no self-respecting intellectual person follows any religion.\n Bunch of morons man, Marys dad was the worst.\n")
-contribution_to_goal = -1.0
+name = "TalkAboutFinance"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_p74aw"]
 script = ExtResource("2_m71ut")
-name = "TalkAboutGambling"
 responses = PackedStringArray("Oh yeah wait a minute, I have a free bet in GIGAMEGABET.\nGambling is really just another income I have man.\nYeah I`m down a few thousand dollars right now but I`m about to make it back and more!\n")
 contribution_to_goal = 1.0
+name = "TalkAboutGambling"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_rjj7t"]
 script = ExtResource("2_m71ut")
-name = "TalkAboutBooks"
 responses = PackedStringArray("Man yeah you`ve got to read \"Master of the Cubes\" and \"Waves\", It`s really the peak literature.\nIt has old kingdoms, little people and evil necromancers who are really just misunderstood in my opinion.")
 contribution_to_goal = 0.5
+name = "TalkAboutBooks"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_v31fj"]
 script = ExtResource("2_m71ut")
-name = "TalkAboutMary"
 responses = PackedStringArray("Mary was my biggest mistake man. She always nagged on me for smoking and my interest in investing.\nShe`s going to be real mad when I`m going to make it real big and buy myself a mansion and really expensive Porche.")
 contribution_to_goal = -1.0
+name = "TalkAboutMary"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
+[sub_resource type="Resource" id="Resource_tim23"]
+script = ExtResource("4_60lpe")
+win_text = "Radios? I dont really know much, but there is a weird old man in the cellars. Ive seen him tinkering around with radios and radiowaves."
+lose_text = "Who are you? What do you want from here? Radios? No, I don`t know anything about any radios. Get out!"
+name = "Ask about radios"
+
 [node name="joseph" unique_id=1361515156 instance=ExtResource("1_i2e50")]
-topics = Array[ExtResource("2_m71ut")]([SubResource("Resource_ioo8f"), SubResource("Resource_60lpe"), SubResource("Resource_tim23"), SubResource("Resource_p74aw"), SubResource("Resource_rjj7t"), SubResource("Resource_v31fj")])
+topics = Array[ExtResource("2_ioo8f")]([SubResource("Resource_ioo8f"), SubResource("Resource_60lpe"), SubResource("Resource_p74aw"), SubResource("Resource_rjj7t"), SubResource("Resource_v31fj")])
+goal_topic = SubResource("Resource_tim23")

@@ -1,19 +1,49 @@
 [gd_scene format=3 uid="uid://brs33d5i0g0bw"]
 
 [ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_6xjub"]
+[ext_resource type="Script" path="res://scenes/encounter/people/abstract_topic.gd" id="2_kpdy8"]
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_whhc5"]
+[ext_resource type="Script" path="res://scenes/encounter/people/goal_topic.gd" id="4_vy8ul"]
 
 [sub_resource type="Resource" id="Resource_s1ryu"]
 script = ExtResource("2_whhc5")
-name = "TalkAboutDogs"
-responses = PackedStringArray("Yes i quite enjoy the company of the greates friend a human could have.\nDogs are fine companions, i value their loyalty to the highest degree.")
+responses = PackedStringArray("Yes i quite enjoy the company of the greates friend a human could have.\n", "Dogs are fine companions, i value their loyalty to the highest degree.")
 emotional_response = 1
 contribution_to_goal = 0.5
+name = "TalkAboutDogs"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_kpdy8"]
 script = ExtResource("2_whhc5")
+responses = PackedStringArray("I have been hiding here, in the cellars of this university for over a hundred years, I have no idea about the economy of the outside civilization. ", "Are you quite sure this is what you came here to ask me?")
+emotional_response = 4
+contribution_to_goal = -0.5
+name = "Talk about the economy"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
+[sub_resource type="Resource" id="Resource_5xhy3"]
+script = ExtResource("2_whhc5")
+responses = PackedStringArray("IT WAS I WHO INVENTED THE RADIO!", "But I have outlived both Edison and Marconi, the leeches did not expect that, now my inventions will soon change the world as we know it.", "Edison was a devil in human skin. His actions denied humankind free resources and quicker advancments in the field of waves.")
+emotional_response = 2
+contribution_to_goal = 1.0
+name = "Talk about the radio"
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_w7355"]
+script = ExtResource("2_whhc5")
+emotional_response = 2
+name = "Talk About Jewels"
+metadata/_custom_type_script = "uid://dv5b43nkgajqi"
+
+[sub_resource type="Resource" id="Resource_cu8d5"]
+script = ExtResource("4_vy8ul")
+win_text = "Allright, i will help you, i think your people will appreciate me more then humankind ever did."
+lose_text = "No! Sorry, but i cannot leave humanity behind. No hard feeling, but i must report you to the men in black now."
+
 [node name="nikolaTesla" unique_id=1361515156 instance=ExtResource("1_6xjub")]
-topics = Array[ExtResource("2_whhc5")]([SubResource("Resource_s1ryu"), SubResource("Resource_kpdy8"), null, null, null])
+topics = Array[ExtResource("2_kpdy8")]([SubResource("Resource_s1ryu"), SubResource("Resource_kpdy8"), SubResource("Resource_5xhy3"), SubResource("Resource_w7355"), null])
+goal_topic = SubResource("Resource_cu8d5")
+goal = 5.0
+starting_lines = "Hello *unkown lifeform* I am Ni-Cola Tesla Bot. I am a cloned body of Nikola Tesla made one with the machine."
+ending_lines = "Let us go! Your civilizations needs a saviour, and it will be I! Ni-Cola Tesla. Humankind deservers no salvation anyways."
+ending_fail_lines = "No, i must stay here and work tirelessly in the shadows. Only in this way may humanity prosper."

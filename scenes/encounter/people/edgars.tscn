@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dxlxhwdl2a4k5"]
 
 [ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_58dto"]
-[ext_resource type="Script" uid="uid://cqpti41vi2kf5" path="res://scenes/encounter/people/abstract_topic.gd" id="2_d8d1c"]
+[ext_resource type="Script" path="res://scenes/encounter/people/abstract_topic.gd" id="2_d8d1c"]
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_shbkl"]
 [ext_resource type="Texture2D" uid="uid://dl61e8f2sast7" path="res://art/edgar/edgar passiivne.png" id="4_d8d1c"]
-[ext_resource type="Script" uid="uid://gueua6osjqp7" path="res://scenes/encounter/people/goal_topic.gd" id="4_ommo6"]
+[ext_resource type="Script" path="res://scenes/encounter/people/goal_topic.gd" id="4_ommo6"]
 [ext_resource type="Texture2D" uid="uid://raiqniffgif1" path="res://art/edgar/edgar kuidas sa julged.png" id="6_ceaxl"]
 [ext_resource type="Texture2D" uid="uid://c7jbrboinompv" path="res://art/edgar/edgar narviline0000.png" id="6_trxmi"]
 [ext_resource type="Texture2D" uid="uid://ftif2ffassqo" path="res://art/edgar/edgar meelitatud.png" id="7_jgnw3"]
@@ -13,7 +13,7 @@
 
 [sub_resource type="Resource" id="Resource_d8d1c"]
 script = ExtResource("2_shbkl")
-responses = PackedStringArray("Yes I grow quite a lot of potatoes, turnips and a some pumpkins. And in the barn over there is my trusty cow Missy and a bunch of chickens.", "Farming is a honorable occupation and without it noone would eat.\nThose city folks really got to get that in their head.")
+responses = PackedStringArray("Yes I grow quite a lot of potatoes, turnips and some pumpkins. And in the barn over there is my trusty cow Missy and a bunch of chickens.", "Farming is a honorable occupation and without it noone could eat.\nThose city folks really got to get that in their head.")
 emotional_response = 1
 contribution_to_goal = 1.0
 name = "TalkAboutAgriculture"
@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_ommo6"]
 script = ExtResource("2_shbkl")
-responses = PackedStringArray("Got me a daughter and thats it, the wife died quite a few winters ago. Daughter used to be a cleric in the parish church. \nNow is working in the big city, something about music, visits me time to time. She\'s a good girl.")
+responses = PackedStringArray("Got me a daughter and thats it, the wife died quite a few winters ago. ", "Daughter used to be a cleric in the parish church. \nNow shes`s working in the big city, something about music, visits me time to time. She\'s a good girl.")
 emotional_response = 1
 contribution_to_goal = 0.5
 name = "TalkAboutFamily"
@@ -29,7 +29,7 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_trxmi"]
 script = ExtResource("2_shbkl")
-responses = PackedStringArray("Them politicians in the parliament dont know anything about real life! Sitting high and mighty collecting huge paychecks never having to do a days work, shameful.")
+responses = PackedStringArray("Them politicians in the parliament dont know anything about real life! Sitting high and mighty collecting huge paychecks never having to do a days work, shameful.", "I don`t even really go to vote anymore. Used to when the wife was still laive, but i dont see a reason anymore.")
 emotional_response = 4
 contribution_to_goal = -0.5
 name = "TalkAboutGoverment"
@@ -37,7 +37,7 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_esoi5"]
 script = ExtResource("2_shbkl")
-responses = PackedStringArray("My hat?? goes with my eyes??  what do you care about my hat? what do you want about my hat? leave my hat alone!")
+responses = PackedStringArray("My hat?? goes with my eyes??  what do you care about my hat? what do you want about my hat? leave my hat alone!", "No i really dont appreciate you liking the colour of my overalls. Can we talk about something else?")
 emotional_response = 2
 contribution_to_goal = -1.0
 name = "TalkAboutFashion"
@@ -46,7 +46,6 @@ metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 [sub_resource type="Resource" id="Resource_klqs8"]
 script = ExtResource("4_ommo6")
 name = "Robot"
-metadata/_custom_type_script = "uid://gueua6osjqp7"
 
 [sub_resource type="GDScript" id="GDScript_shbkl"]
 script/source = "extends BulletSpawner
@@ -179,8 +178,9 @@ topics = Array[ExtResource("2_d8d1c")]([SubResource("Resource_d8d1c"), SubResour
 goal_topic = SubResource("Resource_klqs8")
 goal = 4.0
 starting_lines = "Who the heck are you... How did you get here...
-...tou have a nice car tho..."
-ending_fail_lines = "You Suck. Die."
+...you have a nice car though..."
+ending_lines = "Heh pal, I don`t think i can aswer your questions. You better seek out my daughter Mary in town. She is a smart girl."
+ending_fail_lines = "Get off my land you commie scum!"
 emotion_response_animations = Dictionary[int, StringName]({
 1: &"flattered",
 2: &"flabbergasted",

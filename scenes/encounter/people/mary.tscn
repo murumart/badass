@@ -1,54 +1,66 @@
 [gd_scene format=3 uid="uid://chdr48d7faee"]
 
 [ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_flsc6"]
+[ext_resource type="Script" path="res://scenes/encounter/people/abstract_topic.gd" id="2_fghyt"]
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_og1gi"]
+[ext_resource type="Script" path="res://scenes/encounter/people/goal_topic.gd" id="4_wwbfv"]
 
 [sub_resource type="Resource" id="Resource_gcp41"]
 script = ExtResource("2_og1gi")
-name = "TalkAboutRadio"
-responses = PackedStringArray("Radio is really something that got me out of the awful religion brainwash. On my free time from church study I started to listen to our local station and falling in love with music. Id say ive done quite well myself since I am working here now.")
+responses = PackedStringArray("Radio is really something that got me out of the awful religion brainwash. On my free time from church study I started to listen to our local station and falling in love with music. ", "Id say ive done quite well myself since I am working here now. Playing music I like to other people.")
 contribution_to_goal = 0.5
+name = "TalkAboutRadio"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_fghyt"]
 script = ExtResource("2_og1gi")
-name = "TalkAboutPhilosophy"
-responses = PackedStringArray("When I was in church I was taught to question nothing in the word of god.\nAfter leaving religion behind I have found philosophy quite engaging in the ways it teaches you to question a lot of things.")
+responses = PackedStringArray("When I was in church I was taught to question nothing in the word of god.\nAfter leaving religion behind I have found philosophy quite engaging in the ways it teaches you to question a lot of things.", "Whats your favorite school of thought? I think i most subscribe to the idea of Pyrrhonism.")
 emotional_response = 3
 contribution_to_goal = 0.5
+name = "TalkAboutPhilosophy"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_wwbfv"]
 script = ExtResource("2_og1gi")
-name = "TalkAboutMusic"
-responses = PackedStringArray("Music is really the source of all happiness in my life right now. And thats not a bad thing!\nEither listening to music I love, or discovering new music, it makes me feel happy and alive!")
+responses = PackedStringArray("Music is really the source of all happiness in my life right now. And thats not a bad thing!\n", "Either listening to music I love, or discovering new music, it makes me feel happy and alive!", "I like to listen to everything really. Pop, Jazz, Rock and Techno.")
 emotional_response = 1
 contribution_to_goal = 1.0
+name = "TalkAboutMusic"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_yy4xl"]
 script = ExtResource("2_og1gi")
-name = "TalkAboutReligion"
-responses = PackedStringArray("My mother was a deeply religious person and she was my greatest inspiration. I think i never wanted to be a cleric but i did not want to disappoint her.\nI`m not sure if I would have left anyways or was it her death that made me lose my faith, but I did.")
+responses = PackedStringArray("My mother was a deeply religious person and she was my greatest inspiration. I think i never wanted to be a cleric but i did not want to disappoint her.\nI`m not sure if I would have left anyways or was it her death that made me lose my faith, but I did.", "I don´t ridicule people who belive in god. I know that it is necessary for some and i understand the need to belive.")
 emotional_response = 4
 contribution_to_goal = -0.5
+name = "TalkAboutReligion"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_53xiv"]
 script = ExtResource("2_og1gi")
-name = "TalkAboutFashion"
-responses = PackedStringArray("Just because I am, as my old father would put it, a city girl now, doesn`t mean I would know anything, or enjoy talking about, fashion of all the things. \nNo you have quite a wrong person for that.")
+responses = PackedStringArray("Just because I am, as my old father would put it, a city girl now, doesn`t mean I would know anything, or enjoy talking about, fashion of all the things. ", "No you have quite a wrong person for that.")
 emotional_response = 4
 contribution_to_goal = -0.5
+name = "TalkAboutFashion"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
 [sub_resource type="Resource" id="Resource_0eqa2"]
 script = ExtResource("2_og1gi")
-name = "TalkAboutEconomy"
-responses = PackedStringArray("Economy?! Please don`t talk to me about economy, I get by with my pay here and that`s all I care about. My ex-boyfriend was an absolute nutjob about that\nAll he ever talked about was SP500 and Bitcoin , whenever he wasn`t smoking outside. \nHorrible habit, can`t understand why I was with him.")
+responses = PackedStringArray("Economy?! Please don`t talk to me about economy, I get by with my pay here and that`s all I care about. ", "My ex-boyfriend was an absolute nutjob about that\nAll he ever talked about was SP500 and Bitcoin , whenever he wasn`t smoking outside. \nHorrible habit, can`t understand why I was with him.")
 emotional_response = 2
 contribution_to_goal = -1.0
+name = "TalkAboutEconomy"
 metadata/_custom_type_script = "uid://dv5b43nkgajqi"
 
+[sub_resource type="Resource" id="Resource_rwqpo"]
+script = ExtResource("4_wwbfv")
+win_text = "Hmm radios? I work in a radio station, but i doubt you mean that. My ex-boyfriend Joseph works in a university. A few months ago there was a huge news story about the university was sending out very strong radio waves. You might get betters answers asking him."
+lose_text = "You assume just because i work in a radio station i know about radios? I dont even know you, get lost!"
+name = "Ask about radios"
+
 [node name="Mary" unique_id=1361515156 instance=ExtResource("1_flsc6")]
-topics = Array[ExtResource("2_og1gi")]([SubResource("Resource_gcp41"), SubResource("Resource_fghyt"), SubResource("Resource_wwbfv"), SubResource("Resource_yy4xl"), SubResource("Resource_53xiv"), SubResource("Resource_0eqa2")])
+topics = Array[ExtResource("2_fghyt")]([SubResource("Resource_gcp41"), SubResource("Resource_fghyt"), SubResource("Resource_wwbfv"), SubResource("Resource_yy4xl"), SubResource("Resource_53xiv"), SubResource("Resource_0eqa2")])
+goal_topic = SubResource("Resource_rwqpo")
+goal = 4.0
+starting_lines = "Hello, my father sent you? Sure i can answer some questions."
+ending_lines = "Good luck with your search! Hope you find what you need."
