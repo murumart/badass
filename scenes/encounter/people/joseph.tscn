@@ -4,14 +4,23 @@
 [ext_resource type="Script" uid="uid://cqpti41vi2kf5" path="res://scenes/encounter/people/abstract_topic.gd" id="2_ioo8f"]
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_m71ut"]
 [ext_resource type="Script" uid="uid://gueua6osjqp7" path="res://scenes/encounter/people/goal_topic.gd" id="4_60lpe"]
+[ext_resource type="AudioStream" uid="uid://bv5aiu66x0e8w" path="res://sounds/voice/joosepvoice-01.ogg" id="5_2ha04"]
 [ext_resource type="Texture2D" uid="uid://cw60mlppc3g0a" path="res://art/joosep/joosep neutraalne0000.png" id="5_60lpe"]
+[ext_resource type="AudioStream" uid="uid://cfa2j1x1u3vru" path="res://sounds/voice/joosepvoice-02.ogg" id="6_b1tqx"]
 [ext_resource type="Texture2D" uid="uid://cwso0i7oopvav" path="res://art/joosep/joosep hirmul0000.png" id="6_m2ove"]
 [ext_resource type="Texture2D" uid="uid://s6t6d0raidg5" path="res://art/joosep/joosep neutraalne0001.png" id="6_tim23"]
+[ext_resource type="AudioStream" uid="uid://byfuih47uql40" path="res://sounds/voice/joosepvoice-03.ogg" id="7_3ei67"]
 [ext_resource type="Texture2D" uid="uid://ccichvc2xasoh" path="res://art/joosep/joosep hirmul0001.png" id="7_dyl3h"]
 [ext_resource type="Texture2D" uid="uid://brjnx0irsp5nf" path="res://art/joosep/joosep pahur0000.png" id="7_rjj7t"]
+[ext_resource type="AudioStream" uid="uid://cyng233tot2ii" path="res://sounds/voice/joosepvoice-04.ogg" id="8_10acy"]
 [ext_resource type="Texture2D" uid="uid://qatygpfhorl2" path="res://art/joosep/joosep hirmul0002.png" id="8_620in"]
 [ext_resource type="Texture2D" uid="uid://c84c388myan4w" path="res://art/joosep/joosep pahur0001.png" id="8_v31fj"]
+[ext_resource type="AudioStream" uid="uid://n63iayculody" path="res://sounds/voice/joosepvoice-05.ogg" id="9_wajox"]
+[ext_resource type="AudioStream" uid="uid://bpqqqujaajv1p" path="res://sounds/voice/joosepvoice-06.ogg" id="10_lpfep"]
+[ext_resource type="AudioStream" uid="uid://cxmr4l3fmmbjp" path="res://sounds/voice/joosepvoice-07.ogg" id="11_qg18f"]
 [ext_resource type="Texture2D" uid="uid://eox7mske4br1" path="res://art/joosep/joosep roomus0000.png" id="12_620in"]
+[ext_resource type="AudioStream" uid="uid://cbsxdbamj7qmx" path="res://sounds/voice/joosepvoice-08.ogg" id="12_nn0wf"]
+[ext_resource type="AudioStream" uid="uid://c1m5j13soss77" path="res://sounds/voice/joosepvoice-09.ogg" id="13_mu1ra"]
 [ext_resource type="Texture2D" uid="uid://fsoa2evnw32o" path="res://art/joosep/joosep roomus0001.png" id="13_ul667"]
 [ext_resource type="Texture2D" uid="uid://dro3oh4kf2yn3" path="res://art/joosep/joosep vaga tark0000.png" id="14_gajwf"]
 [ext_resource type="Texture2D" uid="uid://keo3crmfrbg5" path="res://art/joosep/joosep vaga tark0001.png" id="15_y1w16"]
@@ -58,6 +67,18 @@ script = ExtResource("4_60lpe")
 win_text = "Radios? I dont really know much, but there is a weird old man in the cellars. Ive seen him tinkering around with radios and radiowaves."
 lose_text = "Who are you? What do you want from here? Radios? No, I don`t know anything about any radios. Get out!"
 name = "Ask about radios"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gajwf"]
+streams_count = 9
+stream_0/stream = ExtResource("5_2ha04")
+stream_1/stream = ExtResource("6_b1tqx")
+stream_2/stream = ExtResource("7_3ei67")
+stream_3/stream = ExtResource("8_10acy")
+stream_4/stream = ExtResource("9_wajox")
+stream_5/stream = ExtResource("10_lpfep")
+stream_6/stream = ExtResource("11_qg18f")
+stream_7/stream = ExtResource("12_nn0wf")
+stream_8/stream = ExtResource("13_mu1ra")
 
 [sub_resource type="GDScript" id="GDScript_ioo8f"]
 script/source = "extends BulletSpawner
@@ -191,6 +212,9 @@ bullet_spawner = NodePath("BulletSpawner")
 offset_left = -293.0
 offset_right = -144.0
 
+[node name="VoiceSound" parent="SpeechBubble" index="5" unique_id=1443993807]
+stream = SubResource("AudioStreamRandomizer_gajwf")
+
 [node name="BulletSpawner" parent="." index="1" unique_id=608059629]
 script = SubResource("GDScript_ioo8f")
 
@@ -200,3 +224,5 @@ texture = ExtResource("5_60lpe")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=1025230055]
 libraries/ = SubResource("AnimationLibrary_v31fj")
+
+[editable path="SpeechBubble"]
