@@ -7,6 +7,13 @@
 [ext_resource type="Material" uid="uid://bv4ausw41k03c" path="res://resources/add.tres" id="4_yn47u"]
 [ext_resource type="Texture2D" uid="uid://bwasvn6wmjic4" path="res://art/konsool/seadeldis kaes.png" id="5_8k6qu"]
 [ext_resource type="Texture2D" uid="uid://b1ubtsp6fh6w" path="res://art/particl.png" id="5_yalc1"]
+[ext_resource type="AudioStream" uid="uid://cc5ipnjo16d16" path="res://sounds/looping_machine.ogg" id="8_gtjfe"]
+[ext_resource type="AudioStream" uid="uid://2hjsaksolc3b" path="res://sounds/beign_scan.ogg" id="9_yn47u"]
+[ext_resource type="AudioStream" uid="uid://eov3yefknc0n" path="res://sounds/machine_back.ogg" id="10_em5rv"]
+[ext_resource type="AudioStream" uid="uid://btyy2gbmp30nj" path="res://sounds/modelm-01.ogg" id="11_t43mj"]
+[ext_resource type="AudioStream" uid="uid://p5dtb4n0v0r7" path="res://sounds/modelm-02.ogg" id="12_lvpy5"]
+[ext_resource type="AudioStream" uid="uid://cdkyn4wejda5c" path="res://sounds/modelm-03.ogg" id="13_q4foa"]
+[ext_resource type="AudioStream" uid="uid://d2fiulem4rudf" path="res://sounds/modelm-04.ogg" id="14_snnim"]
 
 [sub_resource type="Gradient" id="Gradient_gtjfe"]
 offsets = PackedFloat32Array(0, 0.5265306, 1)
@@ -28,6 +35,14 @@ font_size = 21
 font_color = Color(0.7490196, 0.9490196, 0.4, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nh0ls"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3llyg"]
+random_pitch = 1.1892071
+streams_count = 4
+stream_0/stream = ExtResource("11_t43mj")
+stream_1/stream = ExtResource("12_lvpy5")
+stream_2/stream = ExtResource("13_q4foa")
+stream_3/stream = ExtResource("14_snnim")
 
 [node name="Console" type="Node2D" unique_id=611889631 node_paths=PackedStringArray("scanner", "scanner_area", "scanner_default_position", "topic_buttons", "scan_label", "score_pos_top", "score_pos_bottom", "score_highlight")]
 script = ExtResource("1_8uyry")
@@ -133,6 +148,26 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scanner/Eater" unique_id=797876587]
 shape = SubResource("CircleShape2D_nh0ls")
+
+[node name="LoopSound" type="AudioStreamPlayer2D" parent="Scanner" unique_id=19996696]
+unique_name_in_owner = true
+stream = ExtResource("8_gtjfe")
+attenuation = 2.2191405
+panning_strength = 1.91
+
+[node name="BeginSound" type="AudioStreamPlayer" parent="Scanner" unique_id=1829754938]
+unique_name_in_owner = true
+stream = ExtResource("9_yn47u")
+
+[node name="SnapBackSound" type="AudioStreamPlayer" parent="Scanner" unique_id=878256134]
+unique_name_in_owner = true
+stream = ExtResource("10_em5rv")
+
+[node name="CollectSound" type="AudioStreamPlayer" parent="Scanner" unique_id=353791015]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_3llyg")
+pitch_scale = 1.5
+max_polyphony = 6
 
 [node name="Defaultpos" type="Marker2D" parent="." unique_id=1083295766]
 position = Vector2(-268, 251)
