@@ -105,7 +105,7 @@ func do(emotion: Topic.Emotion) -> void:
 			add_child(b)
 			await wait_t(0.05)
 	elif mode == 1:
-		Console.scan_max = int(10 * 24)
+		Console.scan_max = int(10 * 24 * 0.75)
 		for y in range(-5, 5):
 			for x in range(-12, 12):
 				var b := Bullet.make(Vector2(float(x) / 24 * 480, sin(x) * y * 240))
@@ -114,7 +114,12 @@ func do(emotion: Topic.Emotion) -> void:
 				b.drag = -0.05
 				add_child(b)
 		await wait_t(4.0)
-
+	elif mode == 2:
+		for t: float in range(6.3, -6.3, 0.01):
+			var b := Bullet.make(Vector2(sin(2 * t) + 3 * sin(t), 2 * sin(3 * t)))
+			add_child(b)
+			b.set_direction(Vector2.DOWN, 0.001)
+			b.drag = -0.1
 	mode = wrapi(mode + 1, 0, 2)
 
 	await wait_t(0.75)
