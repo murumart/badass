@@ -205,6 +205,10 @@ class SongsList:
 		&"alien_music": {
 			&"stream" : preload("res://music/alien_music.ogg")
 		},
+		&"bad_end": {
+			&"stream" : preload("res://music/badend.ogg"),
+			&"loop": false
+		},
 	}
 
 	pass
