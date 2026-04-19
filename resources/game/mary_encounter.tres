@@ -15,5 +15,6 @@ metadata/_custom_type_script = "uid://d2r1lkwdqib3c"
 script = ExtResource("1_g7lkm")
 person = ExtResource("1_vqvrh")
 background = ExtResource("1_agkfa")
+delay_before_begin_s = 2.0
 next = SubResource("Resource_dpks2")
 metadata/_custom_type_script = "uid://cbbv8uq1aexko"
