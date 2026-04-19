@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjhydkqnw5146"]
 
 [ext_resource type="Script" uid="uid://dx8l81ck3hbqo" path="res://scenes/encounter/encounter.gd" id="1_lp88p"]
-[ext_resource type="Resource" uid="uid://bkfwhatrbcrtm" path="res://resources/game/edgars_encounter.tres" id="2_13rki"]
+[ext_resource type="Resource" uid="uid://dcnm4hd6x8x28" path="res://resources/game/mary_encounter.tres" id="2_yyo66"]
 [ext_resource type="Script" uid="uid://utfgxr8if0yd" path="res://sounds/button_sound_adder.gd" id="4_s1k85"]
 [ext_resource type="PackedScene" uid="uid://dluhpk1fpwdjd" path="res://scenes/encounter/console.tscn" id="5_lbagw"]
 [ext_resource type="AudioStream" uid="uid://cl8eps8nby3rn" path="res://sounds/awesome_open.ogg" id="5_yyo66"]
@@ -13,7 +13,7 @@ outline_color = Color(0, 0, 0, 1)
 
 [node name="Encounter" type="Node2D" unique_id=1195995178 node_paths=PackedStringArray("background_parent", "person_parent", "console", "good_convo_topic")]
 script = ExtResource("1_lp88p")
-data = ExtResource("2_13rki")
+data = ExtResource("2_yyo66")
 background_parent = NodePath("BackgroundParent")
 person_parent = NodePath("PersonParent")
 console = NodePath("Console")

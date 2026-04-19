@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://chdr48d7faee"]
 
 [ext_resource type="PackedScene" uid="uid://dy8dyd45a52ty" path="res://scenes/encounter/people/person.tscn" id="1_flsc6"]
-[ext_resource type="Script" path="res://scenes/encounter/people/abstract_topic.gd" id="2_fghyt"]
+[ext_resource type="Script" uid="uid://cqpti41vi2kf5" path="res://scenes/encounter/people/abstract_topic.gd" id="2_fghyt"]
 [ext_resource type="Script" uid="uid://dv5b43nkgajqi" path="res://scenes/encounter/people/topic.gd" id="2_og1gi"]
-[ext_resource type="Script" path="res://scenes/encounter/people/goal_topic.gd" id="4_wwbfv"]
+[ext_resource type="Script" uid="uid://gueua6osjqp7" path="res://scenes/encounter/people/goal_topic.gd" id="4_wwbfv"]
+[ext_resource type="Texture2D" uid="uid://bp8bs6u2nt7ui" path="res://art/mary/mary neutraalne.png" id="5_wwbfv"]
 
 [sub_resource type="Resource" id="Resource_gcp41"]
 script = ExtResource("2_og1gi")
@@ -58,9 +59,74 @@ win_text = "Hmm radios? I work in a radio station, but i doubt you mean that. My
 lose_text = "You assume just because i work in a radio station i know about radios? I dont even know you, get lost!"
 name = "Ask about radios"
 
-[node name="Mary" unique_id=1361515156 instance=ExtResource("1_flsc6")]
+[sub_resource type="GDScript" id="GDScript_wwbfv"]
+script/source = "extends BulletSpawner
+
+
+
+func do(emotion: Topic.Emotion) -> void:
+	done.emit()
+"
+
+[sub_resource type="Animation" id="Animation_wwbfv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_wwbfv")]
+}
+
+[sub_resource type="Animation" id="Animation_yy4xl"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_wwbfv")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_53xiv"]
+_data = {
+&"RESET": SubResource("Animation_wwbfv"),
+&"idle": SubResource("Animation_yy4xl")
+}
+
+[node name="Mary" unique_id=1361515156 node_paths=PackedStringArray("animator", "bullet_spawner") instance=ExtResource("1_flsc6")]
 topics = Array[ExtResource("2_fghyt")]([SubResource("Resource_gcp41"), SubResource("Resource_fghyt"), SubResource("Resource_wwbfv"), SubResource("Resource_yy4xl"), SubResource("Resource_53xiv"), SubResource("Resource_0eqa2")])
 goal_topic = SubResource("Resource_rwqpo")
 goal = 4.0
 starting_lines = "Hello, my father sent you? Sure i can answer some questions."
 ending_lines = "Good luck with your search! Hope you find what you need."
+animator = NodePath("AnimationPlayer")
+bullet_spawner = NodePath("BulletSpawner")
+
+[node name="SpeechBubble" parent="." index="0" unique_id=663125359]
+offset_left = -328.0
+offset_right = -179.0
+
+[node name="Line2D" parent="SpeechBubble" index="0" unique_id=1952329087]
+points = PackedVector2Array(129, 101, 213, 108)
+
+[node name="BulletSpawner" parent="." index="1" unique_id=608059629]
+script = SubResource("GDScript_wwbfv")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2" unique_id=523778290]
+texture = ExtResource("5_wwbfv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3" unique_id=1011303469]
+libraries/ = SubResource("AnimationLibrary_53xiv")
+
+[editable path="SpeechBubble"]

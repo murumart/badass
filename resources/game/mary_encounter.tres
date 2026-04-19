@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EncounterData" format=3 uid="uid://dcnm4hd6x8x28"]
+
+[ext_resource type="PackedScene" uid="uid://cm15lbs8ibk6b" path="res://scenes/encounter/backgrounds/radioroom.tscn" id="1_agkfa"]
+[ext_resource type="Script" uid="uid://cbbv8uq1aexko" path="res://scenes/encounter/encounter_data.gd" id="1_g7lkm"]
+[ext_resource type="PackedScene" uid="uid://chdr48d7faee" path="res://scenes/encounter/people/mary.tscn" id="1_vqvrh"]
+
+[resource]
+script = ExtResource("1_g7lkm")
+person = ExtResource("1_vqvrh")
+background = ExtResource("1_agkfa")
+metadata/_custom_type_script = "uid://cbbv8uq1aexko"

@@ -177,11 +177,7 @@ func _on_person_spoke() -> void:
 
 
 func _next_encounter() -> void:
-	if data.next_scene_path:
-		MGSAnimation.line_index = data.mgs_cutscene_index # WARNING HACK
-		UI.swipe_transition(load(data.next_scene_path))
-	elif data.next_encounter != null:
-		Encounter.enter(data.next_encounter)
+	data.next.go()
 
 
 func _gameover() -> void:

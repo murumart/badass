@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cm15lbs8ibk6b"]
+
+[ext_resource type="Texture2D" uid="uid://bj34rgpi5ukwe" path="res://art/studio.png" id="1_4pqpg"]
+
+[node name="Radioroom" type="Node2D" unique_id=117995716]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1070949888]
+texture = ExtResource("1_4pqpg")
