@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://qeo85g3vyxks"]
 
 [ext_resource type="Script" uid="uid://8ghnjek1wxjv" path="res://scenes/Cutscenes/cutscene.gd" id="1_lk2lq"]
+[ext_resource type="Script" uid="uid://d2r1lkwdqib3c" path="res://scenes/Cutscenes/next_scene.gd" id="3_jciu5"]
 [ext_resource type="Texture2D" uid="uid://cju0kaak3xvi2" path="res://art/laev_väljast1.png" id="4_1p38f"]
 [ext_resource type="Texture2D" uid="uid://chlm20l68wgrn" path="res://art/laev_väljast2.png" id="5_cdlec"]
 [ext_resource type="Texture2D" uid="uid://d4b0vj2epiaoo" path="res://art/laev_väljast3.png" id="6_uf2o5"]
@@ -19,6 +20,11 @@
 [ext_resource type="Texture2D" uid="uid://cdfpfmxv1tlpk" path="res://art/boss/bossi taust0000.png" id="26_c5icy"]
 [ext_resource type="Texture2D" uid="uid://03rioj6bgebj" path="res://art/boss/bossi taust0001.png" id="27_h0md4"]
 [ext_resource type="Texture2D" uid="uid://buj8dptp87hab" path="res://art/Beam.png" id="53_has23"]
+
+[sub_resource type="Resource" id="Resource_lpil2"]
+script = ExtResource("3_jciu5")
+next_scene_path = "res://scenes/ui/main_menu.tscn"
+metadata/_custom_type_script = "uid://d2r1lkwdqib3c"
 
 [sub_resource type="Animation" id="Animation_k7j73"]
 length = 0.001
@@ -298,6 +304,18 @@ tracks/22/keys = {
 "update": 1,
 "values": [-1]
 }
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath(".:next")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Resource_lpil2")]
+}
 
 [sub_resource type="Animation" id="Animation_lk2lq"]
 resource_name = "ending"
@@ -417,10 +435,10 @@ tracks/9/path = NodePath("Node2D/AnimatedSprite2D:frame")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(7.3099976, 8.34333, 9.409998, 10.443333, 11.409999, 12.409999, 13.466666, 14.466666, 15.533334),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(7.3099976, 8.34333, 9.409998, 10.4, 11.333333, 12.339999, 13.339999, 14.336666, 15.366667, 16.433334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 0, 1, 1, 0, 1, 0, 1]
+"values": [0, 1, 0, 1, 0, 1, 0, 1, 0, 1]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -492,7 +510,21 @@ tracks/15/keys = {
 "times": PackedFloat32Array(7.5333333, 13.666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0, 9]
+"values": [0, 10]
+}
+tracks/16/type = "method"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath(".")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(17.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"finish"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k7j73"]
@@ -552,8 +584,8 @@ animations = [{
 font_size = 104
 
 [node name="Scene" type="Node2D" unique_id=481534608]
-position = Vector2(-1, 0)
 script = ExtResource("1_lk2lq")
+next = SubResource("Resource_lpil2")
 metadata/_custom_type_script = "uid://8ghnjek1wxjv"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1162286399]
